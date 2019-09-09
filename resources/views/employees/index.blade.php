@@ -20,21 +20,12 @@
                 </tr>
             </thead>
         
-            <tbody id="tbody_trabajadores">
+            {{-- <tbody id="tbody_trabajadores">
                 @foreach($employees as $employee)
                     <tr>
                         <td>{{ $employee->numconemp }}</td>
-                        {{-- <td>{{ $employee->nombre }}</td>
-                        <td>{{ $employee->apellidos }}</td>
-                        <td>{{ $employee->status }}</td> --}}
-
-                        <td>
-                            {{ $employee->nombre . ' ' . $employee->apepat }}
-                        </td>
-                        
-                        <td>
-                            {{ $employee->dependencia }}
-                        </td>
+                        <td>{{ $employee->nombre . ' ' . $employee->apepat }}</td>
+                        <td>{{ $employee->dependencia }}</td>
 
                         <td class="pt-1 pb-1">
                             <div class="dropdown" data-item="{{ $employee->numconemp }}">
@@ -50,7 +41,9 @@
                         </td>
                     </tr>
                 @endforeach
-            </tbody>
+            </tbody> --}}
+
+            <tableemployees-component></tableemployees-component>
         </table>
     </div>
 </div>
