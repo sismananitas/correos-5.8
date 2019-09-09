@@ -40,6 +40,7 @@ Route::post('correo/alumno', 'StudentController@storeEmail')->name('correo.stude
 Route::resource('alumnos', 'StudentController');
 
 // Empleados
+Route::get('empleados/todos', 'EmployeeController@getAllEmployes')->name('employees.all');
 Route::post('correo/trabajador', 'EmployeeController@storeEmail')->name('correo.employee.store');
 Route::resource('empleados', 'EmployeeController');
 

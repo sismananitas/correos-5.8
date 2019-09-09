@@ -22,6 +22,8 @@
 </template>
 
 <script>
+import Axios from 'axios';
+
 export default {
     data: function () {
         return {
@@ -29,7 +31,11 @@ export default {
         }
     },
     created() {
-        console.log('Montado ' + this.employees);
+        Axios.get('empleados/todos')
+        .then(res => {
+            console.log(res)
+            console.log('Montado ' + this.employees);
+        })
     }
 }
 </script>

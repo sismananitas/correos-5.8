@@ -6242,6 +6242,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 //
 //
 //
@@ -6265,6 +6267,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -6272,7 +6275,12 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   created: function created() {
-    console.log('Montado ' + this.employees);
+    var _this = this;
+
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('empleados/todos').then(function (res) {
+      console.log(res);
+      console.log('Montado ' + _this.employees);
+    });
   }
 });
 
