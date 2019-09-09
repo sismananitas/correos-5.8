@@ -29,7 +29,7 @@ export default {
         }
     },
     created() {
-        console.log('Montado ' + employees);
+        console.log('Montado ' + this.employees);
     }
 }
 </script>

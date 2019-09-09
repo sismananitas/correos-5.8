@@ -6272,7 +6272,7 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   created: function created() {
-    console.log('Montado ' + employees);
+    console.log('Montado ' + this.employees);
   }
 });
 
