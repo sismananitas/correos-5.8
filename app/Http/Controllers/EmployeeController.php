@@ -55,9 +55,7 @@ class EmployeeController extends Controller
             $numero[0]->numero
         ]);
 
-        return view('employees.index', [
-            'employees' => $employees
-        ]);
+        return response()->json($employees);
     }
 
     /**
