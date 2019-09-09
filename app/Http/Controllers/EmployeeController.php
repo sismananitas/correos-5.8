@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Employee;
 use App\Http\Requests\StoreEmployeeEmail;
-use App\InformixPersonalClass;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -22,24 +21,41 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        $infoxmixDB = InformixPersonalClass::getInformixConnection();
-        // $query = "SELECT hdisco.numconemp, emplea.nombre, emplea.apepat, emplea.apemat, depend.nombre dependencia, emplea.curp, emplea.email
-        // FROM hdisco, emplea, depend
-        // WHERE hdisco.numconemp=emplea.numconemp
-        // AND hdisco.cvedep=depend.clave
-        // AND hdisco.cvenom=1
-        // AND anio=(SELECT MAX(anio) FROM hdisco)
-        // AND numero=(SELECT MAX(numero) FROM hdisco WHERE anio =(SELECT max(anio) FROM hdisco))";
-        $query = "SELECT nombre FROM emplea";
+        //$query = "SELECT nombre FROM emplea";
+        //$personal = $infoxmixDB->query($query);
 
-        $personal = $infoxmixDB->query($query);
-        //$personal = DB::connection('informix')->table('emplea')->select('emplea')->get();
+        // $personal = DB::connection('informix')->table('emplea')
+        // ->select([
+        //     'emplea.numconemp',
+        //     'emplea.nombre',
+        //     'emplea.apepat',
+        //     'emplea.anio',
+        // ])
+        // ->paginate(15);
 
-        dump($personal);
+        // Consigue el año mayor
+        $sql = "SELECT MAX(anio) as anio FROM hdisco";
+        $anio = DB::connection('informix')->select($sql);
+        
+        // Consigue el número mayor
+        $sql = "SELECT MAX(numero) as numero FROM hdisco WHERE anio = ?";
+        $numero = DB::connection('informix')->select($sql, [$anio[0]->anio]);
 
-        $employees = Employee::all();
-        return view('employees.index', [
-            'employees' => $employees
+        // Consigue todos los empleados con sus enlaces
+        $sql = "SELECT FIRST 15 hdisco.numconemp, emplea.nombre, emplea.apepat, emplea.apemat, 
+        depend.nombre as dependencia, emplea.curp, emplea.email
+        FROM hdisco
+
+        INNER JOIN emplea ON hdisco.numconemp = emplea.numconemp
+        INNER JOIN depend ON hdisco.cvedep = depend.clave
+
+        WHERE hdisco.cvenom = ? AND anio = ? AND numero = ?";
+
+        $personal = DB::connection('informix')
+        ->select($sql, [
+            1,
+            $anio[0]->anio,
+            $numero[0]->numero
         ]);
     }
 
@@ -50,7 +66,7 @@ class EmployeeController extends Controller
      */
     public function create()
     {
-        $db = InformixPersonalClass::getInformixConnection();
+        //
     }
 
     /**

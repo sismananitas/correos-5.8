@@ -23,28 +23,28 @@
             <tbody id="tbody_trabajadores">
                 @foreach($employees as $employee)
                     <tr>
-                        <td>{{ $employee->control_number }}</td>
+                        <td>{{ $employee->numconemp }}</td>
                         {{-- <td>{{ $employee->nombre }}</td>
                         <td>{{ $employee->apellidos }}</td>
                         <td>{{ $employee->status }}</td> --}}
 
-                        <td title="{{ $employee->updated_at->format('h:i A') }}" data-toggle="tooltip">
-                            {{ $employee->updated_at->format('d-m-Y') }}
+                        <td>
+                            {{ $employee->nombre . ' ' . $employee->apepat }}
                         </td>
                         
-                        <td title="{{ $employee->created_at->format('h:i A') }}" data-toggle="tooltip">
-                            {{ $employee->created_at->format('d-m-Y') }}
+                        <td>
+                            {{ $employee->dependencia }}
                         </td>
 
                         <td class="pt-1 pb-1">
-                            <div class="dropdown" data-item="{{ $employee->id }}">
+                            <div class="dropdown" data-item="{{ $employee->numconemp }}">
                                 <button id="menuRow{{ $employee->nombre }}" class="btn btn-secondary dropdown-toggle w-100" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     settings
                                 </button>
                                 
                                 <div class="dropdown-menu shadow trabajador-actions" aria-labelledby="menuRow{{ $employee->nombre }}">
                                     <a class="dropdown-item btn-warning" type="button" data-toggle="modal" data-target="#editTrabajador">Editar</a>
-                                    <a class="dropdown-item btn-danger" href="{$base_url}trabajador/borrar/{{ $employee->id }}">Eliminar</a>
+                                    <a class="dropdown-item btn-danger" href="{$base_url}trabajador/borrar/{{ $employee->numconemp }}">Eliminar</a>
                                 </div>
                             </div>
                         </td>
