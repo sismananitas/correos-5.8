@@ -19,8 +19,12 @@ class EmployeeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($page = 1)
     {
+        $regPerPage = 15;
+        $end = $regPerPage * $page;
+        $start = $end - $regPerPage;
+
         //$query = "SELECT nombre FROM emplea";
         //$personal = $infoxmixDB->query($query);
 
@@ -42,7 +46,7 @@ class EmployeeController extends Controller
         $numero = DB::connection('informix')->select($sql, [$anio[0]->anio]);
 
         // Consigue todos los empleados con sus enlaces
-        $sql = "SELECT FIRST 15 hdisco.numconemp, emplea.nombre, emplea.apepat, emplea.apemat, 
+        $sql = "SELECT SKIP $start LIMIT $end hdisco.numconemp, emplea.nombre, emplea.apepat, emplea.apemat, 
         depend.nombre as dependencia, emplea.curp, emplea.email
         FROM hdisco
 
@@ -51,11 +55,15 @@ class EmployeeController extends Controller
 
         WHERE hdisco.cvenom = ? AND anio = ? AND numero = ?";
 
-        $personal = DB::connection('informix')
+        $employees = DB::connection('informix')
         ->select($sql, [
             1,
             $anio[0]->anio,
             $numero[0]->numero
+        ]);
+
+        return view('employees.index', [
+            'employees' => $employees
         ]);
     }
 
