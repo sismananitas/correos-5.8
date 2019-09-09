@@ -1,0 +1,82 @@
+.space-10 {
+    display: block;
+    height: 10px;
+}
+
+.space-20 {
+    display: block;
+    height: 20px;
+}
+
+.space-30 {
+    display: block;
+    height: 30px;
+}
+
+.form-1 {
+    border: solid 1px #d1d1d1;
+    padding: 1rem;
+    @include border-radius(5px);
+    background: #d1d1d1;
+}
+
+input:required {
+    box-shadow: none;
+}
+
+input:invalid, select:invalid {
+    box-shadow: none;
+}
+
+.modal {
+    color: $text-dark;
+    text-align: left;
+}
+
+/* CUSTOMIZE CLOSTER
+------------------------------------------------- */
+.closter {
+    margin: 0%;
+}
+
+.closter img {
+    width: 100%;
+    transition: .3s;
+}
+
+.closter img:hover {
+    transform: scale(1.1);
+}
+
+.closter .item {
+    padding: 0%;
+    margin: 0;
+    min-height: 50px;
+    transition: .3s;
+    text-align: center;
+    font-size: 1.2rem;
+    box-sizing: border-box;
+}
+
+.closter .item-thumb {
+    height: 200px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #60658f;
+    border-radius: 2px;
+    color: #e9e9e9;
+    transition: 0.3s;
+}
+.closter a {
+    color: #222222;
+    text-decoration: none;
+}
+.closter p {
+    text-transform: capitalize;
+}
+.closter .item-thumb:hover {
+    color: #ffffff;
+    box-shadow: 0rem .5rem 1.2rem rgba(0, 0, 0, 0.7);
+}
