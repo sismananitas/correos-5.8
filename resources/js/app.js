@@ -6,7 +6,9 @@
 
 require('./bootstrap');
 require('@fortawesome/fontawesome-free/js/all');
-import Swal from 'sweetalert2';
+// DataTables
+require('datatables.net')
+required('datatables.net-bs4')
 
 window.Vue = require('vue');
 

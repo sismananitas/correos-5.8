@@ -1,4 +1,15 @@
 <template>
+<table id="tableEmployees" class="table table-striped text-center border-bottom">
+    <thead>
+        <tr class="thead-dark">
+            <th>N. CONTROL</th>
+            <th>NOMBRE</th>
+            <th>ACTUALIZADO</th>
+            <th>CREADO</th>
+            <th class="pt-1 pb-1"><button class="btn btn-primary col-12" type="button" data-toggle="modal" data-target="#addTrabajador">Agregar</button></th>
+        </tr>
+    </thead>
+
     <tbody>
         <tr v-for="employee in employees" v-bind:key="employee.numconemp">
             <td>{{ employee.numconemp }}</td>
@@ -19,21 +30,26 @@
             </td>
         </tr>
     </tbody>
+</table>
 </template>
 
 <script>
 import Axios from 'axios';
+import Swal from 'sweetalert2';
 
 export default {
     data: function () {
         return {
-            employees: []
+            employees: [],
+            tableEmployeesEl: $('#tableEmployees')
         }
     },
     created() {
+        tableEmployeesEl.DataTable()
+
         Axios.get('empleados/todos')
         .then(res => {
-            console.log(res)
+            console.log(res.data)
             console.log('Montado ' + this.employees);
         })
     }
