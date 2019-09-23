@@ -11,7 +11,7 @@
     <title>@yield('title', config('app.name', 'Laravel'))</title>
 
     <!-- Scripts -->
-    <script async src="{{ asset('js/app.js') }}"></script>
+    <script async="async" src="{{ asset('js/app.js') }}"></script>
     @stack('scripts')
 
     <!-- Styles -->
