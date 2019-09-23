@@ -20,4 +20,17 @@ return [
         'initSqls' => false, 
         'prefix'    => ''
     ],
+    'escolares' => [
+        'driver'    => 'informix',
+        'host'      => env('ESC_HOST', 'localhost'),
+        'database'  => env('ESC_DATABASE', 'forge'),
+        'username'  => env('ESC_USERNAME', 'forge'),
+        'password'  => env('ESC_PASSWORD', ''),
+        'service'  => env('ESC_SERVICE', '11143'),
+        'server'  => env('ESC_SERVER', ''),
+        'db_locale'   => 'en_US.819',
+        'client_locale' => 'en_US.819',
+        'initSqls' => false, 
+        'prefix'    => ''
+    ],
 ];

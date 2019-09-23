@@ -34,7 +34,7 @@ class StudentController extends Controller
         AND alu.unidad_id =  uni.unidad_id
         AND car.rama_id = ram.rama_id";
 
-        $students = DB::connection('informix')
+        $students = DB::connection('escolares')
         ->select($sql);
 
         return response()->json($students);
