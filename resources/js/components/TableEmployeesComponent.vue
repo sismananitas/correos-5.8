@@ -45,7 +45,7 @@ export default {
         }
     },
     created() {
-        tableEmployeesEl.DataTable()
+        this.tableEmployeesEl.DataTable()
 
         Axios.get('empleados/todos')
         .then(res => {
