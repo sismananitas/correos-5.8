@@ -1,5 +1,5 @@
 <template>
-<table id="tableEmployees" class="table table-striped text-center border-bottom">
+<table id="tableEmployees" class="display">
     <thead>
         <tr class="thead-dark">
             <th>N. CONTROL</th>
@@ -11,7 +11,7 @@
     </thead>
 
     <tbody>
-        <tr v-for="employee in employees" v-bind:key="employee.numconemp">
+        <!-- <tr v-for="employee in employees" v-bind:key="employee.numconemp">
             <td>{{ employee.numconemp }}</td>
             <td>{{ employee.nombre + ' ' + employee.apepat }}</td>
             <td>{{ employee.dependencia }}</td>
@@ -28,7 +28,7 @@
                     </div>
                 </div>
             </td>
-        </tr>
+        </tr> -->
     </tbody>
 </table>
 </template>
