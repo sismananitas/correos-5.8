@@ -35,7 +35,7 @@
 @endsection
 
 @push('script')
-    <script>
+    {{-- <script>
         var data = [
             [
                 "Tiger Nixon",
@@ -63,5 +63,5 @@
                 { data: 'office' }
             ]
         });
-    </script>
+    </script> --}}
 @endpush

@@ -6287,13 +6287,25 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       employees: [],
-      tableEmployeesEl: $('#tableEmployees')
+      tableEmployeesEl: $('#tableEmployees'),
+      data: [["Tiger Nixon", "System Architect", "Edinburgh", "5421", "2011/04/25", "$3,120"], ["Garrett Winters", "Director", "Edinburgh", "8422", "2011/07/25", "$5,300"]]
     };
   },
   created: function created() {
     var _this = this;
 
-    tableEmployeesEl.DataTable();
+    tableEmployeesEl.DataTable({
+      data: this.data,
+      columns: [{
+        data: 'name'
+      }, {
+        data: 'position'
+      }, {
+        data: 'salary'
+      }, {
+        data: 'office'
+      }]
+    });
     axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('empleados/todos').then(function (res) {
       console.log(res.data);
       console.log('Montado ' + _this.employees);
@@ -72355,7 +72367,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-alert('cargó');
+
 
 /***/ }),
 

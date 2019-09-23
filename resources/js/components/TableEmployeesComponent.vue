@@ -41,11 +41,37 @@ export default {
     data: function () {
         return {
             employees: [],
-            tableEmployeesEl: $('#tableEmployees')
+            tableEmployeesEl: $('#tableEmployees'),
+            data: [
+                [
+                    "Tiger Nixon",
+                    "System Architect",
+                    "Edinburgh",
+                    "5421",
+                    "2011/04/25",
+                    "$3,120"
+                ],
+                [
+                    "Garrett Winters",
+                    "Director",
+                    "Edinburgh",
+                    "8422",
+                    "2011/07/25",
+                    "$5,300"
+                ]
+            ]
         }
     },
     created() {
-        tableEmployeesEl.DataTable()
+        tableEmployeesEl.DataTable({
+            data: this.data,
+            columns: [
+                { data: 'name' },
+                { data: 'position' },
+                { data: 'salary' },
+                { data: 'office' }
+            ]
+        })
 
         Axios.get('empleados/todos')
         .then(res => {
