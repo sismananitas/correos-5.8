@@ -31,6 +31,7 @@ export default {
         }
     },
     created() {
+        Swal.showLoading();
         Axios.get('empleados/todos')
         .then(res => {
             console.log(res.data)
