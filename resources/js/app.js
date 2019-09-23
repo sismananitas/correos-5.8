@@ -8,7 +8,6 @@ require('./bootstrap');
 require('./scripts/main');
 
 window.Vue = require('vue');
-import DatatableFactory from 'vuejs-datatable/node_modules/object-path/index';
 
 /**
  * The following block of code may be used to automatically register your
@@ -21,8 +20,6 @@ import DatatableFactory from 'vuejs-datatable/node_modules/object-path/index';
 // const files = require.context('./', true, /\.vue$/i);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
-Vue.use(DatatableFactory);
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('tableemployees-component', require('./components/TableEmployeesComponent.vue').default);
 
 /**

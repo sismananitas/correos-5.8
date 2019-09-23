@@ -28,7 +28,6 @@
         "datatables.net": "^1.10.19",
         "datatables.net-bs4": "^1.10.19",
         "jquery-ui": "^1.12.1",
-        "sweetalert2": "^8.15.3",
-        "vuejs-datatable": "^2.0.0-alpha.2"
+        "sweetalert2": "^8.15.3"
     }
 }
