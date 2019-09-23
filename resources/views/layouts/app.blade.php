@@ -10,11 +10,11 @@
     <title>@yield('title', config('app.name', 'Laravel'))</title>
 
     <!-- Scripts -->
-    <script async src="{{ mix('js/app.js') }}"></script>
+    <script async src="{{ asset('js/app.js') }}"></script>
     @stack('scripts')
 
     <!-- Styles -->
-    <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     @stack('styles')
 </head>
 <body>
