@@ -1,5 +1,5 @@
 <template>
-<table id="tableEmployees" class="display">
+<table id="tableEmployees" class="table table-striped text-center border-bottom display">
     <thead>
         <tr class="thead-dark">
             <th>N. CONTROL</th>
@@ -73,11 +73,11 @@ export default {
             ]
         })
 
-        Axios.get('empleados/todos')
-        .then(res => {
-            console.log(res.data)
-            console.log('Montado ' + this.employees);
-        })
+        // Axios.get('empleados/todos')
+        // .then(res => {
+        //     console.log(res.data)
+        //     console.log('Montado ' + this.employees);
+        // })
     }
 }
 </script>
