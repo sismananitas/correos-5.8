@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreStudentEmail;
 use App\Student;
-use App\Task;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class StudentController extends Controller
 {
@@ -23,6 +23,21 @@ class StudentController extends Controller
     {
         //$students = Student::all();
         return view('students.index');
+    }
+
+    public function getAllStudents()
+    {
+        $sql = "SELECT FIRST 50 alu.matricula, ap_paterno, ap_materno, alu.nombre, situacion, status, gen.telefono, gen.email, gen.curp, car.nombre carrera, uni.nombre unidad, ram.descripcion grado
+        FROM alumno alu, alumno_general gen, carrera car, unidad uni, rama ram
+        WHERE alu.matricula = gen.matricula
+        AND alu.carrera_id = car.carrera_id
+        AND alu.unidad_id =  uni.unidad_id
+        AND car.rama_id = ram.rama_id";
+
+        $students = DB::connection('informix')
+        ->select($sql);
+
+        return response()->json($students);
     }
 
     /**

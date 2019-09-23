@@ -36,6 +36,7 @@ Route::resource('grupos', 'GroupController');
 Route::resource('correos', 'EmailController');
 
 // Estudiantes
+Route::get('alumnos/todos', 'StudentController@getAllStudents');
 Route::post('correo/alumno', 'StudentController@storeEmail')->name('correo.student.store');
 Route::resource('alumnos', 'StudentController');
 

@@ -13,19 +13,19 @@
             @auth
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('correos.index') }}">Correos</a>
+                        <a class="nav-link @if(request()->is('correos')) active @endif" href="{{ route('correos.index') }}">Correos</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('grupos.index') }}">Grupos</a>
+                        <a class="nav-link @if(request()->is('grupos')) active @endif" href="{{ route('grupos.index') }}">Grupos</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('empleados.index') }}">Empleados</a>
+                        <a class="nav-link @if(request()->is('empleados')) active @endif" href="{{ route('empleados.index') }}">Empleados</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('alumnos.index') }}">Alumnos</a>
+                        <a class="nav-link @if(request()->is('alumnos')) active @endif" href="{{ route('alumnos.index') }}">Alumnos</a>
                     </li>
                 </ul>
             @endauth
