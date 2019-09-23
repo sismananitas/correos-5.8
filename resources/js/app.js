@@ -17,7 +17,7 @@ window.Vue = require('vue');
  * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
  */
 
-const files = require.context('./components', true, /\.(js|vue)$/i);
+const files = require.context('./components/', true, /\.(js|vue)$/i);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
 // Vue.component(
@@ -30,10 +30,7 @@ const files = require.context('./components', true, /\.(js|vue)$/i);
 //     require('./components/TableStudents.vue').default
 // );
 
-files.keys().map(key => {
-    const name = key.match(/\w+/)[0].toLowerCase();
-    return Vue.component(name, files(key).default);
-});
+files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
