@@ -18,18 +18,6 @@ window.Vue = require('vue');
  */
 
 const files = require.context('./components/', true, /\.(js|vue)$/i);
-// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
-
-// Vue.component(
-//     'tableemployees-component',
-//     require('./components/TableEmployeesComponent.vue').default
-// );
-
-// Vue.component(
-//     'tablestudents-component',
-//     require('./components/TableStudents.vue').default
-// );
-
 files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
 /**
