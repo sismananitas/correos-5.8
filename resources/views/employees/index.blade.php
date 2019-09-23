@@ -6,7 +6,7 @@
 <div class="container">
     <h1>Empleados</h1>
 
-    <div id="tableEmployees" class="table-responsive">
+    <div class="table-responsive">
         {{-- <tbody id="tbody_trabajadores">
             @foreach($employees as $employee)
                 <tr>
