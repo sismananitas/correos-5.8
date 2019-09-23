@@ -29,7 +29,7 @@
                 </tr>
             @endforeach
         </tbody> --}}
-        <tableemployees-component></tableemployees-component>
+        <table-employees-component></table-employees-component>
     </div>
 </div>
 @endsection

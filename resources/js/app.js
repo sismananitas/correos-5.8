@@ -31,7 +31,7 @@ const files = require.context('./components', true, /\.(js|vue)$/i);
 // );
 
 files.keys().map(key => {
-    const name = key.match(/\w+/)[0];
+    const name = key.match(/\w+/)[0].toLowerCase();
     return Vue.component(name, files(key).default);
 });
 
