@@ -32,7 +32,7 @@ const files = require.context('./components', true, /\.(js|vue)$/i);
 
 files.keys().map(key => {
     const name = key.match(/\w+/)[0];
-    return Vue.component(name, files(key).default());
+    return Vue.component(name, files(key).default);
 });
 
 /**
