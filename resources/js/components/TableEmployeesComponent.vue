@@ -63,7 +63,7 @@ export default {
         }
     },
     created() {
-        tableEmployeesEl.DataTable({
+        this.tableEmployeesEl.DataTable({
             data: this.data,
             columns: [
                 { data: 'name' },
