@@ -11,7 +11,7 @@
     </thead>
 
     <tbody>
-        <tr v-for="employee in employees" v-bind:key="employee.curp">
+        <tr v-for="employee in employees">
             <td>{{ employee.numconemp }}</td>
             <td>{{ employee.nombre + ' ' + employee.apepat }}</td>
             <td>{{ employee.dependencia }}</td>
@@ -48,7 +48,6 @@ export default {
         .then(res => {
             console.log(res.data)
             this.employees = res.data;
-            console.log('Montado ' + this.employees);
         })
     }
 }
