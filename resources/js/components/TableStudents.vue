@@ -12,7 +12,7 @@
 
         <tbody>
             <tr v-for="student in students" v-bind:key="">
-                <td>{{ student.numconemp }}</td>
+                <td>{{ student.matricula }}</td>
                 <td>{{ student.email }}</td>
                 <td>{{ student.nombre + ' ' + student.ap_paterno + ' ' + student.ap_materno }}</td>
                 <td>{{ student.carrera }}</td>
