@@ -12,8 +12,7 @@ try {
 
     require('bootstrap');
     require('@fortawesome/fontawesome-free/js/all');
-    // DataTables
-    require('datatables.net-bs4');
+    //require('datatables.net-bs4');
 } catch (e) {}
 
 /**
