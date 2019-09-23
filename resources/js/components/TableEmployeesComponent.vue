@@ -40,13 +40,10 @@ import Swal from 'sweetalert2';
 export default {
     data: function () {
         return {
-            employees: [],
-            tableEmployeesEl: $('#tableEmployees')
+            employees: []
         }
     },
     created() {
-        this.tableEmployeesEl.DataTable()
-
         Axios.get('empleados/todos')
         .then(res => {
             console.log(res.data)
