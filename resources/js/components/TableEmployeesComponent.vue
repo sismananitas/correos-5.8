@@ -11,7 +11,7 @@
     </thead>
 
     <tbody>
-        <tr v-for="employee in employees" v-bind:key="employee.numconemp">
+        <tr v-for="employee in employees" v-bind:key="employee.curp">
             <td>{{ employee.numconemp }}</td>
             <td>{{ employee.nombre + ' ' + employee.apepat }}</td>
             <td>{{ employee.dependencia }}</td>
