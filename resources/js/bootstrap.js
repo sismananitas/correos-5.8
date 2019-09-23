@@ -11,6 +11,10 @@ try {
     window.$ = window.jQuery = require('jquery');
 
     require('bootstrap');
+    require('@fortawesome/fontawesome-free/js/all');
+    // DataTables
+    require('datatables.net');
+    required('datatables.net-bs4');
 } catch (e) {}
 
 /**
