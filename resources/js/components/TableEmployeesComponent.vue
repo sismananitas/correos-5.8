@@ -2,7 +2,7 @@
 <table id="tableEmployees" class="table table-striped text-center border-bottom">
     <thead>
         <tr class="thead-dark">
-            <th>N. CONTROL</th>
+            <th>N.C.</th>
             <th>CORREO</th>
             <th>NOMBRE</th>
             <th>DEPENDENCIA</th>
