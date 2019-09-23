@@ -37,7 +37,7 @@ export default {
             console.log(res.data)
             this.employees = res.data;
         })
-        .then(() => Swal.hideLoading())
+        .then(() => Swal.close())
     }
 }
 </script>
