@@ -38,8 +38,8 @@ class EmployeeController extends Controller
         $sql = "SELECT MAX(numero) as numero FROM hdisco WHERE anio = ?";
         $numero = DB::connection('informix')->select($sql, [$anio[0]->anio]);
 
-        // Consigue todos los empleados con sus enlaces
-        $sql = "SELECT hdisco.numconemp, emplea.nombre, emplea.apepat, emplea.apemat, 
+        // Consigue los primeros 100 empleados con sus enlaces
+        $sql = "SELECT FIRST 100 hdisco.numconemp, emplea.nombre, emplea.apepat, emplea.apemat, 
         depend.nombre as dependencia, emplea.curp, emplea.email
         FROM hdisco
 
