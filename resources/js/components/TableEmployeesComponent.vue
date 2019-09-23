@@ -43,22 +43,18 @@ export default {
             employees: [],
             tableEmployeesEl: $('#tableEmployees'),
             data: [
-                [
-                    "Tiger Nixon",
-                    "System Architect",
-                    "Edinburgh",
-                    "5421",
-                    "2011/04/25",
-                    "$3,120"
-                ],
-                [
-                    "Garrett Winters",
-                    "Director",
-                    "Edinburgh",
-                    "8422",
-                    "2011/07/25",
-                    "$5,300"
-                ]
+                {
+                    name: "Tiger Nixon",
+                    position: "System Architect",
+                    office: "Edinburgh",
+                    salary: "$3,120"
+                },
+                {
+                    name: "Garrett Winters",
+                    position: "Director",
+                    office: "Edinburgh",
+                   salary:  "$5,300"
+                }
             ]
         }
     },
