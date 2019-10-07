@@ -140,14 +140,19 @@ class EmployeeController extends Controller
         $num_control = $data['control_number'];
         
         // GET USERS
-        $sql = "SELECT emplea.nombre, emplea.apepat as paterno, emplea.apemat as materno , depend.clave as cvedep,
-        depend.nombre as nomdep,emplea.curp, plazas.tipemp, TRIM(tipper.nombre) as tipo_puesto
-        from emplea, depend, plazas, tipper
-        where emplea.numconemp = " . $num_control . "
-        and emplea.numconemp = plazas.numconemp
-        and plazas.sitemp = 'VI'
-        and plazas.cvedep = depend.clave
-        and plazas.tipemp = tipper.clave;";
+        $sql = "SELECT emplea.nombre, emplea.apepat as paterno, emplea.apemat as materno, depend.clave as cvedep,
+        depend.nombre as nomdep, emplea.curp, as tipo_puesto
+        FROM emplea, depend
+        WHERE emplea.numconemp = " . $num_control;
+
+        // $sql = "SELECT emplea.nombre, emplea.apepat as paterno, emplea.apemat as materno , depend.clave as cvedep,
+        // depend.nombre as nomdep, emplea.curp, plazas.tipemp, TRIM(tipper.nombre) as tipo_puesto
+        // FROM emplea, depend, plazas, tipper
+        // WHERE emplea.numconemp = " . $num_control . "
+        // AND emplea.numconemp = plazas.numconemp
+        // AND plazas.sitemp = 'VI'
+        // AND plazas.cvedep = depend.clave
+        // AND plazas.tipemp = tipper.clave;";
 
         $users = DB::connection('informix')->select($sql);
         // Crea el registro de la actividad en la entidad Task
