@@ -31,29 +31,33 @@ class EmployeeController extends Controller
     public function getAllEmployes()
     {
         // Consigue el año mayor
-        $sql = "SELECT MAX(anio) as anio FROM hdisco";
-        $anio = DB::connection('informix')->select($sql);
+        // $sql = "SELECT MAX(anio) as anio FROM hdisco";
+        // $anio = DB::connection('informix')->select($sql);
         
         // Consigue el número mayor
-        $sql = "SELECT MAX(numero) as numero FROM hdisco WHERE anio = ?";
-        $numero = DB::connection('informix')->select($sql, [$anio[0]->anio]);
+        // $sql = "SELECT MAX(numero) as numero FROM hdisco WHERE anio = ?";
+        // $numero = DB::connection('informix')->select($sql, [$anio[0]->anio]);
 
         // Consigue los primeros 50 empleados con sus enlaces
-        $sql = "SELECT FIRST 50 hdisco.numconemp, emplea.nombre, emplea.apepat, emplea.apemat, 
-        depend.nombre as dependencia, emplea.curp, emplea.email
-        FROM emplea
+        // $sql = "SELECT FIRST 50 hdisco.numconemp, emplea.nombre, emplea.apepat, emplea.apemat, 
+        // depend.nombre as dependencia, emplea.curp, emplea.email
+        // FROM emplea
 
-        LEFT JOIN hdisco ON hdisco.numconemp = emplea.numconemp
-        LEFT JOIN depend ON hdisco.cvedep = depend.clave
+        // RIGHT JOIN hdisco ON hdisco.numconemp = emplea.numconemp
+        // LEFT JOIN depend ON hdisco.cvedep = depend.clave
 
-        WHERE hdisco.cvenom = ? AND anio = ? AND numero = ?";
+        // WHERE hdisco.cvenom = ? AND anio = ? AND numero = ?";
+
+        $sql = "SELECT FIRST 50 hdisco.numconemp, emplea.nombre, emplea.apepat, emplea.apemat, depend.nombre dependencia, emplea.curp, emplea.email
+        FROM hdisco, emplea, depend
+        WHERE hdisco.numconemp=emplea.numconemp
+        AND hdisco.cvedep=depend.clave
+        AND hdisco.cvenom=1
+        AND anio=(SELECT MAX(anio) FROM hdisco)
+        AND numero=(SELECT MAX(numero) FROM hdisco WHERE anio =(SELECT max(anio) FROM hdisco))";
 
         $employees = DB::connection('informix')
-        ->select($sql, [
-            1,
-            $anio[0]->anio,
-            $numero[0]->numero
-        ]);
+        ->select($sql);
 
         return response()->json($employees);
     }
