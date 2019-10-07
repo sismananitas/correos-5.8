@@ -141,7 +141,7 @@ class EmployeeController extends Controller
         
         // GET USERS
         $sql = "SELECT emplea.nombre, emplea.apepat as paterno, emplea.apemat as materno, depend.clave as cvedep,
-        depend.nombre as nomdep, emplea.curp, as tipo_puesto
+        depend.nombre as nomdep, emplea.curp
         FROM emplea, depend
         WHERE emplea.numconemp = " . $num_control;
 
