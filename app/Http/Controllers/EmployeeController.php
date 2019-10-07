@@ -137,25 +137,27 @@ class EmployeeController extends Controller
     public function storeEmail(StoreEmployeeEmail $request)
     {
         $data = $request->validated();
+        $num_control = $data['control_number'];
         
-        // Busca el empleado en la DB
-        $employee = Employee::where('control_number', '=', $data['control_number'])->first();
+        // GET USERS
+        $sql = "SELECT emplea.nombre, emplea.apepat as paterno, emplea.apemat as materno , depend.clave as cvedep,
+        depend.nombre as nomdep,emplea.curp, plazas.tipemp, TRIM(tipper.nombre) as tipo_puesto
+        from emplea, depend, plazas, tipper
+        where emplea.numconemp = " . $num_control . "
+        and emplea.numconemp = plazas.numconemp
+        and plazas.sitemp = 'VI'
+        and plazas.cvedep = depend.clave
+        and plazas.tipemp = tipper.clave;";
 
-        // Crea un Email relacionado al empleado obtenido
-        $email = $employee->email()->create([
-            'login'        => $data['login'],
-            'password'     => $data['password'],
-            'delivered_to' => $data['delivered_to'],
-            'status'       => $data['status'],
-        ]);
-
+        $users = DB::connection('informix')->select($sql);
         // Crea el registro de la actividad en la entidad Task
-        $email->tasks()->create([
-            'user_id'     => auth()->user()->id,
-            'name'        => 'Se registró un correo de empleado',
-            'medium'      => $data['medium'],
-            'client_name' => $data['client_name'],
-        ]);
-        return redirect()->route('correo.index');
+        // $email->tasks()->create([
+        //     'user_id'     => auth()->user()->id,
+        //     'name'        => 'Se registró un correo de empleado',
+        //     'medium'      => $data['medium'],
+        //     'client_name' => $data['client_name'],
+        // ]);
+        dump($users);
+        return view('emails.form-crear-correo', [ 'num_control' => $num_control, 'users' => $users ]);
     }
 }

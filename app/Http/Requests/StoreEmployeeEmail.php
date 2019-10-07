@@ -27,12 +27,12 @@ class StoreEmployeeEmail extends FormRequest
     {
         return [
             'control_number' => 'required|numeric',
-            'client_name'    => 'required|min:4',
-            'delivered_to'   => 'required|min:4',
-            'login'          => 'required|email|unique:emails,login',
-            'password'       => 'required|min:6',
-            'medium'         => 'required|min:4',
-            'status'         => 'required|min:4',
+            // 'client_name'    => 'required|min:4',
+            // 'delivered_to'   => 'required|min:4',
+            // 'login'          => 'required|email|unique:emails,login',
+            // 'password'       => 'required|min:6',
+            // 'medium'         => 'required|min:4',
+            // 'status'         => 'required|min:4',
         ];
     }
 
@@ -40,7 +40,7 @@ class StoreEmployeeEmail extends FormRequest
     {
         $sql = "SELECT distinct(hdisco.numconemp), emplea.nombre, emplea.apepat, emplea.apemat, emplea.curp
         from hdisco, emplea
-        where hdisco.numconemp = 242
+        where hdisco.numconemp = " . $this->input('control_number') . "
         AND hdisco.cvenom = 1
         AND anio = (SELECT MAX(anio) FROM hdisco)
         AND numero = (SELECT MAX(numero) FROM hdisco WHERE anio = (SELECT max(anio) FROM hdisco))
