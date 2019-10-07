@@ -50,11 +50,11 @@ class EmployeeController extends Controller
 
         $sql = "SELECT FIRST 50 hdisco.numconemp, emplea.nombre, emplea.apepat, emplea.apemat, depend.nombre dependencia, emplea.curp, emplea.email
         FROM hdisco, emplea, depend
-        WHERE hdisco.numconemp=emplea.numconemp
-        AND hdisco.cvedep=depend.clave
-        AND hdisco.cvenom=1
-        AND anio=(SELECT MAX(anio) FROM hdisco)
-        AND numero=(SELECT MAX(numero) FROM hdisco WHERE anio =(SELECT max(anio) FROM hdisco))";
+        WHERE hdisco.numconemp = emplea.numconemp
+        AND hdisco.cvedep = depend.clave
+        AND hdisco.cvenom = 1
+        AND anio = (SELECT MAX(anio) FROM hdisco)
+        AND numero = (SELECT MAX(numero) FROM hdisco WHERE anio = (SELECT max(anio) FROM hdisco))";
 
         $employees = DB::connection('informix')
         ->select($sql);
