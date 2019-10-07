@@ -136,7 +136,7 @@ class EmployeeController extends Controller
      */
     public function storeEmail(StoreEmployeeEmail $request)
     {
-        $data = $request->all();
+        $data = $request->validated();
         
         // Busca el empleado en la DB
         $employee = Employee::where('control_number', '=', $data['control_number'])->first();

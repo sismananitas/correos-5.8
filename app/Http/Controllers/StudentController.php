@@ -114,7 +114,7 @@ class StudentController extends Controller
      */
     public function storeEmail(StoreStudentEmail $request)
     {
-        $data = $request->all();
+        $data = $request->validated();
         
         // Busca el estudiante en la DB
         $student = Student::where('enrollment', '=', $data['enrollment'])->first();

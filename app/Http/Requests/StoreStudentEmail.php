@@ -33,4 +33,11 @@ class StoreStudentEmail extends FormRequest
             'status'       => 'required|min:4',
         ];
     }
+
+    public function withValidator($validator)
+    {
+        $validator->after(function ($validator) {
+            //
+        });
+    }
 }
