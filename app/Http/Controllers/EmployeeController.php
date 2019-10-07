@@ -44,7 +44,7 @@ class EmployeeController extends Controller
         FROM hdisco
 
         INNER JOIN emplea ON hdisco.numconemp = emplea.numconemp
-        INNER JOIN depend ON hdisco.cvedep = depend.clave
+        LEFT JOIN depend ON hdisco.cvedep = depend.clave
 
         WHERE hdisco.cvenom = ? AND anio = ? AND numero = ?";
 
