@@ -43,7 +43,6 @@ class EmployeeController extends Controller
         depend.nombre as dependencia, emplea.curp, emplea.email
         FROM emplea
 
-        LEFT JOIN hdisco ON emplea.numconemp = hdisco.numconemp
         LEFT JOIN depend ON hdisco.cvedep = depend.clave
 
         WHERE hdisco.cvenom = ? AND anio = ? AND numero = ?";
