@@ -41,9 +41,9 @@ class EmployeeController extends Controller
         // Consigue los primeros 50 empleados con sus enlaces
         $sql = "SELECT FIRST 50 hdisco.numconemp, emplea.nombre, emplea.apepat, emplea.apemat, 
         depend.nombre as dependencia, emplea.curp, emplea.email
-        FROM hdisco
+        FROM emplea
 
-        RIGHT JOIN emplea ON hdisco.numconemp = emplea.numconemp
+        LEFT JOIN hdisco ON emplea.numconemp = hdisco.numconemp
         LEFT JOIN depend ON hdisco.cvedep = depend.clave
 
         WHERE hdisco.cvenom = ? AND anio = ? AND numero = ?";
