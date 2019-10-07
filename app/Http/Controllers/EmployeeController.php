@@ -39,17 +39,16 @@ class EmployeeController extends Controller
         $numero = DB::connection('informix')->select($sql, [$anio[0]->anio]);
 
         // Consigue los primeros 50 empleados con sus enlaces
-        $sql = "SELECT FIRST 50 hdisco.numconemp, emplea.nombre, emplea.apepat, emplea.apemat, 
+        $sql = "SELECT FIRST 50 emplea.numconemp, emplea.nombre, emplea.apepat, emplea.apemat, 
         depend.nombre as dependencia, emplea.curp, emplea.email
         FROM emplea
 
         LEFT JOIN depend ON hdisco.cvedep = depend.clave
 
-        WHERE hdisco.cvenom = ? AND anio = ? AND numero = ?";
+        WHERE AND anio = ? AND numero = ?";
 
         $employees = DB::connection('informix')
         ->select($sql, [
-            1,
             $anio[0]->anio,
             $numero[0]->numero
         ]);
