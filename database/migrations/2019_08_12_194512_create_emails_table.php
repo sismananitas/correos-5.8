@@ -18,7 +18,7 @@ class CreateEmailsTable extends Migration
             $table->string('login')->unique();
             $table->string('password');
             $table->string('delivered_to');
-            $table->string('dependency');
+            $table->string('dependency')->nullable();
             $table->string('type');
             $table->string('status');
             $table->bigInteger('emailable_id')->unsigned();
