@@ -2,6 +2,7 @@
 
 use App\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class UsersTableSeeder extends Seeder
 {
@@ -12,7 +13,7 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        User::insert([
+        DB::table('users')->insert([
             'name' => 'Jesus Adame',
             'email' => 'jesus.adame@uaem.mx',
             'email_verified_at' => now(),
