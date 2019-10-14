@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use App\Email;
+use App\Rules\EmpleadoActivo;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\DB;
 
@@ -26,7 +27,7 @@ class StoreEmployeeEmail extends FormRequest
     public function rules()
     {
         return [
-            'control_number' => 'bail|required|numeric',
+            'control_number' => [ 'bail', 'required', 'numeric', new EmpleadoActivo, ],
             // 'client_name'    => 'required|min:4',
             // 'delivered_to'   => 'required|min:4',
             // 'login'          => 'required|email|unique:emails,login',
@@ -39,25 +40,25 @@ class StoreEmployeeEmail extends FormRequest
     public function withValidator($validator)
     {
         $validator->after(function ($validator) {
-            $sql = "SELECT distinct(hdisco.numconemp), emplea.nombre, emplea.apepat, emplea.apemat, emplea.curp
-            FROM hdisco, emplea
-            WHERE hdisco.numconemp = " . $this->input('control_number') . "
-            AND hdisco.cvenom = 1
-            AND anio = (SELECT MAX(anio) FROM hdisco)
-            AND numero = (SELECT MAX(numero) FROM hdisco WHERE anio = (SELECT max(anio) FROM hdisco))
-            AND emplea.numconemp = hdisco.numconemp;";
+            // $sql = "SELECT distinct(hdisco.numconemp), emplea.nombre, emplea.apepat, emplea.apemat, emplea.curp
+            // FROM hdisco, emplea
+            // WHERE hdisco.numconemp = " . $this->input('control_number') . "
+            // AND hdisco.cvenom = 1
+            // AND anio = (SELECT MAX(anio) FROM hdisco)
+            // AND numero = (SELECT MAX(numero) FROM hdisco WHERE anio = (SELECT max(anio) FROM hdisco))
+            // AND emplea.numconemp = hdisco.numconemp;";
 
-            // Valida que el usuario exista y esté activo
-            $is_employee = DB::connection('informix')->select($sql);
+            // // Valida que el usuario exista y esté activo
+            // $is_employee = DB::connection('informix')->select($sql);
 
-            if (!count($is_employee))
-            $validator->errors()->add('emplea', 'El trabajador ingresado no se encuentra activo');
+            // if (!count($is_employee))
+            // $validator->errors()->add('emplea', 'El trabajador ingresado no se encuentra activo');
             
-            // Valida que el usuario no tenga una cuenta de correo
-            $has_email = Email::where('emailable_id', '=', $this->input('control_number'))->count();
+            // // Valida que el usuario no tenga una cuenta de correo
+            // $has_email = Email::where('emailable_id', '=', $this->input('control_number'))->count();
 
-            if ($has_email)
-            $validator->errors()->add('correo', 'El trabajador ingresado ya posee una cuenta de correo');
+            // if ($has_email)
+            // $validator->errors()->add('correo', 'El trabajador ingresado ya posee una cuenta de correo');
         });
     }
 }
