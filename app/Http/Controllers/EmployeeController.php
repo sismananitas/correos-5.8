@@ -140,12 +140,15 @@ class EmployeeController extends Controller
         $num_control = $data['control_number'];
         
         // GET USERS
-        $sql = "SELECT emplea.nombre, emplea.apepat as paterno, emplea.apemat as materno, depend.clave as cvedep,
-        depend.nombre as nomdep, emplea.curp
-        FROM emplea, depend
-        WHERE emplea.numconemp = " . $num_control;
+        $sql = "SELECT distinct(hdisco.numconemp), emplea.nombre, emplea.apepat, emplea.apemat, emplea.curp
+        from hdisco, emplea
+        where hdisco.numconemp = $num_control
+        AND hdisco.cvenom = 1
+        AND anio = (SELECT MAX(anio) FROM hdisco)
+        AND numero = (SELECT MAX(numero) FROM hdisco WHERE anio = (SELECT max(anio) FROM hdisco))
+        AND emplea.numconemp = hdisco.numconemp;";
 
-        // $sql = "SELECT emplea.nombre, emplea.apepat as paterno, emplea.apemat as materno , depend.clave as cvedep,
+        // $sql = "SELECT distinct(hdisco.numconemp), emplea.nombre, emplea.apepat as paterno, emplea.apemat as materno , depend.clave as cvedep,
         // depend.nombre as nomdep, emplea.curp, plazas.tipemp, TRIM(tipper.nombre) as tipo_puesto
         // FROM emplea, depend, plazas, tipper
         // WHERE emplea.numconemp = " . $num_control . "
