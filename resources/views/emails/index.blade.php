@@ -85,7 +85,11 @@
                                 <div class="dropdown-menu" aria-labelledby="menuRow">
                                     <a class="dropdown-item btn-secondary" href="{{ route('grupos.index') }}">Agregar grupo</a>
                                     <a class="dropdown-item btn-warning" href="{{ route('correos.edit', ['correo' => $email->id]) }}">Editar </a>
-                                    <a class="dropdown-item btn-danger" href="{{ route('correos.destroy', ['correo' => $email->id]) }}">Eliminar</a>
+                                    
+                                    <form action="{{ route('correos.destroy', ['correo' => $email->id]) }}" method="post">
+                                        @csrf @method('delete')
+                                        <button class="dropdown-item btn-danger" type="submit">Eliminar</button>
+                                    </form>
                                 </div>
                             </div>
                         </td>
