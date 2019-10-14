@@ -140,9 +140,10 @@ class EmailController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Email $correo)
     {
-        //
+        $correo->delete();
+        return redirect()->route('correos.index')->with('success', 'El correo ha sido eliminado correctamente');
     }
 
     private function getEmployee($control_number)

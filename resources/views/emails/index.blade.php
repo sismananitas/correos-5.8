@@ -9,16 +9,11 @@
     <p>Lista de Correos local. <a href="https://gsuite.google.com.mx/" target="_black">Ir a G-Suite</a></p>
 
     {{-- Pinta los errores en caso de haber --}}
-    @if ($errors->any())
-        <div class="alert alert-danger alert-dismissible">
-            <button type="button" class="close" data-dismiss="alert">&times;</button>
-            <strong>No se aplicaron los cambios</strong>
+    @include('emails.show-errors')
 
-            <ul>
-                @foreach ($errors->all() as $e)
-                    <li>{{ $e }}</li>
-                @endforeach
-            </ul>
+    @if(session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
         </div>
     @endif
 
