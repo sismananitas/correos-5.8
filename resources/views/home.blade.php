@@ -6,7 +6,7 @@
 
     <section class="closter">
         <div class="row justify-content-between">
-        <a class="item col-3 p-2" href="{{ route('correos.index') }}">
+            <a class="item col-3 p-2" href="{{ route('correos.index') }}">
                 <div class="item-thumb">
                     <i class="fas fa-envelope fa-6x"></i>
                 </div>

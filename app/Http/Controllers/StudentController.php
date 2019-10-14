@@ -119,21 +119,6 @@ class StudentController extends Controller
         // Busca el estudiante en la DB
         $student = Student::where('enrollment', '=', $data['enrollment'])->first();
 
-        // Crea el Email relacionado con el estudiante encontrado
-        $email = $student->email()->create([
-            'login'        => $data['login'],
-            'password'     => $data['password'],
-            'delivered_to' => $data['delivered_to'],
-            'status'       => $data['status'],
-        ]);
-
-        // Crea un registro de la tarea realizada
-        $email->tasks()->create([
-            'user_id'     => auth()->user()->id,
-            'name'        => 'Se registró un correo de alumno',
-            'medium'      => $data['medium'],
-            'client_name' => $data['client_name'],
-        ]);
         return redirect()->route('correo.index');
     }
 }

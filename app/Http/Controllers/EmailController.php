@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Email;
 use App\Student;
 use App\Employee;
+use App\Http\Requests\StoreEmail;
 
 class EmailController extends Controller
 {
@@ -26,8 +27,8 @@ class EmailController extends Controller
         $employees = Employee::all();
 
         return view('emails.index', [
-            'emails' => $emails,
-            'students' => $students,
+            'emails'    => $emails,
+            'students'  => $students,
             'employees' => $employees,
         ]);
     }
@@ -39,7 +40,7 @@ class EmailController extends Controller
      */
     public function create()
     {
-        return 'Hola';
+        //
     }
 
     /**
@@ -48,9 +49,30 @@ class EmailController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreEmail $request)
     {
-        //
+        $data = $request->validated();
+
+        $email = new Email();
+        $email->login          = $data['login'];
+        $email->password       = $data['password'];
+        $email->dependency     = $data['dependency'];
+        $email->delivered_to   = $data['delivered_to'];
+        $email->type           = $data['type'];
+        $email->status         = $data['status'];
+        $email->emailable_id   = $data['emailable_id'];
+        $email->emailable_type = $data['emailable_type'];
+        $email->save();
+
+        // Crea un registro de la tarea realizada
+        $email->tasks()->create([
+            'user_id'     => auth()->user()->id,
+            'name'        => 'Registró un correo',
+            'medium'      => $data['medium'],
+            'client_name' => $data['client_name'],
+        ]);
+
+        return response()->json([ 'success' => 'Correo creado exitosamente', 'email' => $email->login ]);
     }
 
     /**
