@@ -149,6 +149,8 @@ class EmployeeController extends Controller
         and plazas.tipemp = tipper.clave;";
 
         $plazas = DB::connection('informix')->select($sql);
-        return view('emails.emplyees.form-create', [ 'num_control' => $num_control, 'plazas' => $plazas ]);
+
+        dump($plazas);
+        return view('emails.employees.form-create', [ 'num_control' => $num_control, 'plazas' => $plazas ]);
     }
 }
