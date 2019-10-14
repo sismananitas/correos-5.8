@@ -2,18 +2,19 @@
 
 @section('content')
 <div class="container">
-    <div class="card p-4">
+    <div class="card col-md-5 p-4">
         <form action="" method="post" autocomplete="off">
             @csrf
             <input type="hidden" name="num_control" value="{{ $num_control }}">
     
-            <label for="usuario">Plazas activa</label>
-    
             <div class="form-group">
-                @foreach ($plazas as $plaza)
-                    <label for="{{ $plaza->cvedep }}">{{ $plaza->cvedep }} {{ $plaza->nomdep }}</label>
-                    <input type="radio" name="plaza" id="{{ $plaza->cvedep }}" value="{{ $plaza->nomdep }}" checked>
-                @endforeach
+                <label for="plaza">Plazas activas</label>
+
+                <select name="plaza" id="">
+                    @foreach ($plazas as $plaza)
+                        <option value="{{ $plaza->nomdep }}">{{ $plaza->nomdep }}</option>
+                    @endforeach
+                </select>
             </div>
     
             <div class="form-row mt-2">
@@ -55,8 +56,10 @@
                 </div>
             </div>
 
-            <button type="submit" class="btn btn-success">Registrar</button>
-            <a href="{{ route('correos.index') }}" class="btn btn-secondary">Cancelar</a>
+            <div class="mt-2">
+                <button type="submit" class="btn btn-success">Registrar</button>
+                <a href="{{ route('correos.index') }}" class="btn btn-secondary">Cancelar</a>
+            </div>
         </form>
     </div>
 </div>
