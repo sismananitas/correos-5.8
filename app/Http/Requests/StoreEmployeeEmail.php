@@ -26,7 +26,7 @@ class StoreEmployeeEmail extends FormRequest
     public function rules()
     {
         return [
-            'control_number' => 'required|numeric',
+            'control_number' => 'bail|required|numeric',
             // 'client_name'    => 'required|min:4',
             // 'delivered_to'   => 'required|min:4',
             // 'login'          => 'required|email|unique:emails,login',
