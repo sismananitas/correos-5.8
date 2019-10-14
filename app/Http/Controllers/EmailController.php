@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Email;
+use App\Employee;
 use App\Student;
 use App\Http\Requests\StoreEmail;
 use App\Http\Requests\UpdateEmail;
