@@ -10,7 +10,9 @@
         @include('emails.show-errors')
 
         @if(session('success'))
-            {{ session('success') }}
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
         @endif
 
         <form id="formEditar" action="{{ route('correos.update', ['correo' => $correo->id]) }}" method="POST" autocomplete="off">
