@@ -92,9 +92,10 @@ class EmailController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Email $correo)
     {
-        //
+        dump($correo);
+        return view('emails.edit', compact('correo'));
     }
 
     /**

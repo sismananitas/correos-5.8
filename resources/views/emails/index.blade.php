@@ -89,8 +89,8 @@
                                 
                                 <div class="dropdown-menu" aria-labelledby="menuRow">
                                     <a class="dropdown-item btn-secondary" href="{{ route('grupos.index') }}">Agregar grupo</a>
-                                    <a class="dropdown-item btn-warning" type="button" data-toggle="modal" data-target="#editEmail">Editar </a>
-                                    <a class="dropdown-item btn-danger" href="{{ route('correos.destroy', ['email' => $email->id]) }}">Eliminar</a>
+                                    <a class="dropdown-item btn-warning" href="{{ route('correos.edit', ['correo' => $email->id]) }}">Editar </a>
+                                    <a class="dropdown-item btn-danger" href="{{ route('correos.destroy', ['correo' => $email->id]) }}">Eliminar</a>
                                 </div>
                             </div>
                         </td>

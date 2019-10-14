@@ -5,7 +5,6 @@ namespace App\Http\Requests;
 use App\Email;
 use App\Rules\EmpleadoActivo;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Support\Facades\DB;
 
 class StoreEmployeeEmail extends FormRequest
 {
