@@ -4,7 +4,7 @@
 <div class="container">
     <div class="card col-md-6 mt-3 p-4">
         <h1>{{ $correo->login }}</h1>
-        <h2>{{ $emailable->nombre . ' ' . $emailable->apepat . ' ' . $emailable->apemat }}</h2>
+        <h3>{{ $emailable->nombre . ' ' . $emailable->apepat . ' ' . $emailable->apemat }}</h3>
         <hr>
 
         @include('emails.show-errors')
