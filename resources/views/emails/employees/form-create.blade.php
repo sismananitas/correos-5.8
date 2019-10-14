@@ -56,7 +56,7 @@
                 </div>
             </div>
 
-            <div class="mt-2">
+            <div class="form-group">
                 <button type="submit" class="btn btn-success">Registrar</button>
                 <a href="{{ route('correos.index') }}" class="btn btn-secondary">Cancelar</a>
             </div>
