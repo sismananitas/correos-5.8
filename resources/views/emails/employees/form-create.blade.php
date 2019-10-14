@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="card col-md-5 p-4">
-        <form action="{{ route('email.store') }}" method="post" autocomplete="off">
+        <form action="{{ route('correos.store') }}" method="post" autocomplete="off">
             @csrf
             <input type="hidden" name="emailable_id" value="{{ $num_control }}">
             <input type="hidden" name="emailable_type" value="employee">
