@@ -148,16 +148,7 @@ class EmployeeController extends Controller
         AND numero = (SELECT MAX(numero) FROM hdisco WHERE anio = (SELECT max(anio) FROM hdisco))
         AND emplea.numconemp = hdisco.numconemp;";
 
-        // $sql = "SELECT distinct(hdisco.numconemp), emplea.nombre, emplea.apepat as paterno, emplea.apemat as materno , depend.clave as cvedep,
-        // depend.nombre as nomdep, emplea.curp, plazas.tipemp, TRIM(tipper.nombre) as tipo_puesto
-        // FROM emplea, depend, plazas, tipper
-        // WHERE emplea.numconemp = " . $num_control . "
-        // AND emplea.numconemp = plazas.numconemp
-        // AND plazas.sitemp = 'VI'
-        // AND plazas.cvedep = depend.clave
-        // AND plazas.tipemp = tipper.clave;";
-
-        $users = DB::connection('informix')->select($sql);
+        $users = DB::connection('informix')->select($sql)->count();
         // Crea el registro de la actividad en la entidad Task
         // $email->tasks()->create([
         //     'user_id'     => auth()->user()->id,
