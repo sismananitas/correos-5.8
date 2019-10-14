@@ -148,7 +148,7 @@ class EmployeeController extends Controller
         AND numero = (SELECT MAX(numero) FROM hdisco WHERE anio = (SELECT max(anio) FROM hdisco))
         AND emplea.numconemp = hdisco.numconemp;";
 
-        $users = DB::connection('informix')->select($sql)->count();
+        $users = DB::connection('informix')->select($sql);
         // Crea el registro de la actividad en la entidad Task
         // $email->tasks()->create([
         //     'user_id'     => auth()->user()->id,
@@ -156,7 +156,7 @@ class EmployeeController extends Controller
         //     'medium'      => $data['medium'],
         //     'client_name' => $data['client_name'],
         // ]);
-        dump($users);
+        dump(count($users));
         return view('emails.form-crear-correo', [ 'num_control' => $num_control, 'users' => $users ]);
     }
 }
