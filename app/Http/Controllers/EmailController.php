@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Email;
 use App\Student;
-use App\Employee;
 use App\Http\Requests\StoreEmail;
+use Illuminate\Support\Facades\DB;
 
 class EmailController extends Controller
 {
@@ -94,8 +94,16 @@ class EmailController extends Controller
      */
     public function edit(Email $correo)
     {
+        $emailable = '';
+
+        switch ($correo->type) {
+            case 'employee':
+                $emailable = $this->getEmployee($correo->emailable_id);
+            break;
+        }
         dump($correo);
-        return view('emails.edit', compact('correo'));
+        dump($emailable);
+        return view('emails.edit', compact('correo', 'emailable'));
     }
 
     /**
@@ -123,5 +131,19 @@ class EmailController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    private function getEmployee($control_number)
+    {
+        $sql = "SELECT distinct(hdisco.numconemp), emplea.nombre, emplea.apepat, emplea.apemat, emplea.curp
+        FROM hdisco, emplea
+        WHERE hdisco.numconemp = $control_number
+        AND hdisco.cvenom = 1
+        AND anio = (SELECT MAX(anio) FROM hdisco)
+        AND numero = (SELECT MAX(numero) FROM hdisco WHERE anio = (SELECT max(anio) FROM hdisco))
+        AND emplea.numconemp = hdisco.numconemp;";
+
+        $employee = DB::connection('informix')->select($sql);
+        return $employee[0];
     }
 }

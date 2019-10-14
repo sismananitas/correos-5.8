@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Email extends Model
 {
     protected $fillable = [
-        'login', 'password', 'delivered_to', 'status',
+        'login', 'password', 'delivered_to', 'type', 'status',
     ];
 
     /**
