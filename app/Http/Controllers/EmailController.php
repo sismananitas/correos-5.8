@@ -58,7 +58,7 @@ class EmailController extends Controller
         $email->password       = $data['password'];
         $email->dependency     = $data['dependency'];
         $email->delivered_to   = $data['delivered_to'];
-        $email->type           = $data['type'];
+        $email->type           = $data['emailable_type'];
         $email->status         = $data['status'];
         $email->emailable_id   = $data['emailable_id'];
         $email->emailable_type = $data['emailable_type'];
