@@ -8,7 +8,7 @@
             <input type="hidden" name="emailable_id" value="{{ $num_control }}">
             <input type="hidden" name="emailable_type" value="employee">
 
-            <h1>{{ $empleado->nombre . ' ' $empleado->paterno . ' ' . $empleado->materno }}</h1>
+            <h1>{{ $empleado->nombre . ' ' . $empleado->paterno . ' ' . $empleado->materno }}</h1>
             <h2>{{ $empleado->curp }}</h2>
     
             <div class="form-group">
