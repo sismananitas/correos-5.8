@@ -10,7 +10,7 @@
             <div class="form-group">
                 <label for="plaza">Plazas activas</label>
 
-                <select name="plaza" id="">
+                <select class="form-control" name="plaza" id="">
                     @foreach ($plazas as $plaza)
                         <option value="{{ $plaza->nomdep }}">{{ $plaza->nomdep }}</option>
                     @endforeach
