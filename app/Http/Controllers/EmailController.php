@@ -72,7 +72,7 @@ class EmailController extends Controller
             'client_name' => $data['client_name'],
         ]);
 
-        return response()->json([ 'success' => 'Correo creado exitosamente', 'email' => $email->login ]);
+        return redirect()->route('correos.index')->with('success', 'Correo ' . $email->login . ' creado exitosamente');
     }
 
     /**
