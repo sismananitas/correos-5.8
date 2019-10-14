@@ -27,7 +27,7 @@
                 
                 <!-- Modal footer -->
                 <div class="modal-footer">
-                    <button class="btn btn-primary" type="submit">Registrar</button>
+                    <button class="btn btn-primary" type="submit">Continuar</button>
                 </div>
             </form>
         </div>
