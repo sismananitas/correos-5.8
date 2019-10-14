@@ -9,6 +9,10 @@
 
         @include('emails.show-errors')
 
+        @if(session('success'))
+            {{ session('success') }}
+        @endif
+
         <form id="formEditar" action="{{ route('correos.update', ['correo' => $correo->id]) }}" method="POST" autocomplete="off">
             @csrf @method('PUT')
 

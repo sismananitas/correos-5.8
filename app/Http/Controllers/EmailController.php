@@ -8,6 +8,7 @@ use App\Employee;
 use App\Student;
 use App\Http\Requests\StoreEmail;
 use App\Http\Requests\UpdateEmail;
+use App\Task;
 use Illuminate\Support\Facades\DB;
 
 class EmailController extends Controller
@@ -116,9 +117,20 @@ class EmailController extends Controller
     public function update(UpdateEmail $request, Email $correo)
     {
         $data = $request->validated();
-        dump($correo);
-        dump($data);
-        return 'Hola';
+
+        $task = new Task();
+        $task->client_name = $data['solicitante'];
+        $task->user_id     = auth()->user()->id;
+        $task->name        = 'Actualización del correo ' . $correo->login;
+        $task->medium      = $data['medium'];
+        $task->save();
+
+        $correo->login    = $data['login'];
+        $correo->password = $data['password'];
+        $correo->status   = $data['status'];
+        $correo->save();
+
+        return redirect()->back()->with('success', 'Correo actualizado correctamente');
     }
 
     /**
