@@ -142,6 +142,14 @@ class EmailController extends Controller
      */
     public function destroy(Email $correo)
     {
+        $task = new Task();
+        $task->client_name = 'N/A';
+        $task->email_id    = $correo->id;
+        $task->user_id     = auth()->user()->id;
+        $task->name        = 'Eliminación del correo ' . $correo->login;
+        $task->medium      = 'N/A';
+        $task->save();
+
         $correo->delete();
         return redirect()->route('correos.index')->with('success', 'El correo ha sido eliminado correctamente');
     }
