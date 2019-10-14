@@ -120,6 +120,7 @@ class EmailController extends Controller
 
         $task = new Task();
         $task->client_name = $data['solicitante'];
+        $task->email_id    = $correo->id;
         $task->user_id     = auth()->user()->id;
         $task->name        = 'Actualización del correo ' . $correo->login;
         $task->medium      = $data['medium'];
