@@ -3,14 +3,15 @@
 @section('content')
 <div class="container">
     <div class="card col-md-5 p-4">
-        <form action="" method="post" autocomplete="off">
+        <form action="{{ route('email.store') }}" method="post" autocomplete="off">
             @csrf
-            <input type="hidden" name="num_control" value="{{ $num_control }}">
+            <input type="hidden" name="emailable_id" value="{{ $num_control }}">
+            <input type="hidden" name="emailable_type" value="employee">
     
             <div class="form-group">
-                <label for="plaza">Plazas activas</label>
+                <label for="dependency">Dependencias</label>
 
-                <select class="form-control" name="plaza" id="">
+                <select class="form-control" name="dependency" id="">
                     @foreach ($plazas as $plaza)
                         <option value="{{ $plaza->nomdep }}">{{ $plaza->nomdep }}</option>
                     @endforeach
@@ -56,7 +57,7 @@
                 </div>
             </div>
 
-            <div class="form-group">
+            <div class="mt-4">
                 <button type="submit" class="btn btn-success">Registrar</button>
                 <a href="{{ route('correos.index') }}" class="btn btn-secondary">Cancelar</a>
             </div>

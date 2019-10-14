@@ -24,10 +24,9 @@ class StoreEmail extends FormRequest
     public function rules()
     {
         return [
-            'login'          => 'required',
+            'login'          => 'required|email',
             'password'       => 'required',
             'dependency'     => 'required',
-            'type'           => 'required',
             'status'         => 'required',
             'emailable_id'   => 'required',
             'emailable_type' => 'required',
