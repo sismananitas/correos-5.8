@@ -8,8 +8,8 @@
             <input type="hidden" name="emailable_id" value="{{ $num_control }}">
             <input type="hidden" name="emailable_type" value="employee">
 
-            <h2>{{ $empleado->nombre . ' ' . $empleado->paterno . ' ' . $empleado->materno }}</h2>
-            <h3>Curp: {{ $empleado->curp }}</h3>
+            <h3>{{ $empleado->nombre . ' ' . $empleado->paterno . ' ' . $empleado->materno }}</h3>
+            <h4>Curp: {{ $empleado->curp }}</h4>
     
             <div class="form-group">
                 <label for="dependency">Dependencias</label>
