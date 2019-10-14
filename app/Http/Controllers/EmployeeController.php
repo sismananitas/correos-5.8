@@ -138,25 +138,17 @@ class EmployeeController extends Controller
     {
         $data = $request->validated();
         $num_control = $data['control_number'];
-        
-        // GET USERS
-        $sql = "SELECT distinct(hdisco.numconemp), emplea.nombre, emplea.apepat, emplea.apemat, emplea.curp
-        from hdisco, emplea
-        where hdisco.numconemp = $num_control
-        AND hdisco.cvenom = 1
-        AND anio = (SELECT MAX(anio) FROM hdisco)
-        AND numero = (SELECT MAX(numero) FROM hdisco WHERE anio = (SELECT max(anio) FROM hdisco))
-        AND emplea.numconemp = hdisco.numconemp;";
 
-        $users = DB::connection('informix')->select($sql);
-        // Crea el registro de la actividad en la entidad Task
-        // $email->tasks()->create([
-        //     'user_id'     => auth()->user()->id,
-        //     'name'        => 'Se registró un correo de empleado',
-        //     'medium'      => $data['medium'],
-        //     'client_name' => $data['client_name'],
-        // ]);
-        dump(count($users));
-        return view('emails.form-crear-correo', [ 'num_control' => $num_control, 'users' => $users ]);
+        $sql = "SELECT emplea.nombre, emplea.apepat as paterno, emplea.apemat as materno , depend.clave as cvedep,
+        depend.nombre as nomdep,emplea.curp, plazas.tipemp, TRIM(tipper.nombre) as tipo_puesto
+        from emplea, depend, plazas, tipper
+        where emplea.numconemp = 242
+        and emplea.numconemp = plazas.numconemp
+        and plazas.sitemp = 'VI'
+        and plazas.cvedep = depend.clave
+        and plazas.tipemp = tipper.clave;";
+
+        $plazas = DB::connection('informix')->select($sql);
+        return view('emails.emplyees.form-create', [ 'num_control' => $num_control, 'plazas' => $plazas ]);
     }
 }

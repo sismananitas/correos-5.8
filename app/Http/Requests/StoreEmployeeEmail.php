@@ -39,19 +39,21 @@ class StoreEmployeeEmail extends FormRequest
     public function withValidator($validator)
     {
         $sql = "SELECT distinct(hdisco.numconemp), emplea.nombre, emplea.apepat, emplea.apemat, emplea.curp
-        from hdisco, emplea
-        where hdisco.numconemp = " . $this->input('control_number') . "
+        FROM hdisco, emplea
+        WHERE hdisco.numconemp = " . $this->input('control_number') . "
         AND hdisco.cvenom = 1
         AND anio = (SELECT MAX(anio) FROM hdisco)
         AND numero = (SELECT MAX(numero) FROM hdisco WHERE anio = (SELECT max(anio) FROM hdisco))
         AND emplea.numconemp = hdisco.numconemp;";
 
+        // Valida que el usuario exista y esté activo
         $is_employee = DB::connection('informix')->select($sql);
 
         $validator->after(function ($validator) use ($is_employee) {
-            if (count($is_employee) <= 0)
+            if (!count($is_employee))
             $validator->errors()->add('emplea', 'El trabajador ingresado no se encuentra activo');
             
+            // Valida que el usuario no tenga una cuenta de correo
             $has_email = Email::where('emailable_id', '=', $this->input('control_number'))->count();
 
             if ($has_email)
