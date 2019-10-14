@@ -33,11 +33,11 @@
 
                 <div class="col">
                     <label for="status">Estatus</label>
-                    <select class="form-control" name="status" id="status" value="{{ old('status') }}" required value="{{ $correo->status }}">
+                    <select class="form-control" name="status" id="status" value="{{ old('status') }}" required>
                         <option value="">- Elegir -</option>
-                        <option value="Activo">Activo</option>
-                        <option value="Suspendido">Suspendido</option>
-                        <option value="Eliminado">Eliminado</option>
+                        <option value="Activo" @if($correo->status == 'Activo') selected @endif>Activo</option>
+                        <option value="Suspendido" @if($correo->status == 'Suspendido') selected @endif>Suspendido</option>
+                        <option value="Eliminado" @if($correo->status == 'Eliminado') selected @endif>Eliminado</option>
                     </select>
                 </div>
             </div> 
