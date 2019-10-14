@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Email;
 use App\Student;
 use App\Http\Requests\StoreEmail;
+use App\Http\Requests\UpdateEmail;
 use Illuminate\Support\Facades\DB;
 
 class EmailController extends Controller
@@ -101,8 +102,6 @@ class EmailController extends Controller
                 $emailable = $this->getEmployee($correo->emailable_id);
             break;
         }
-        dump($correo);
-        dump($emailable);
         return view('emails.edit', compact('correo', 'emailable'));
     }
 
@@ -113,13 +112,12 @@ class EmailController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateEmail $request, Email $correo)
     {
-        $request->validate([
-            'login'    => 'required|email|unique:emails',
-            'password' => 'required',
-        ]);
-        return $request->all();
+        $data = $request->validated();
+        dump($correo);
+        dump($data);
+        return 'Hola';
     }
 
     /**
