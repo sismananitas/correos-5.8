@@ -10,6 +10,7 @@
 
             <h3>{{ $empleado->nombre . ' ' . $empleado->paterno . ' ' . $empleado->materno }}</h3>
             <h4>Curp: {{ $empleado->curp }}</h4>
+            <hr>
     
             <div class="form-group">
                 <label for="dependency">Dependencias</label>
