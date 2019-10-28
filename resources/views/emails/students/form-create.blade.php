@@ -5,7 +5,7 @@
     <div class="card col-md-5 p-4">
         <form action="{{ route('correos.store') }}" method="post" autocomplete="off">
             @csrf
-            <input type="hidden" name="emailable_id" value="{{ $matricula }}">
+            <input type="hidden" name="emailable_id" value="{{ $student->matricula }}">
             <input type="hidden" name="emailable_type" value="student">
 
             <h3>{{ $student->nombre . ' ' . $student->ap_paterno . ' ' . $student->ap_materno }}</h3>
