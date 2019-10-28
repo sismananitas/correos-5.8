@@ -36,7 +36,7 @@ class EmpleadoActivo implements Rule
 
         // Valida que el usuario exista y esté activo
         $is_employee = DB::connection('informix')->select($sql);
-        return count($is_employee) >= 0;
+        return count($is_employee) > 0;
     }
 
     /**
