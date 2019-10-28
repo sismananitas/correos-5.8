@@ -6,21 +6,18 @@
         <form action="{{ route('correos.store') }}" method="post" autocomplete="off">
             @csrf
             <input type="hidden" name="emailable_id" value="{{ $matricula }}">
-            <input type="hidden" name="emailable_type" value="employee">
+            <input type="hidden" name="emailable_type" value="student">
 
-            <h3>{{ $empleado->nombre . ' ' . $empleado->paterno . ' ' . $empleado->materno }}</h3>
-            <h4>Curp: {{ $empleado->curp }}</h4>
+            <h3>{{ $student->nombre . ' ' . $student->ap_paterno . ' ' . $student->ap_materno }}</h3>
+            <h4>Curp: {{ $student->curp }}</h4>
             <hr>
     
-            <div class="form-group">
-                <label for="dependency">Dependencias</label>
-
-                <select class="form-control" name="dependency" id="">
-                    @foreach ($plazas as $plaza)
-                        <option value="{{ $plaza->nomdep }}">{{ $plaza->nomdep }}</option>
-                    @endforeach
-                </select>
-            </div>
+            <p>
+                <strong>Status</strong> {{ $student->status }}
+                <strong>Carrera</strong> {{ $student->carrera }}
+                <strong>Unidad Académica</strong> {{ $student->unidad }}
+                <strong>Grado</strong> {{ $student->grado }}
+            </p>
     
             <div class="form-row mt-2">
                 <div class="col">
