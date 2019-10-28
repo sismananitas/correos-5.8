@@ -127,7 +127,7 @@ class StudentController extends Controller
         AND car.rama_id = ram.rama_id";
         
         // Busca el estudiante en la DB
-        $student = DB::connection('escolares')->select($sql);
+        $student = DB::connection('escolares')->select($sql)[0];
 
         dump($student); die;
 
