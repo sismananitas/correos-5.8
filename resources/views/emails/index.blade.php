@@ -10,15 +10,10 @@
 
     {{-- Pinta los errores en caso de haber --}}
     @include('emails.show-errors')
-
-    @if(session('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
-        </div>
-    @endif
+    @include('alerts.show-success')
 
     <div class="table-responsive pb-5">
-        <table class="table table-striped text-center border-bottom">
+        <table class="table table-striped text-center border-bottom shadow">
             <thead>
                 <tr class="thead-dark">
                     <th>ID</th>

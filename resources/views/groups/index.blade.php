@@ -7,7 +7,7 @@
     <h1>Grupos</h1>
 
     <div class="table-responsive pb-5">
-        <table class="table table-striped text-center border-bottom">
+        <table class="table table-striped text-center border-bottom shadow">
             <thead class="thead-dark">
                 <tr>
                     <th>ID</th>

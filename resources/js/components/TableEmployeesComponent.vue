@@ -8,7 +8,7 @@
         </form>
     </div>
 
-    <table id="tableEmployees" class="table table-striped text-center border-bottom">
+    <table id="tableEmployees" class="table table-striped text-center border-bottom shadow">
         <thead>
             <tr class="thead-dark">
                 <th>N.C.</th>
