@@ -35,7 +35,7 @@ class AlumnoActivo implements Rule
         AND car.rama_id = ram.rama_id";
 
         // Valida que el usuario exista y esté activo
-        $is_employee = DB::connection('informix')->select($sql);
+        $is_employee = DB::connection('escolares')->select($sql);
         return count($is_employee) >= 0;
     }
 
