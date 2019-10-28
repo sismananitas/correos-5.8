@@ -120,6 +120,7 @@ class EmployeeController extends Controller
     {
         $data = $request->validated();
         $num_control = $data['control_number'];
+        $plaza = [];
 
         $sql = "SELECT emplea.nombre, emplea.apepat as paterno, emplea.apemat as materno , depend.clave as cvedep,
         depend.nombre as nomdep,emplea.curp, plazas.tipemp, TRIM(tipper.nombre) as tipo_puesto
@@ -131,7 +132,10 @@ class EmployeeController extends Controller
         and plazas.tipemp = tipper.clave;";
 
         $plazas = DB::connection('informix')->select($sql);
-        dump($plazas);die;
-        return view('emails.employees.form-create', [ 'num_control' => $num_control, 'plazas' => $plazas, 'empleado' => $plazas[0] ]);
+
+        if (count($plazas))
+        $plaza = $plazas[0];
+        
+        return view('emails.employees.form-create', [ 'num_control' => $num_control, 'plazas' => $plazas, 'empleado' => $plaza ]);
     }
 }
