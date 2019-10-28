@@ -129,7 +129,7 @@ class StudentController extends Controller
         // Busca el estudiante en la DB
         $student = DB::connection('escolares')->select($sql);
 
-        dump($student);
+        dump($student); die;
 
         return view('emails.students.form-create', compact('student'));
     }
