@@ -122,7 +122,7 @@ class EmployeeController extends Controller
         $num_control = $data['control_number'];
         $plaza = [];
 
-        $sql = "SELECT emplea.nombre, emplea.apepat as paterno, emplea.apemat as materno , depend.clave as cvedep,
+        $sql = "SELECT emplea.nombre, emplea.apepat as paterno, emplea.apemat as materno, depend.clave as cvedep,
         depend.nombre as nomdep,emplea.curp, plazas.tipemp, TRIM(tipper.nombre) as tipo_puesto
         from emplea, depend, plazas, tipper
         where emplea.numconemp = ". $data['control_number'] . "
@@ -133,9 +133,9 @@ class EmployeeController extends Controller
 
         $plazas = DB::connection('informix')->select($sql);
 
-        if (count($plazas))
-        $plaza = $plazas[0];
-        
+        if (!count($plazas))
+        return redirect()->back()->with('Este empleado no tiene plazas activas');
+
         return view('emails.employees.form-create', [ 'num_control' => $num_control, 'plazas' => $plazas, 'empleado' => $plaza ]);
     }
 }
