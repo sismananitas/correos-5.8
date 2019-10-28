@@ -13,9 +13,9 @@
             <hr>
     
             <p>
-                <strong>Status</strong> {{ $student->status }}
-                <strong>Carrera</strong> {{ $student->carrera }}
-                <strong>Unidad Académica</strong> {{ $student->unidad }}
+                <strong>Status</strong> {{ $student->status }} <br>
+                <strong>Carrera</strong> {{ $student->carrera }} <br>
+                <strong>Unidad Académica</strong> {{ $student->unidad }} <br>
                 <strong>Grado</strong> {{ $student->grado }}
             </p>
     
