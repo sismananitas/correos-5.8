@@ -8,12 +8,7 @@
         <hr>
 
         @include('emails.show-errors')
-
-        @if(session('success'))
-            <div class="alert alert-success">
-                {{ session('success') }}
-            </div>
-        @endif
+        @include('alerts.show-errors')
 
         <form id="formEditar" action="{{ route('correos.update', ['correo' => $correo->id]) }}" method="POST" autocomplete="off">
             @csrf @method('PUT')

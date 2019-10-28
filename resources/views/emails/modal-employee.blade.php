@@ -15,7 +15,7 @@
                 <div class="modal-body">
                     <div class="card-body">
                         Número de control
-                        <input list="empleados" class="form-control" type="text" name="control_number" value="{{ old('control_number') }}">
+                        <input list="empleados" class="form-control" type="text" name="control_number" value="{{ old('control_number') }}" required>
 
                         <datalist id="empleados">
                             @foreach ($employees as $employee)

@@ -15,7 +15,7 @@
                 <div class="modal-body">
                     <div class="card-body">
                         Matrícula
-                        <input list="alumnos" class="form-control" type="text" name="enrollment" value="{{ old('enrollment') }}">
+                        <input list="alumnos" class="form-control" type="text" name="enrollment" value="{{ old('enrollment') }}" required>
 
                         <datalist id="alumnos">
                             @foreach ($students as $student)
@@ -24,7 +24,7 @@
                         </datalist>
                     </div>
 
-                    <div class="form-row mt-2">
+                    {{-- <div class="form-row mt-2">
                         <div class="col">
                             <label for="solicitante">Solicitante del cambio</label>
                             <input id="solicitante" class="form-control" type="text" name="client_name" value="{{ old('client_name') }}" required>
@@ -61,7 +61,7 @@
                                 <option value="Eliminado">Eliminado</option>
                             </select>
                         </div>
-                    </div>                        
+                    </div>                         --}}
                 </div>
                 
                 <!-- Modal footer -->

@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Task;
 use App\Email;
-use App\Employee;
 use App\Student;
+use App\Employee;
 use App\Http\Requests\StoreEmail;
 use App\Http\Requests\UpdateEmail;
-use App\Task;
 use Illuminate\Support\Facades\DB;
 
 class EmailController extends Controller
@@ -75,7 +74,8 @@ class EmailController extends Controller
             'client_name' => $data['client_name'],
         ]);
 
-        return redirect()->route('correos.index')->with('success', 'Correo ' . $email->login . ' creado exitosamente');
+        return redirect()->route('correos.index')
+        ->with('success', 'Correo ' . $email->login . ' creado exitosamente');
     }
 
     /**
@@ -131,7 +131,8 @@ class EmailController extends Controller
         $correo->status   = $data['status'];
         $correo->save();
 
-        return redirect()->back()->with('success', 'Correo actualizado correctamente');
+        return redirect()->back()
+        ->with('success', 'Correo actualizado correctamente');
     }
 
     /**
@@ -144,7 +145,8 @@ class EmailController extends Controller
     {
         // TODO: Softdelete
         $correo->delete();
-        return redirect()->route('correos.index')->with('success', 'El correo ha sido eliminado correctamente');
+        return redirect()->route('correos.index')
+        ->with('success', 'El correo ha sido eliminado correctamente');
     }
 
     private function getEmployee($control_number)
