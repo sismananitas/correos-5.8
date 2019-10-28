@@ -131,6 +131,6 @@ class StudentController extends Controller
 
         dump($student); die;
 
-        return redirect()->route('correos.index');
+        return view('emails.students.form-create', compact('student'));
     }
 }
