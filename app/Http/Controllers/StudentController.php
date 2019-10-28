@@ -120,6 +120,8 @@ class StudentController extends Controller
         // Busca el estudiante en la DB
         $student = Student::where('enrollment', '=', $data['enrollment'])->first();
 
-        return redirect()->route('correo.index');
+        dump($student); die;
+
+        return redirect()->route('correos.index');
     }
 }
