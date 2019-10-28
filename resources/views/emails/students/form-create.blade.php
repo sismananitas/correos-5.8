@@ -7,6 +7,7 @@
             @csrf
             <input type="hidden" name="emailable_id" value="{{ $student->matricula }}">
             <input type="hidden" name="emailable_type" value="student">
+            <input type="hidden" name="dependency" value="{{ $student->unidad }}">
 
             <h3>{{ $student->nombre . ' ' . $student->ap_paterno . ' ' . $student->ap_materno }}</h3>
             <h4>Curp: {{ $student->curp }}</h4>
