@@ -134,7 +134,7 @@ class EmployeeController extends Controller
         $plazas = DB::connection('informix')->select($sql);
 
         if (!count($plazas))
-        return redirect()->back()->with('Este empleado no tiene plazas activas');
+        return redirect()->back()->withErrors(['empleado' => 'Este empleado no tiene plazas activas']);
 
         return view('emails.employees.form-create', [ 'num_control' => $num_control, 'plazas' => $plazas, 'empleado' => $plaza ]);
     }
