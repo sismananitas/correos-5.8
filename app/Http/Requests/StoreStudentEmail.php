@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\AlumnoActivo;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreStudentEmail extends FormRequest
@@ -24,7 +25,7 @@ class StoreStudentEmail extends FormRequest
     public function rules()
     {
         return [
-            'enrollment'   => 'required|exists:students|min:4',
+            'enrollment'   => [ 'required', new AlumnoActivo ],
             // 'client_name'  => 'required|min:4',
             // 'delivered_to' => 'required|min:4',
             // 'login'        => 'required|email|unique:emails,login',
