@@ -120,7 +120,6 @@ class EmployeeController extends Controller
     {
         $data = $request->validated();
         $num_control = $data['control_number'];
-        $plaza = [];
 
         $sql = "SELECT emplea.nombre, emplea.apepat as paterno, emplea.apemat as materno, depend.clave as cvedep,
         depend.nombre as nomdep,emplea.curp, plazas.tipemp, TRIM(tipper.nombre) as tipo_puesto
@@ -136,6 +135,6 @@ class EmployeeController extends Controller
         if (!count($plazas))
         return redirect()->back()->withErrors(['empleado' => 'Este empleado no tiene plazas activas']);
 
-        return view('emails.employees.form-create', [ 'num_control' => $num_control, 'plazas' => $plazas, 'empleado' => $plaza ]);
+        return view('emails.employees.form-create', [ 'num_control' => $num_control, 'plazas' => $plazas, 'empleado' => $plaza[0] ]);
     }
 }
