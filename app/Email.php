@@ -39,4 +39,13 @@ class Email extends Model
     {
         return $this->morphTo();
     }
+
+    public static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function ($email) {
+            $email->tasks()->delete();
+        });
+    }
 }

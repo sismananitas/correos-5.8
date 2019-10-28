@@ -142,6 +142,7 @@ class EmailController extends Controller
      */
     public function destroy(Email $correo)
     {
+        // TODO: Softdelete
         $correo->delete();
         return redirect()->route('correos.index')->with('success', 'El correo ha sido eliminado correctamente');
     }
