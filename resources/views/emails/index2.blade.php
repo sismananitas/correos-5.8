@@ -13,8 +13,8 @@
     @include('alerts.show-success')
 
     <modal-edit-email></modal-edit-email>
-    <modal-employee-email></modal-employee-email>
-    <modal-student-email></modal-student-email>
+    <modal-employee-email postUrl="{{ route('correo.employee.store') }}"></modal-employee-email>
+    <modal-student-email postUrl="{{ route('correo.student.store') }}"></modal-student-email>
 
     <emails-table></emails-table>
 </div>

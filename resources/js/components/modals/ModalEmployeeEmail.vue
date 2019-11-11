@@ -34,7 +34,19 @@
 
 <script>
 import { mapState, mapActions } from 'vuex';
+import Axios from 'axios';
 export default {
+    props: {
+        postUrl: String
+    },
+
+    data() {
+        return {
+            form: '',
+            data: {}
+        }
+    },
+
     computed: {
         ...mapState(['employees'])
     },
@@ -45,6 +57,18 @@ export default {
 
     mounted() {
         this.getEmployees();
+        this.form = document.getElementById('formAlumno');
+
+        this.form.addEventListener('submit', e => {
+            e.preventDefault();
+            this.data = new FormData(this.form);
+
+            Axios.post(this.postUrl, this.data)
+            .then(res => {
+                console.log(res);
+                
+            })
+        })
     }
 }
 </script>
