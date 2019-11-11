@@ -5,7 +5,7 @@
                 <th>ID</th>
                 <th>CORREO</th>
                 <th>PASSWORD</th>
-                <th>MEDIO SOLICITUD</th>
+                <!-- <th>MEDIO SOLICITUD</th> -->
                 <th>TIPO</th>
                 <th>STATUS</th>
                 <th>SOLICITÓ</th>
@@ -33,7 +33,7 @@
                 <td>{{ email.id }}</td>
                 <td>{{ email.login }}</td>
                 <td>{{ email.password }}</td>
-                <td>{{ email.tasks.first().medium }}</td>
+                <!-- <td>{{ email.tasks.first().medium }}</td> -->
 
                 <td>{{ email.emailable_type }}</td>
 
@@ -42,7 +42,7 @@
 
                 <td title=""
                 data-toggle="tooltip" data-placement="top">
-                    {{ email.created_at.format('d/m/Y') }}
+                    {{ email.created_at }}
                 </td>
 
                 <td class="pt-1 pb-1">
