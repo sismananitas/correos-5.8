@@ -16,7 +16,9 @@
                             <input list="empleados" class="form-control" type="text" name="control_number" value="" required>
 
                             <datalist id="empleados">
-                                <option v-for="employee in employees" :key="employee.control_number" :value="employee.control_number"> {{ employee.control_number }} </option>
+                                <option v-for="employee in employees" :key="employee.numconemp" :value="employee.numconemp">
+                                    {{ employee.numconemp + ' - ' + employee.nombre }}
+                                </option>
                             </datalist>
                         </div>                      
                     </div>

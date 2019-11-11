@@ -17,7 +17,7 @@
 
                             <datalist id="alumnos">
                                 <option v-for="student in students" :key="student.matricula" :value="student.matricula">
-                                    {{ student.matricula + ' ' + student.ap_paterno + ' ' + student.ap_materno + ' ' + student.nombre }}
+                                    {{ student.matricula + ' - ' + student.ap_paterno + ' ' + student.ap_materno + ' ' + student.nombre }}
                                 </option>
                             </datalist>
                         </div>
