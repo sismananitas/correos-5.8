@@ -64,9 +64,9 @@
                 </td>
             </tr>
             
-            <div v-if="emails.length < 1" class="alert alert-warning">
+            <!-- <div v-if="emails.length < 1" class="alert alert-warning">
                 No hay correos registrados
-            </div>
+            </div> -->
         </tbody>
     </table>
 </template>
