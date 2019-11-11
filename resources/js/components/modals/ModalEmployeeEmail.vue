@@ -47,6 +47,9 @@
 <script>
 import { mapState, mapActions } from 'vuex';
 import Axios from 'axios';
+import { FormWizard, TabContent } from 'vue-form-wizard'
+import 'vue-form-wizard/dist/vue-form-wizard.min.css'
+
 export default {
     props: {
         postUrl: String
@@ -57,6 +60,11 @@ export default {
             form: '',
             data: {}
         }
+    },
+
+    components: {
+        FormWizard,
+        TabContent
     },
 
     computed: {
