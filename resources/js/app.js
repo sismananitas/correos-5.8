@@ -30,8 +30,7 @@ import store from './store';
 
 const app = new Vue({
     el: '#app',
-    store,
-    VueFormWizard
+    store
 });
 
 $('[data-toggle="tooltip"]').tooltip();
