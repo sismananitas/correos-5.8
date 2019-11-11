@@ -56,4 +56,5 @@ Route::prefix('api')->group(function () {
     Route::get('/emails', 'ApiEmailController@index')->name('api.emails.index');
 
     Route::get('/students', 'ApiStudentController@index');
+    Route::get('/employyes', 'ApiEmployeeController@index');
 });

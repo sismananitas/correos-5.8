@@ -18,7 +18,7 @@
                         </button>
                         
                         <div class="dropdown-menu shadow correo-actions" aria-labelledby="menuRow">
-                            <a class="dropdown-item btn-primary" type="button" data-toggle="modal" data-target="#addTrabajador">Trabajador</a>
+                            <a class="dropdown-item btn-primary" type="button" data-toggle="modal" data-target="#addEmpleado">Trabajador</a>
                             <a class="dropdown-item btn-primary" type="button" data-toggle="modal" data-target="#addAlumno">Alumno</a>
                             <a class="dropdown-item btn-primary" type="button" data-toggle="modal" data-target="#addDepartamental">Departamental</a>
                             <a class="dropdown-item btn-primary" type="button" data-toggle="modal" data-target="#addOtro">Otro</a>
@@ -54,7 +54,7 @@
                         
                         <div class="dropdown-menu" aria-labelledby="menuRow">
                             <a class="dropdown-item btn-secondary" href="#">Agregar grupo</a>
-                            <a class="dropdown-item btn-warning" href="#">Editar </a>
+                            <a class="dropdown-item btn-warning" href="#" @click="editEmail(email)">Editar </a>
                             
                             <form action="" method="post">
                                 <button class="dropdown-item btn-danger" type="submit">Eliminar</button>
@@ -64,7 +64,7 @@
                 </td>
             </tr>
             
-            <div v-if="emails.length" class="alert alert-warning">
+            <div v-if="emails.length < 1" class="alert alert-warning">
                 No hay correos registrados
             </div>
         </tbody>
@@ -76,11 +76,16 @@ import { mapState, mapActions } from 'vuex';
 
 export default {
     computed: {
-        ...mapState(['emails'])
+        ...mapState(['emails', 'student'])
     },
 
     methods: {
-        ...mapActions(['getEmails'])
+        ...mapActions(['getEmails', 'showStudent', 'showEmail']),
+
+        editEmail(email) {
+            this.showEmail(email.id);
+            $('#editEmail').modal('show')
+        }
     },
 
     mounted() {
