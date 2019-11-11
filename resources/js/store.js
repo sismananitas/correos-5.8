@@ -19,19 +19,27 @@ export default new Vuex.Store({
         }
     },
 
+    mutations: {
+        setEmails(state, emails) {
+            state.emails = emails;
+        },
+        setStudents(state, students) {
+            state.students = students;
+        }
+    },
+
     actions: {
-        getEmails(state) {
+        getEmails({ commit }) {
             Axios.get('api/emails')
             .then(res => {
-                state.emails = res.data;
+                commit('setEmails', res.data);
             })
         },
-        getStudents(state) {
+        getStudents({ commit }) {
             Axios.get('api/students')
             .then(res => {
-                state.students = res.data;
-                console.log(res);
-                
+                commit('setStudents', res.data);
+                console.log(res); 
             })
         }
     }
