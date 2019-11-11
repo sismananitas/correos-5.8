@@ -63,10 +63,9 @@ export default {
             e.preventDefault();
             this.data = new FormData(this.form);
 
-            Axios.post(this.postUrl, this.data)
+            Axios.post(postUrl, this.data)
             .then(res => {
                 console.log(res);
-                
             })
         })
     }
