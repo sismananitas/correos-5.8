@@ -11,6 +11,8 @@
 |
 */
 
+use Symfony\Component\Routing\Route;
+
 Route::get('/', function () {
     return redirect('/login');
 });
@@ -54,6 +56,7 @@ Route::post('/correo/otro', 'OtherController@storeEmail')->name('correo.other.st
 // API
 Route::prefix('api')->group(function () {
     Route::get('/emails', 'ApiEmailController@index')->name('api.emails.index');
+    Route::get('/emails/{email}', 'ApiEmailController@show');
 
     Route::get('/students', 'ApiStudentController@index');
     Route::get('/employees', 'ApiEmployeeController@index');
