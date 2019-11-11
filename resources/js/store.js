@@ -30,6 +30,8 @@ export default new Vuex.Store({
             Axios.get('api/students')
             .then(res => {
                 state.students = res.data;
+                console.log(res);
+                
             })
         }
     }
