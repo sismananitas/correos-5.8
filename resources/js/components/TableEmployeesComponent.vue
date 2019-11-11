@@ -1,5 +1,4 @@
 <template>
-
 <div class="table-responsive">
     <div class="search-bar mb-2">
         <form id="formSearch" action="#" class="form-inline" v-on:submit.prevent="buscar">

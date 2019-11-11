@@ -28,7 +28,12 @@ class EmailController extends Controller
         $students = Student::all();
         $employees = Employee::all();
 
-        return view('emails.index', [
+        // return view('emails.index', [
+        //     'emails'    => $emails,
+        //     'students'  => $students,
+        //     'employees' => $employees,
+        // ]);
+        return view('emails.index2', [
             'emails'    => $emails,
             'students'  => $students,
             'employees' => $employees,

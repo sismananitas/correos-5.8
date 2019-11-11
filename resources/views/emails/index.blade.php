@@ -9,7 +9,7 @@
     <p>Lista de Correos local. <a href="https://gsuite.google.com.mx/" target="_black">Ir a G-Suite</a></p>
 
     {{-- Pinta los errores en caso de haber --}}
-    @include('emails.show-errors')
+    @include('alerts.show-errors')
     @include('alerts.show-success')
 
     <div class="table-responsive pb-5">

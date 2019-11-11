@@ -11,7 +11,7 @@
         </thead>
 
         <tbody>
-            <tr v-for="student in students" v-bind:key="">
+            <tr v-for="student in students" v-bind:key="student.matricula">
                 <td>{{ student.matricula }}</td>
                 <td>{{ student.email }}</td>
                 <td>{{ student.nombre + ' ' + student.ap_paterno + ' ' + student.ap_materno }}</td>
