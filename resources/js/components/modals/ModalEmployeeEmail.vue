@@ -2,13 +2,13 @@
     <div class="modal fade" id="addEmpleado">
         <div class="modal-dialog">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Correo alumno</h4>
+                <!-- <div class="modal-header">
+                    <h4 class="modal-title"></h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
+                </div> -->
 
-                <form-wizard>
-                    <tab-content title="Personal details">
+                <form-wizard title="Correo alumno" subtitle="">
+                    <tab-content title="Validar empleado activo">
                         <form id="formEmployee" :action="postUrl" method="POST" autocomplete="off">
                             <input id="editMode" type="hidden" name="_editMode" value="false">
 
@@ -34,7 +34,7 @@
                     <tab-content title="Additional Info">
                         My second tab content
                     </tab-content>
-                    
+
                     <tab-content title="Last step">
                         Yuhuuu! This seems pretty damn simple
                     </tab-content>
