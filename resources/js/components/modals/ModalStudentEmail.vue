@@ -7,7 +7,7 @@
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
 
-                <form id="formAlumno" action="#" method="POST" autocomplete="off">
+                <form id="formAlumno" :action="PostUrl" method="POST" autocomplete="off">
                     <input id="editMode" type="hidden" name="_editMode" value="false">
 
                     <div class="modal-body">
@@ -34,7 +34,19 @@
 
 <script>
 import { mapState, mapActions } from 'vuex';
+import Axios from 'axios';
 export default {
+    props: {
+        PostUrl: String
+    },
+
+    data() {
+        return {
+            form: '',
+            data: {}
+        }
+    },
+
     computed: {
         ...mapState(['students'])
     },
@@ -45,6 +57,18 @@ export default {
 
     mounted() {
         this.getStudents();
+        this.form = document.getElementById('formAlumno')
+
+        this.form.addEventListener('submit', e => {
+            e.preventDefault();
+            this.data = new FormData(this.form);
+
+            Axios.post(this.form.action, this.data)
+            .then(res => {
+                console.log(res);
+                
+            })
+        })
     }
 }
 </script>
