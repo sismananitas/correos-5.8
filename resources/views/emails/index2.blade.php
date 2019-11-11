@@ -12,9 +12,9 @@
     @include('alerts.show-errors')
     @include('alerts.show-success')
 
-    <modal-student-email></modal-student-emails>
-    <modal-employee-email></modal-employee-email>
     <modal-edit-email></modal-edit-email>
+    <modal-employee-email></modal-employee-email>
+    <modal-student-email></modal-student-email>
 
     <emails-table></emails-table>
 </div>
