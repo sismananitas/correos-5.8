@@ -103,8 +103,8 @@ class ApiEmployeeController extends Controller
         $plazas = DB::connection('informix')->select($sql);
 
         if (!count($plazas))
-        return redirect()->back()->withErrors(['empleado' => 'Este empleado no tiene plazas activas']);
+        return response()->json(['empleado' => 'Este empleado no tiene plazas activas'], 422);
 
-        return view('emails.employees.form-create', [ 'num_control' => $num_control, 'plazas' => $plazas, 'empleado' => $plazas[0] ]);
+        return response()->json([ 'num_control' => $num_control, 'plazas' => $plazas, 'empleado' => $plazas[0]]);
     }
 }

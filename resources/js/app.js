@@ -24,13 +24,18 @@ files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
- */
+**/
+
+//global registration
+import VueFormWizard from 'vue-form-wizard'
+import 'vue-form-wizard/dist/vue-form-wizard.min.css'
 
 import store from './store';
 
 const app = new Vue({
     el: '#app',
-    store
+    store,
+    VueFormWizard
 });
 
 $('[data-toggle="tooltip"]').tooltip();
