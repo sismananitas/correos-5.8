@@ -16,7 +16,9 @@
                             <input list="alumnos" class="form-control" type="text" name="enrollment" value="" required>
 
                             <datalist id="alumnos">
-                                <option v-for="student in students" :key="student.matricula" :value="student.matricula"> {{ student.matricula }} </option>
+                                <option v-for="student in students" :key="student.matricula" :value="student.matricula">
+                                    {{ student.matricula + ' ' + student.ap_paterno + ' ' + student.ap_materno + ' ' + student.nombre }}
+                                </option>
                             </datalist>
                         </div>
                     </div>
