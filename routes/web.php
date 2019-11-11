@@ -11,8 +11,6 @@
 |
 */
 
-use Symfony\Component\Routing\Route;
-
 Route::get('/', function () {
     return redirect('/login');
 });
