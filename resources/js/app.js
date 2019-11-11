@@ -27,6 +27,7 @@ files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(
 **/
 
 import store from './store';
+import 'vue-form-wizard/dist/vue-form-wizard.min.css'
 
 const app = new Vue({
     el: '#app',
