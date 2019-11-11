@@ -7,7 +7,7 @@ use App\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class StudentController extends Controller
+class ApiStudentController extends Controller
 {
     public function __construct()
     {

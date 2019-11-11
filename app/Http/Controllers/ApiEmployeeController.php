@@ -7,7 +7,7 @@ use App\Http\Requests\StoreEmployeeEmail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class EmployeeController extends Controller
+class ApiEmployeeController extends Controller
 {
     public function __construct()
     {
