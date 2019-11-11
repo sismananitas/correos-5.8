@@ -7,7 +7,7 @@
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
 
-                <form id="formAlumno" :action="postUrl" method="POST" autocomplete="off">
+                <form id="formEmployee" :action="postUrl" method="POST" autocomplete="off">
                     <input id="editMode" type="hidden" name="_editMode" value="false">
 
                     <div class="modal-body">
@@ -57,7 +57,7 @@ export default {
 
     mounted() {
         this.getEmployees();
-        this.form = document.getElementById('formAlumno');
+        this.form = document.getElementById('formEmployee');
 
         this.form.addEventListener('submit', e => {
             e.preventDefault();
