@@ -7,7 +7,7 @@
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
 
-                <form id="formAlumno" action="#" method="POST" autocomplete="off">
+                <form id="formAlumno" :action="postUrl" method="POST" autocomplete="off">
                     <input id="editMode" type="hidden" name="_editMode" value="false">
 
                     <div class="modal-body">
@@ -63,7 +63,7 @@ export default {
             e.preventDefault();
             this.data = new FormData(this.form);
 
-            Axios.post(postUrl, this.data)
+            Axios.post(this.form.action, this.data)
             .then(res => {
                 console.log(res);
             })
