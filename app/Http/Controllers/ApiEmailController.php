@@ -70,9 +70,8 @@ class ApiEmailController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($email)
+    public function show(Email $email)
     {
-        $email = Email::where('id', '=', $email)->with('tasks')->first();
         return $email;
     }
 

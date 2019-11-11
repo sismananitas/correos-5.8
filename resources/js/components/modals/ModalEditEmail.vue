@@ -19,12 +19,12 @@
                         <input id="password" class="form-control" type="text" name="password" required v-model="email.password">
 
                         <label for="solicitante">Solicitante del cambio</label>
-                        <input id="solicitante" class="form-control" type="text" name="solicitante" required v-model="email.solicitante">
+                        <input id="solicitante" class="form-control" type="text" name="solicitante" required>
 
                         <div class="form-row">
                             <div class="col">
                                 <label for="medium">Medio de solicitud</label>
-                                <select class="form-control" name="medium" id="medium" value="" required v-model="email.medium_id">
+                                <select class="form-control" name="medium" id="medium" value="" required>
                                     <option value="">- Elegir -</option>
                                     <option value="Ticket">Ticket</option>
                                     <option value="Oficio">Oficio</option>
