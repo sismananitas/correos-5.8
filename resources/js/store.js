@@ -65,7 +65,7 @@ export default new Vuex.Store({
         },
 
         getEmployees({ commit }) {
-            Axios.get('api/employess')
+            Axios.get('api/employees')
             .then(res => {
                 commit('setEmployees', res.data)
             })
