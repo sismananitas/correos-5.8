@@ -40,7 +40,7 @@ export default {
 
     created() {
         Swal.showLoading();
-        this.getEmployees('empleados/todos')
+        this.getEmployees('/empleados/todos')
         .then(() => Swal.close())
     },
 

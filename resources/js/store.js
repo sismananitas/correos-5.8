@@ -1,6 +1,5 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-// import Swal from 'sweetalert2';
 
 Vue.use(Vuex)
 
