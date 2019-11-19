@@ -9,7 +9,11 @@
 
                 <form-wizard title="Correo alumno" subtitle="">
                     <tab-content title="Validar empleado activo">
-                        <form id="formEmployee" :action="postUrl" method="POST" autocomplete="off">
+                        <form ref="formEmployee"
+                        :action="postUrl"
+                        method="POST"
+                        v-on:submit="sendForm"
+                        autocomplete="off">
                             <input id="editMode" type="hidden" name="_editMode" value="false">
 
                             <div class="modal-body">
@@ -45,8 +49,7 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex';
-import Axios from 'axios';
+import { mapState, mapActions, mapMutations } from 'vuex';
 import { FormWizard, TabContent } from 'vue-form-wizard'
 
 export default {
@@ -56,7 +59,7 @@ export default {
 
     data() {
         return {
-            form: '',
+            form: null,
             data: {}
         }
     },
@@ -71,22 +74,30 @@ export default {
     },
 
     methods: {
-        ...mapActions(['getEmployees'])
+        ...mapMutations(['setResponse', 'setErrors']),
+        ...mapActions(['getEmployees']),
+
+        sendForm(e) {
+            this.form = e.target;
+            this.data = new FormData(e.target)
+
+            axios.post(this.form.action, this.data)
+            .then(res => {
+                console.log(res)
+                this.setResponse(res)
+                this.$emit('sendedForm')
+            })
+            .catch(err => {
+                let errors = err.response.data.errors;
+                this.setErrors(errors)
+            })
+
+            e.preventDefault()
+        }
     },
 
     mounted() {
         this.getEmployees();
-        this.form = document.getElementById('formEmployee');
-
-        this.form.addEventListener('submit', e => {
-            e.preventDefault();
-            this.data = new FormData(this.form);
-
-            Axios.post(this.form.action, this.data)
-            .then(res => {
-                console.log(res);
-            })
-        })
     }
 }
 </script>
