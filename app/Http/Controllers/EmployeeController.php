@@ -135,6 +135,7 @@ class EmployeeController extends Controller
         if (!count($plazas))
         return redirect()->back()->withErrors(['empleado' => 'Este empleado no tiene plazas activas']);
 
+        return [ 'num_control' => $num_control, 'plazas' => $plazas, 'empleado' => $plazas[0] ];
         // return view('emails.employees.form-create',
         // [ 'num_control' => $num_control, 'plazas' => $plazas, 'empleado' => $plazas[0] ]);
     }
