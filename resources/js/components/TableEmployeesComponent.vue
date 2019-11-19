@@ -30,9 +30,6 @@
 </template>
 
 <script>
-import Axios from 'axios';
-import Swal from 'sweetalert2';
-
 export default {
     data: function () {
         return {
@@ -49,7 +46,7 @@ export default {
 
     methods: {
         async getEmployees(url, data = {}) {
-            return await Axios.get(url, data)
+            return await axios.get(url, data)
             .then(res => {
                 console.log(res.data)
                 this.employees = res.data;
@@ -58,7 +55,7 @@ export default {
 
         buscar() {
             Swal.showLoading();
-            this.getEmployees('empleados/todos', {
+            this.getEmployees('/empleados/todos', {
                 params: {
                     numero_control: this.numero_control
                 }
