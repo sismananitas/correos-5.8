@@ -38,7 +38,7 @@ class EmployeeController extends Controller
         AND anio = (SELECT MAX(anio) FROM hdisco)
         AND numero = (SELECT MAX(numero) FROM hdisco WHERE anio = (SELECT max(anio) FROM hdisco))";
 
-        $employees = DB::connection('informix')
+        $employees = DB::connection('personal')
         ->select($sql);
 
         return response()->json($employees);
@@ -130,7 +130,7 @@ class EmployeeController extends Controller
         and plazas.cvedep = depend.clave
         and plazas.tipemp = tipper.clave;";
 
-        $plazas = DB::connection('informix')->select($sql);
+        $plazas = DB::connection('personal')->select($sql);
 
         if (!count($plazas))
         return redirect()->back()->withErrors(['empleado' => 'Este empleado no tiene plazas activas']);

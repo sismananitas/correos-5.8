@@ -7,7 +7,7 @@
  */
 
 return [
-    'informix' => [
+    'personal' => [
         'driver'    => 'informix',
         'host'      => env('IFX_HOST', 'localhost'),
         'database'  => env('IFX_DATABASE', 'forge'),
