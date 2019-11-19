@@ -48,33 +48,33 @@ export default new Vuex.Store({
 
     actions: {
         getEmails({ commit }) {
-            axios.get('api/emails')
+            axios.get('/api/emails')
             .then(res => {
                 commit('setEmails', res.data);
             })
         },
         showEmail({ commit }, id) {
-            axios.get('api/emails/' + id)
+            axios.get('/api/emails/' + id)
             .then(res => {
                 commit('setEmail', res.data)
             })
         },
 
         getStudents({ commit }) {
-            axios.get('api/students')
+            axios.get('/api/students')
             .then(res => {
                 commit('setStudents', res.data);
             })
         },
         showStudent({ commit }, id) {
-            axios.get('api/students/' + id)
+            axios.get('/api/students/' + id)
             .then(res => {
                 commit('setStudent', res.data)
             })
         },
 
         getEmployees({ commit }) {
-            axios.get('api/employees')
+            axios.get('/api/employees')
             .then(res => {
                 commit('setEmployees', res.data)
             })
