@@ -76,7 +76,7 @@ export default new Vuex.Store({
 
         getEmployees({ commit }) {
             Swal.showLoading()
-            axios.get(this.base_url + '/api/employees')
+            axios.get('/correos/public/api/employees')
             .then(res => {
                 commit('setEmployees', res.data)
                 Swal.close()
