@@ -30,6 +30,7 @@
 </template>
 
 <script>
+import { mapActions, mapState } from 'vuex'
 export default {
     data: function () {
         return {
@@ -39,29 +40,25 @@ export default {
     },
 
     created() {
-        Swal.showLoading();
-        this.getEmployees('/empleados/todos')
-        .then(() => Swal.close())
+        this.getEmployees()
+    },
+
+    computed: {
+        ...mapState(['employees']),
     },
 
     methods: {
-        async getEmployees(url, data = {}) {
-            return await axios.get(url, data)
-            .then(res => {
-                console.log(res.data)
-                this.employees = res.data;
-            })
-        },
+        ...mapActions(['getEmployees']),
 
-        buscar() {
-            Swal.showLoading();
-            this.getEmployees('/empleados/todos', {
-                params: {
-                    numero_control: this.numero_control
-                }
-            })
-            .then(() => Swal.close())
-        }
+        // buscar() {
+        //     Swal.showLoading();
+        //     this.getEmployees('/empleados/todos', {
+        //         params: {
+        //             numero_control: this.numero_control
+        //         }
+        //     })
+        //     .then(() => Swal.close())
+        // }
     }
 }
 </script>

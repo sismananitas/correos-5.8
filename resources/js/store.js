@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import Swal from 'sweetalert2';
 
 Vue.use(Vuex)
 
@@ -8,10 +9,10 @@ export default new Vuex.Store({
         response: null,
         errors: null,
         emails: [],
-        email: {},
+        email: null,
 
         employees: [],
-        employee: {},
+        employee: null,
         
         students: [],
         student: {
@@ -73,9 +74,11 @@ export default new Vuex.Store({
         },
 
         getEmployees({ commit }) {
+            Swal.showLoading()
             axios.get('/api/employees')
             .then(res => {
                 commit('setEmployees', res.data)
+                Swal.close()
             })
         }
     }
