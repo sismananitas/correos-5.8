@@ -34,7 +34,7 @@ import { mapActions, mapState } from 'vuex'
 export default {
     data: function () {
         return {
-            //
+            numero_control: ''
         }
     },
 
