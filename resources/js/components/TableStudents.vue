@@ -23,7 +23,6 @@
 </template>
 
 <script>
-import Axios from 'axios';
 import Swal from 'sweetalert2';
 
 export default {
@@ -39,7 +38,7 @@ export default {
     },
     methods: {
         getStudents(url) {
-            return Axios.get(url)
+            return axios.get(url)
             .then(res => {
                 console.log(res.data)
                 this.students = res.data;
