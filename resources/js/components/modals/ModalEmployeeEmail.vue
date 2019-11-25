@@ -122,9 +122,12 @@ export default {
 
             await this.sendPostForm({ url: form.action, data: dataJson })
             .then(() => {
-                swal.close()
                 if (this.response) {
+                    swal.close()
                     this.plazas = this.response.plazas
+                    console.log(this.response.plazas);
+                    console.log(this.plazas);
+                    
                     this.validate = true
                 } else {
                     this.validate = false
