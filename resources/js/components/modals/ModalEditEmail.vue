@@ -9,7 +9,7 @@
                 </div>
 
                 <form
-                    :action="base_url + '/correos' + email.id"
+                    :action="base_url + '/correos/' + email.id"
                     method="POST"
                     autocomplete="off"
                     @submit="sendForm"
