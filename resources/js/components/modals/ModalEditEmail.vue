@@ -14,6 +14,7 @@
                     autocomplete="off"
                     @submit="sendForm"
                 >
+                    <input type="hidden" name="_method" value="put">
                     <!-- Modal body -->
                     <div class="modal-body">
                         <div class="form-group">
