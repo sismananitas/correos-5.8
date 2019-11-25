@@ -11,20 +11,23 @@
                     <tab-content title="Validar empleado activo">
                         <form
                             ref="formEmployee"
-                            :action="postUrl"
-                            method="POST"
-                            @submit.prevent="sendForm"
                             autocomplete="off"
+                            :action="editMode ? '/correo/trabajadores/' : '/correo/trabajadores'"
+                            @submit.prevent="sendForm"
                         >
                             <input v-if="editMode" type="hidden" name="_method" value="put">
 
                             <div class="modal-body">
                                 <div class="card-body">
                                     Número de control
-                                    <input list="empleados" class="form-control" type="text" name="control_number" value="" required>
+                                    <input list="empleados" class="form-control" type="text" name="control_number" required>
 
                                     <datalist id="empleados">
-                                        <option v-for="employee in employees" :key="employee.id" :value="employee.numconemp">
+                                        <option
+                                            v-for="employee in employees"
+                                            :key="employee.id"
+                                            :value="employee.numconemp"
+                                        >
                                             {{ employee.numconemp + ' - ' + employee.nombre }}
                                         </option>
                                     </datalist>
@@ -103,17 +106,7 @@ export default {
             .then(res => {
                 if (this.response) {
                     console.log(this.response)
-                    swal.fire({
-                        toast: true,
-                        type: 'success',
-                        position: 'top-right',
-                        title: this.response.success,
-                        timer: 200,
-                        showConfirmButton: false
-                    })
-                    .then(() => {
-                        this.$emit('sendedForm')
-                    })
+                    this.$emit('sendedForm')
                 }
             })
             e.preventDefault()
@@ -125,3 +118,7 @@ export default {
     }
 }
 </script>
+
+<style lang="scss">
+@import url('https://rawgit.com/lykmapipo/themify-icons/master/css/themify-icons.css');
+</style>

@@ -23,18 +23,36 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
 export default {
     data: function () {
         return {
             students: []
         }
     },
-    created() {
-        Swal.showLoading();
-        this.getStudents('alumnos/todos')
-        .then(() => Swal.close())
+
+    computed: {
+        ...mapState(['response']),
     },
+
+    created() {
+        swal.showLoading();
+        this.getStudents('alumnos/todos')
+        .then(() => swal.close())
+    },
+
     methods: {
+        showResponseToast() {
+            swal.fire({
+                toast: true,
+                type: 'success',
+                position: 'top-right',
+                title: this.response.success,
+                timer: 200,
+                showConfirmButton: false
+            })
+        },
+
         getStudents(url) {
             return axios.get(url)
             .then(res => {

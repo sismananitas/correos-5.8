@@ -37,12 +37,12 @@ Route::resource('correos', 'EmailController');
 
 // Estudiantes
 Route::get('/alumnos/todos', 'StudentController@getAllStudents');
-Route::post('/correo/alumno', 'StudentController@storeEmail')->name('correo.student.store');
+Route::post('/correo/alumnos', 'StudentController@storeEmail')->name('correo.student.store');
 Route::resource('alumnos', 'StudentController');
 
 // Empleados
 Route::get('/empleados/todos', 'EmployeeController@getAllEmployes')->name('employees.all');
-Route::post('/correo/trabajador', 'EmployeeController@storeEmail')->name('correo.employee.store');
+Route::post('/correo/trabajadores', 'EmployeeController@storeEmail')->name('correo.employee.store');
 Route::resource('empleados', 'EmployeeController');
 
 // Departamentales

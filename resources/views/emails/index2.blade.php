@@ -8,15 +8,10 @@
 
     <p>Lista de Correos local. <a href="https://gsuite.google.com.mx/" target="_black">Ir a G-Suite</a></p>
 
-    {{-- Pinta los errores en caso de haber --}}
-    @include('alerts.show-errors')
-    @include('alerts.show-success')
-
     <modal-edit-email></modal-edit-email>
-    <modal-employee-email post-url="{{ route('correo.employee.store') }}"></modal-employee-email>
-    <modal-student-email post-url="{{ route('correo.student.store') }}"></modal-student-email>
 
-    <emails-table></emails-table>
+    {{-- Tabla de correos --}}
+    <emails-component></emails-component>
 </div>
 @endsection
 
