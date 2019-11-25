@@ -35,6 +35,7 @@
                                 </datalist>
 
                                 <p class="text-danger" v-if="errors.control_number">{{ errors.control_number[0] }}</p>                    
+                                <p class="text-danger" v-if="errors.correo">{{ errors.correo[0] }}</p>                    
                             </div>
                         </form>
                     </tab-content>
