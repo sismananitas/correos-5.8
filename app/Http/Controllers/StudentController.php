@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreStudentEmail;
-use App\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -27,8 +26,9 @@ class StudentController extends Controller
 
     public function getAllStudents()
     {
-        $sql = "SELECT FIRST 50 alu.matricula, ap_paterno, ap_materno, alu.nombre, situacion,
-        status, gen.telefono, gen.email, gen.curp, car.nombre carrera, uni.nombre unidad, ram.descripcion grado
+        $sql = "SELECT FIRST 50
+        alu.matricula, ap_paterno, ap_materno, alu.nombre, situacion, status, gen.telefono,
+        gen.email, gen.curp, car.nombre carrera, uni.nombre unidad, ram.descripcion grado
         FROM alumno alu, alumno_general gen, carrera car, unidad uni, rama ram
         WHERE alu.matricula = gen.matricula
         AND alu.carrera_id = car.carrera_id

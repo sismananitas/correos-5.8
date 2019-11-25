@@ -1,5 +1,6 @@
 <template>
     <div>
+        <modal-edit-email></modal-edit-email>
         <modal-employee-email v-on:sendedForm="showSuccessToast"></modal-employee-email>
         <modal-student-email post-url="/correo/alumnos"></modal-student-email>
 
@@ -42,8 +43,11 @@
                     <td>{{ email.status }}</td>
                     <td>{{ email.delivered_to }}</td>
 
-                    <td title=""
-                    data-toggle="tooltip" data-placement="top">
+                    <td
+                        title=""
+                        data-toggle="tooltip"
+                        data-placement="top"
+                    >
                         {{ email.created_at }}
                     </td>
 

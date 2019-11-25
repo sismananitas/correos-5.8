@@ -28,11 +28,6 @@ class EmailController extends Controller
         $students = Student::all();
         $employees = Employee::all();
 
-        // return view('emails.index', [
-        //     'emails'    => $emails,
-        //     'students'  => $students,
-        //     'employees' => $employees,
-        // ]);
         return view('emails.index2', [
             'emails'    => $emails,
             'students'  => $students,
@@ -79,8 +74,9 @@ class EmailController extends Controller
             'client_name' => $data['client_name'],
         ]);
 
-        return redirect()->route('correos.index')
-        ->with('success', 'Correo ' . $email->login . ' creado exitosamente');
+        // return redirect()->route('correos.index')
+        // ->with('success', 'Correo ' . $email->login . ' creado exitosamente');
+        return response()->json(['success' => 'Correo ' . $email->login . ' creado exitosamente']);
     }
 
     /**
@@ -100,10 +96,8 @@ class EmailController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Email $correo)
+    public function edit(Email $correo, $emailable = '')
     {
-        $emailable = '';
-
         switch ($correo->type) {
             case 'employee':
                 $emailable = $this->getEmployee($correo->emailable_id);

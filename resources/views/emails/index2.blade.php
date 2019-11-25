@@ -5,10 +5,7 @@
 @section('content')
 <div class="container">
     <h1>Correos</h1>
-
     <p>Lista de Correos local. <a href="https://gsuite.google.com.mx/" target="_black">Ir a G-Suite</a></p>
-
-    <modal-edit-email></modal-edit-email>
 
     {{-- Tabla de correos --}}
     <emails-component></emails-component>

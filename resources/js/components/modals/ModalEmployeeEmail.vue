@@ -6,6 +6,7 @@
                     title="Correos"
                     subtitle=""
                     @on-validate="handleValidation"
+                    @on-complete="finishProcess"
                 >
                     <tab-content
                         title="Validar empleado activo"
@@ -43,9 +44,11 @@
                     >
                         <form
                             ref="formRegisterEmployee"
-                            :action="editMode ? base_url + '/correo/trabajadores/' : base_url + '/correo/trabajadores'"
+                            action="/correos"
                         >
-                            <input type="text" name="no_control" value="">
+                            <input type="hidden" name="emailable_id" :value="num_control">
+                            <input type="hidden" name="emailable_type" value="employee">
+
                             <div v-if="plazas.length">
                                 <p>
                                     {{ plazas[0].nombre }} {{ plazas[0].paterno }} {{ plazas[0].materno }}
@@ -57,9 +60,7 @@
                                         :key="index"
                                         :value="index"
                                     >
-                                        {{ index }}
-                                        {{ plaza.nomdep }}
-                                        {{ plaza.tipo_puesto }}
+                                        {{ index + 1 }}. {{ plaza.nomdep }} | {{ plaza.tipo_puesto }}
                                     </option>
                                 </select>
                             </div>
@@ -85,6 +86,7 @@ export default {
             form: null,
             editMode: false,
             plazas: [],
+            num_control: null,
             validate: false
         }
     },
@@ -106,6 +108,10 @@ export default {
             console.log('Tab: ' + tabIndex + ' valid: ' + isValid)
         },
 
+        finishProcess() {
+            console.log(this.response);
+        },
+
         async validateActiveEmployee() {
             let form = this.$refs.formEmployee
             let dataJson = new FormData(form)
@@ -114,11 +120,10 @@ export default {
             .then(() => {
                 if (this.response) {
                     swal.close()
-                    this.plazas = this.response.plazas
-                    console.log(this.response.plazas);
-                    console.log(this.plazas);
-                    
-                    this.validate = true
+                    this.plazas      = this.response.plazas
+                    this.num_control = this.response.num_control
+                    this.validate    = true
+
                 } else {
                     this.validate = false
                 }
@@ -127,7 +132,20 @@ export default {
         },
 
         async registerEmployee() {
-            alert('registrado')
+            let form = this.$refs.formRegisterEmployee
+            let dataJson = new FormData(form)
+
+            await this.sendPostForm({ url: form.action, data: dataJson })
+            .then(() => {
+                if (this.response) {
+                    swal.close()
+                    this.validate    = true
+
+                } else {
+                    this.validate = false
+                }
+            })
+            return this.validate
         }
     },
 
