@@ -138,6 +138,11 @@ export default {
         postUrl: String
     },
 
+    components: {
+        FormWizard,
+        TabContent
+    },
+
     data() {
         return {
             form: null,
@@ -146,11 +151,6 @@ export default {
             num_control: null,
             validate: false
         }
-    },
-
-    components: {
-        FormWizard,
-        TabContent
     },
 
     computed: {

@@ -128,8 +128,6 @@ class StudentController extends Controller
         
         // Busca el estudiante en la DB
         $student = DB::connection('escolares')->select($sql)[0];
-
-        // return view('emails.students.form-create', compact('student'));
-        return $student;
+        return response()->json(['success' => 'Validado correctamente.', 'student' => $student]);
     }
 }

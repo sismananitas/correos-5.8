@@ -2,7 +2,7 @@
     <div>
         <modal-edit-email v-on:formSended="showSuccessToast"></modal-edit-email>
         <modal-employee-email v-on:formSended="showSuccessToast"></modal-employee-email>
-        <modal-student-email post-url="/correo/alumnos"></modal-student-email>
+        <modal-student-email v-on:formSended="showSuccessToast"></modal-student-email>
 
         <table class="table table-striped text-center border-bottom shadow">
             <thead>
