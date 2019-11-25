@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Email;
 use App\Rules\AlumnoActivo;
 use Illuminate\Foundation\Http\FormRequest;
 
