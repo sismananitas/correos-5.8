@@ -61,10 +61,6 @@
                             <div class="dropdown-menu" aria-labelledby="menuRow">
                                 <a class="dropdown-item btn-secondary" href="#">Agregar grupo</a>
                                 <a class="dropdown-item btn-warning" href="#" @click="editEmail(email)">Editar </a>
-                                
-                                <form action="" method="post">
-                                    <button class="dropdown-item btn-danger" type="submit">Eliminar</button>
-                                </form>
                             </div>
                         </div>
                     </td>
