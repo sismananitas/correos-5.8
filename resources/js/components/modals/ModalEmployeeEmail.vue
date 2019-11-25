@@ -15,7 +15,7 @@
                             ref="formEmployee"
                             autocomplete="off"
                             :action="editMode ? base_url + '/correo/trabajadores/' : base_url + '/correo/trabajadores'"
-                            @submit="sendForm"
+                            @submit.prevent="null"
                         >
                             <input v-if="editMode" type="hidden" name="_method" value="put">
                             <div class="modal-body">
@@ -34,20 +34,47 @@
                                     </datalist>
                                 </div>                      
                             </div>
-                            
-                            <div class="modal-footer">
-                                <button class="btn btn-primary" type="submit">registrar</button>
+                        </form>
+                    </tab-content>
+
+                    <tab-content
+                        title="Elegir Plaza"
+                        :before-change="registerEmployee"
+                    >
+                        <form
+                            ref="formRegisterEmployee"
+                            :action="editMode ? base_url + '/correo/trabajadores/' : base_url + '/correo/trabajadores'"
+                        >
+                            <div v-if="plazas.length">
+                                <p>
+                                    {{ plaza[0].nombre }} <br>
+                                    {{ plaza[0].paterno }} <br>
+                                    {{ plaza[0].materno }}
+                                </p>
+
+                                <select name="plaza">
+                                    <option
+                                        v-for="(plaza, index) in plazas"
+                                        :key="index"
+                                        :value="index"
+                                    >
+                                        {{ index }}
+                                        {{ plaza.nomdep }}
+                                        {{ plaza.tipo_puesto }}
+                                    </option>
+                                </select>
                             </div>
                         </form>
                     </tab-content>
 
-                    <tab-content title="Additional Info">
-                        My second tab content
-                    </tab-content>
+                    <!-- <tab-content
+                        title="Last step"
+                        :before-change=""
+                    >
+                        <form action="">
 
-                    <tab-content title="Last step">
-                        Yuhuuu! This seems pretty damn simple
-                    </tab-content>
+                        </form>
+                    </tab-content> -->
                 </form-wizard>
             </div>
         </div>
@@ -85,6 +112,9 @@ export default {
         ...mapMutations(['setResponse', 'setErrors']),
         ...mapActions(['getEmployees', 'sendPostForm']),
 
+        handleValidation(isValid, tabIndex) {
+            console.log('Tab: ' + tabIndex + ' valid: ' + isValid)
+        },
 
         async validateActiveEmployee() {
             let form = this.$refs.formEmployee
@@ -92,8 +122,8 @@ export default {
 
             await this.sendPostForm({ url: form.action, data: dataJson })
             .then(() => {
+                swal.close()
                 if (this.response) {
-                    console.log(this.response)
                     this.plazas = this.response.plazas
                     this.validate = true
                 } else {
@@ -103,21 +133,8 @@ export default {
             return this.validate
         },
 
-        handleValidation(isValid, tabIndex) {
-            console.log('Tab: ' + tabIndex + ' valid: ' + isValid)
-        },
-
-        sendForm(e) {
-            let dataJson = new FormData(e.target)
-
-            this.sendPostForm({ url: e.target.action, data: dataJson })
-            .then(res => {
-                if (this.response) {
-                    console.log(this.response)
-                    this.$emit('sendedForm')
-                }
-            })
-            e.preventDefault()
+        async registerEmployee() {
+            alert('registrado')
         }
     },
 
