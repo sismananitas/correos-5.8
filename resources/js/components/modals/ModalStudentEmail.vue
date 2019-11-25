@@ -9,6 +9,7 @@
                     @on-complete="finishProcess"
                 >
                     <tab-content
+                        title="Validar matrícula"
                         :before-change="validateStudent"
                     >
                         <form
@@ -33,7 +34,10 @@
                         </form>
                     </tab-content>
 
-                    <tab-content :before-change="registerStudent">
+                    <tab-content
+                        title="Registrar alumno"
+                        :before-change="registerStudent"
+                    >
                         <form
                             v-if="student"
                             ref="formRegisterStudent"

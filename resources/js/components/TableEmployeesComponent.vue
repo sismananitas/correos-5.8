@@ -48,16 +48,6 @@ export default {
 
     methods: {
         ...mapActions(['getEmployees']),
-
-        // buscar() {
-        //     Swal.showLoading();
-        //     this.getEmployees('/empleados/todos', {
-        //         params: {
-        //             numero_control: this.numero_control
-        //         }
-        //     })
-        //     .then(() => Swal.close())
-        // }
     }
 }
 </script>

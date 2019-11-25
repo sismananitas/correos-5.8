@@ -6,9 +6,11 @@ Vue.use(Vuex)
 export default new Vuex.Store({
     state: {
         base_url: 'http://148.218.66.73/correos/public',
+
         spinner: `<div class="spinner-border text-primary" role="status">
         <span class="sr-only">Loading...</span>
         </div>`,
+        
         response: null,
         errors: [],
         emails: {},
