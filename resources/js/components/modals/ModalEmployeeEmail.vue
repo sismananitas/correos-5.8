@@ -72,7 +72,7 @@ export default {
     },
 
     computed: {
-        ...mapState(['employees'])
+        ...mapState(['employees', 'response'])
     },
 
     methods: {
