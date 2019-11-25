@@ -44,7 +44,7 @@
                     >
                         <form
                             ref="formRegisterEmployee"
-                            action="/correos"
+                            :action="base_url + '/correos'"
                         >
                             <input type="hidden" name="emailable_id" :value="num_control">
                             <input type="hidden" name="emailable_type" value="employee">
@@ -139,7 +139,7 @@ export default {
             .then(() => {
                 if (this.response) {
                     swal.close()
-                    this.validate    = true
+                    this.validate = true
 
                 } else {
                     this.validate = false
