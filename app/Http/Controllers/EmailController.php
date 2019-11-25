@@ -128,8 +128,7 @@ class EmailController extends Controller
         $correo->status   = $data['status'];
         $correo->save();
 
-        return redirect()->back()
-        ->with('success', 'Correo actualizado correctamente');
+        return response()->json(['success' => 'Correo actualizado correctamente']);
     }
 
     /**
