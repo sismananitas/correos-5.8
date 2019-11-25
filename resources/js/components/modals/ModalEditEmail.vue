@@ -12,7 +12,7 @@
                     :action="base_url + '/correos' + email.id"
                     method="POST"
                     autocomplete="off"
-                    @submit="sendFrom"
+                    @submit="sendForm"
                 >
                     <!-- Modal body -->
                     <div class="modal-body">
