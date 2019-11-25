@@ -2,7 +2,11 @@
     <div class="modal fade" id="addEmpleado">
         <div class="modal-dialog">
             <div class="modal-content">
-                <form-wizard title="Correos" subtitle="">
+                <form-wizard
+                    title="Correos"
+                    subtitle=""
+                    @on-validate="handleValidation"
+                >
                     <tab-content
                         title="Validar empleado activo"
                         :before-change="validateActiveEmployee"
@@ -10,7 +14,6 @@
                         <form
                             ref="formEmployee"
                             autocomplete="off"
-                            @on-validate="handleValidation"
                             :action="editMode ? base_url + '/correo/trabajadores/' : base_url + '/correo/trabajadores'"
                             @submit="sendForm"
                         >
@@ -86,16 +89,17 @@ export default {
             alert('activo')
             let form = this.$refs.formEmployee
             let dataJson = new FormData(form)
+            var res = false
 
             this.sendPostForm({ url: form.action, data: dataJson })
             .then(() => {
                 if (this.response) {
                     console.log(this.response)
                     this.plazas = this.response.plazas
-                    return true
+                    res = true
                 }
-                return false
             })
+            return res
         },
 
         handleValidation(isValid, tabIndex) {
