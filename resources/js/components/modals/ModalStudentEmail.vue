@@ -3,6 +3,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <form-wizard
+                    ref="alumnoWizard"
                     title=""
                     subtitle=""
                     color="#0ba49f"
@@ -183,6 +184,10 @@ export default {
 
     mounted() {
         this.getStudents();
+        $('#addAlumno').on('hidden.bs.modal', () => {
+            this.$refs.formAlumno.reset()
+            this.$refs.alumnoWizard.reset()
+        })
     }
 }
 </script>
