@@ -13,10 +13,10 @@
                             ref="formEmployee"
                             :action="postUrl"
                             method="POST"
-                            v-on:submit="sendForm"
+                            @submit.prevent="sendForm"
                             autocomplete="off"
                         >
-                            <input id="editMode" type="hidden" name="_editMode" value="false">
+                            <input id="editMode" type="hidden" name="_method" value="put">
 
                             <div class="modal-body">
                                 <div class="card-body">
