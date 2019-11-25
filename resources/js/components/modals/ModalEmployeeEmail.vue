@@ -11,7 +11,7 @@
                             ref="formEmployee"
                             autocomplete="off"
                             @on-validate="handleValidation"
-                            :action="editMode ? '/correo/trabajadores/' : '/correo/trabajadores'"
+                            :action="editMode ? base_url + '/correo/trabajadores/' : base_url + '/correo/trabajadores'"
                             @submit="sendForm"
                         >
                             <input v-if="editMode" type="hidden" name="_method" value="put">
@@ -74,7 +74,7 @@ export default {
     },
 
     computed: {
-        ...mapState(['employees', 'response'])
+        ...mapState(['employees', 'response', 'base_url'])
     },
 
     methods: {
