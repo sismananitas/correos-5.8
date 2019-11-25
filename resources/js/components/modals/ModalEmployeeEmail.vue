@@ -51,7 +51,7 @@
                             <input type="hidden" name="emailable_id" :value="num_control">
                             <input type="hidden" name="emailable_type" value="employee">
 
-                            <p>
+                            <p v-if="plazas.length">
                                 Nombre: {{ plazas[0].nombre }} {{ plazas[0].paterno }} {{ plazas[0].materno }}
                             </p>
 
