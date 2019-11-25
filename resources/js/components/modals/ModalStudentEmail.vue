@@ -33,7 +33,7 @@
                         </form>
                     </tab-content>
 
-                    <tab-content>
+                    <tab-content :before-change="registerStudent">
                         <form
                             v-if="student"
                             ref="formRegisterStudent"
@@ -41,22 +41,12 @@
                         >
                             <input type="hidden" name="emailable_id" :value="student.matricula">
                             <input type="hidden" name="emailable_type" value="student">
+                            <input type="hidden" name="dependency" :value="student.unidad">
 
                             <p>
-                                Nombre: {{ student.nombre }} {{ student.ap_paterno }} {{ student.ap_materno }}
+                                Nombre: {{ student.nombre }} {{ student.ap_paterno }} {{ student.ap_materno }} <br>
+                                Dependencia: {{ student.unidad }}
                             </p>
-
-                            <!-- <div class="form-group" v-if="plazas.length">
-                                <select class="form-control" name="dependency">
-                                    <option
-                                        v-for="(plaza, index) in plazas"
-                                        :key="index"
-                                        :value="plaza.nomdep"
-                                    >
-                                        {{ index + 1 }}. {{ plaza.nomdep }} | {{ plaza.tipo_puesto }}
-                                    </option>
-                                </select>
-                            </div> -->
 
                             <div class="form-row">
                                 <div class="form-group col">
@@ -168,6 +158,22 @@ export default {
                     this.validate = false
                 }
             })
+            return this.validate
+        },
+
+        async registerStudent() {
+            let form = this.$refs.formRegisterStudent
+            let dataJson = new FormData(form)
+
+            await this.sendPostForm({ url: form.action, data: dataJson })
+            if (this.response) {
+                swal.close()
+                console.log(this.response)
+                this.validate = true
+            } else {
+                this.student = null
+                this.validate = false
+            }
             return this.validate
         }
     },
