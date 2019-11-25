@@ -103,7 +103,7 @@ export default {
             .then(res => {
                 if (this.response) {
                     console.log(this.response)
-                    Swal.fire({
+                    swal.fire({
                         toast: true,
                         type: 'success',
                         position: 'top-right',

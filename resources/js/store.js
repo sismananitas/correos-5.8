@@ -1,6 +1,5 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import Swal from 'sweetalert2';
 
 Vue.use(Vuex)
 
@@ -81,16 +80,16 @@ export default new Vuex.Store({
         },
 
         getEmployees({ commit }) {
-            Swal.showLoading()
+            swal.showLoading()
             axios.get('/correos/public/api/employees')
             .then(res => {
                 commit('setEmployees', res.data)
-                Swal.close()
+                swal.close()
             })
         },
 
         sendPostForm({ commit }, { url, data }) {
-            Swal.fire({
+            swal.fire({
                 toast: true,
                 title: 'Cargando...',
                 showConfirmButton: false
@@ -105,7 +104,7 @@ export default new Vuex.Store({
             })
             .catch(failue => {
                 commit('setErrors', failue.response.data.errors)
-                Swal.fire({ type: 'error', title: 'Datos incorrectos' })                
+                swal.fire({ type: 'error', title: 'Datos incorrectos' })                
             })
         }
     }
