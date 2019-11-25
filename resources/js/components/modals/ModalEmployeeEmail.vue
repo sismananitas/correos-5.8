@@ -88,7 +88,7 @@ export default {
 
         validateActiveEmployee() {
             alert('activo')
-        }
+        },
         // sendForm(e) {
         //     this.form = e.target;
         //     this.data = new FormData(e.target)
