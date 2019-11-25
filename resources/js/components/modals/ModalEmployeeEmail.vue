@@ -3,6 +3,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <form-wizard
+                    ref="empleadoWizard"
                     title=""
                     subtitle=""
                     color="#0ba49f"
@@ -209,6 +210,10 @@ export default {
 
     mounted() {
         this.getEmployees()
+        $('#addEmpleado').on('hidden.bs.modal', () => {
+            this.$refs.formEmployee.reset()
+            this.$refs.empleadoWizard.reset()
+        })
     }
 }
 </script>
