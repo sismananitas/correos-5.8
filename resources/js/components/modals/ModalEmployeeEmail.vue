@@ -95,7 +95,7 @@ export default {
                 if (this.response) {
                     console.log(this.response)
                     this.plazas = this.response.plazas
-                    this.validate = false
+                    this.validate = true
                 }
             })
             return this.validate
