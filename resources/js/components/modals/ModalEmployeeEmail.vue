@@ -86,16 +86,18 @@ export default {
         ...mapActions(['getEmployees', 'sendPostForm']),
 
 
-        validateActiveEmployee() {
+        async validateActiveEmployee() {
             let form = this.$refs.formEmployee
             let dataJson = new FormData(form)
 
-            this.sendPostForm({ url: form.action, data: dataJson })
+            await this.sendPostForm({ url: form.action, data: dataJson })
             .then(() => {
                 if (this.response) {
                     console.log(this.response)
                     this.plazas = this.response.plazas
                     this.validate = true
+                } else {
+                    this.validate = false
                 }
             })
             return this.validate
