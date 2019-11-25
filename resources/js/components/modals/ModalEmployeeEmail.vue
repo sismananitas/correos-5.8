@@ -67,7 +67,8 @@ export default {
         return {
             form: null,
             editMode: false,
-            plazas: []
+            plazas: [],
+            validate: false
         }
     },
 
@@ -86,20 +87,18 @@ export default {
 
 
         validateActiveEmployee() {
-            alert('activo')
             let form = this.$refs.formEmployee
             let dataJson = new FormData(form)
-            var res = false
 
             this.sendPostForm({ url: form.action, data: dataJson })
             .then(() => {
                 if (this.response) {
                     console.log(this.response)
                     this.plazas = this.response.plazas
-                    res = true
+                    this.validate = false
                 }
             })
-            return res
+            return this.validate
         },
 
         handleValidation(isValid, tabIndex) {
