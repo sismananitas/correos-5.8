@@ -47,9 +47,9 @@
                         >
                             <div v-if="plazas.length">
                                 <p>
-                                    {{ plaza[0].nombre }} <br>
-                                    {{ plaza[0].paterno }} <br>
-                                    {{ plaza[0].materno }}
+                                    {{ plazas[0].nombre }} <br>
+                                    {{ plazas[0].paterno }} <br>
+                                    {{ plazas[0].materno }}
                                 </p>
 
                                 <select name="plaza">
