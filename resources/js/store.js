@@ -10,8 +10,8 @@ export default new Vuex.Store({
         <span class="sr-only">Loading...</span>
         </div>`,
         response: null,
-        errors: null,
-        emails: [],
+        errors: [],
+        emails: {},
         email: {
             login: null,
             password: null,
