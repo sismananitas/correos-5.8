@@ -8,7 +8,10 @@
                 </div> -->
 
                 <form-wizard title="Correo alumno" subtitle="">
-                    <tab-content title="Validar empleado activo">
+                    <tab-content
+                        title="Validar empleado activo"
+                        @before-change="validateActiveEmployee"
+                    >
                         <form
                             ref="formEmployee"
                             autocomplete="off"
@@ -82,6 +85,10 @@ export default {
         ...mapMutations(['setResponse', 'setErrors']),
         ...mapActions(['getEmployees', 'sendPostForm']),
 
+
+        validateActiveEmployee() {
+            alert('activo')
+        }
         // sendForm(e) {
         //     this.form = e.target;
         //     this.data = new FormData(e.target)
