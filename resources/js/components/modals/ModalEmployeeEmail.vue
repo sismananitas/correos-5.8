@@ -16,7 +16,7 @@
                             @submit.prevent="sendForm"
                             autocomplete="off"
                         >
-                            <input id="editMode" type="hidden" name="_method" value="put">
+                            <input v-if="editMode" type="hidden" name="_method" value="put">
 
                             <div class="modal-body">
                                 <div class="card-body">
@@ -62,7 +62,7 @@ export default {
     data() {
         return {
             form: null,
-            data: {}
+            editMode: false
         }
     },
 
