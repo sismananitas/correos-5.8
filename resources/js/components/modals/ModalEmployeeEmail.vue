@@ -3,7 +3,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <form-wizard
-                    title="Correos"
+                    title=""
                     subtitle=""
                     color="#0ba49f"
                     @on-validate="handleValidation"
