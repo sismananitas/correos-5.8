@@ -21,9 +21,9 @@
                             <input v-if="editMode" type="hidden" name="_method" value="put">
                             <div class="modal-body">
                                 <div class="card-body">
-                                    Número de control
-                                    <input list="empleados" class="form-control" type="text" name="control_number" required>
+                                    <label for="control_number">Número de control</label>
 
+                                    <input list="empleados" class="form-control" type="text" name="control_number" required>
                                     <datalist id="empleados">
                                         <option
                                             v-for="employee in employees"
@@ -33,6 +33,8 @@
                                             {{ employee.numconemp + ' - ' + employee.nombre }}
                                         </option>
                                     </datalist>
+
+                                    <p v-if="errors.control_number">{{ errors.control_number[0] }}</p>
                                 </div>                      
                             </div>
                         </form>
@@ -49,20 +51,71 @@
                             <input type="hidden" name="emailable_id" :value="num_control">
                             <input type="hidden" name="emailable_type" value="employee">
 
-                            <div v-if="plazas.length">
-                                <p>
-                                    {{ plazas[0].nombre }} {{ plazas[0].paterno }} {{ plazas[0].materno }}
-                                </p>
+                            <p>
+                                Nombre: {{ plazas[0].nombre }} {{ plazas[0].paterno }} {{ plazas[0].materno }}
+                            </p>
 
-                                <select class="form-control" name="plaza">
+                            <div class="form-group" v-if="plazas.length">
+                                <select class="form-control" name="dependency">
                                     <option
                                         v-for="(plaza, index) in plazas"
                                         :key="index"
-                                        :value="index"
+                                        :value="plaza.nomdep"
                                     >
                                         {{ index + 1 }}. {{ plaza.nomdep }} | {{ plaza.tipo_puesto }}
                                     </option>
                                 </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="client_name">Solicitante del cambio</label>
+                                <input id="client_name" class="form-control" type="text" name="client_name" required>
+
+                                <p v-if="errors.client_name">{{ errors.client_name[0] }}</p>
+                            </div>
+                
+                            <div class="form-group">
+                                <label for="delivered_to">Entregado a</label>
+                                <input class="form-control" type="text" name="delivered_to" required>
+
+                                <p v-if="errors.delivered_to">{{ errors.delivered_to[0] }}</p>
+                            </div>                 
+                    
+                            <div class="form-group">
+                                <label for="login">Login</label>
+                                <input id="login" class="form-control" type="email" name="login" required>
+
+                                <p v-if="errors.login">{{ errors.login[0] }}</p>
+                            </div>
+                    
+                            <div class="form-grou">
+                                <label for="password">Contraseña</label>
+                                <input id="password" class="form-control" type="text" name="password" required>
+
+                                <p v-if="errors.password">{{ errors.password[0] }}</p>
+                            </div>
+                    
+                            <div class="form-group">
+                                <label for="medium">Medio de solicitud</label>
+                                <select class="form-control" name="medium" id="medium" required>
+                                    <option value="">- Elegir -</option>
+                                    <option value="Ticket">Ticket</option>
+                                    <option value="Oficio">Oficio</option>
+                                </select>
+
+                                <p v-if="errors.medium">{{ errors.medium[0] }}</p>
+                            </div>
+                
+                            <div class="form-group">
+                                <label for="status">Estatus</label>
+                                <select class="form-control" name="status" id="status" required>
+                                    <option value="">- Elegir -</option>
+                                    <option value="Activo">Activo</option>
+                                    <option value="Suspendido">Suspendido</option>
+                                    <option value="Eliminado">Eliminado</option>
+                                </select>
+
+                                <p v-if="errors.status">{{ errors.status[0] }}</p>
                             </div>
                         </form>
                     </tab-content>
@@ -97,7 +150,7 @@ export default {
     },
 
     computed: {
-        ...mapState(['employees', 'response', 'base_url'])
+        ...mapState(['employees', 'response', 'errors', 'base_url'])
     },
 
     methods: {
