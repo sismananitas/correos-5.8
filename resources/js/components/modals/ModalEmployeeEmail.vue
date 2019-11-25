@@ -10,7 +10,7 @@
                 <form-wizard title="Correo alumno" subtitle="">
                     <tab-content
                         title="Validar empleado activo"
-                        @before-change="validateActiveEmployee"
+                        :before-change="validateActiveEmployee"
                     >
                         <form
                             ref="formEmployee"
