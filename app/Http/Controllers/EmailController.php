@@ -141,8 +141,8 @@ class EmailController extends Controller
     {
         // TODO: Softdelete
         $correo->delete();
-        return redirect()->route('correos.index')
-        ->with('success', 'El correo ha sido eliminado correctamente');
+        return response()->json(['success' => 'El correo ha sido eliminado correctamente']);
+
     }
 
     private function getEmployee($control_number)

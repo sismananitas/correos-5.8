@@ -63,7 +63,7 @@
                     <!-- Modal footer -->
                     <div class="modal-footer">
                         <button class="btn btn-warning" type="submit">Actualizar</button>
-                        <button class="btn btn-danger" type="button">Eliminar</button>
+                        <button class="btn btn-danger" type="button" @click="sendDeleteEmail(base_url + '/correos/' + email.id)">Eliminar</button>
                     </div>
                 </form>
             </div>
@@ -72,13 +72,14 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex';
+import { mapState, mapActions, mapMutations } from 'vuex';
 export default {
     computed: {
         ...mapState(['email', 'response', 'errors', 'base_url'])
     },
 
     methods: {
+        ...mapMutations(['setErrors', 'setResponse']),
         ...mapActions(['sendPostForm']),
 
         sendForm(e) {
@@ -92,6 +93,22 @@ export default {
                 }
             })
             e.preventDefault()
+        },
+
+        sendDeleteEmail(url) {
+            axios.delete(url)
+            .then(res => {
+                this.setResponse(res.data)
+                $('#editEmail').modal('hide')
+                this.$emit('formSended')
+            })
+            .catch(error => {
+                console.log(error.response.errors);
+                swal({
+                    type: 'error',
+                    title: 'No se pudo eliminar'
+                })
+            })
         }
     }
 }
