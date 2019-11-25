@@ -38,17 +38,15 @@ class StoreStudentEmail extends FormRequest
     public function withValidator($validator)
     {
         $validator->after(function ($validator) {
-            $validator->after(function ($validator) {
-                $num = !empty($this->input('enrollment')) ? $this->input('enrollment') : 0;
-                
-                // Valida que el usuario no tenga una cuenta de correo
-                $has_email = Email::where('emailable_id', '=', $num)
-                ->where('type', '=', 'student')
-                ->count();
-    
-                if ($has_email)
-                $validator->errors()->add('correo', 'El trabajador ingresado ya posee una cuenta de correo');
-            });
+            $num = !empty($this->input('enrollment')) ? $this->input('enrollment') : 0;
+            
+            // Valida que el usuario no tenga una cuenta de correo
+            $has_email = Email::where('emailable_id', '=', $num)
+            ->where('type', '=', 'student')
+            ->count();
+
+            if ($has_email)
+            $validator->errors()->add('correo', 'El alumno ingresado ya posee una cuenta de correo');
         });
     }
 }
