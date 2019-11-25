@@ -2,12 +2,7 @@
     <div class="modal fade" id="addEmpleado">
         <div class="modal-dialog">
             <div class="modal-content">
-                <!-- <div class="modal-header">
-                    <h4 class="modal-title"></h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div> -->
-
-                <form-wizard title="Correo alumno" subtitle="">
+                <form-wizard title="Correos" subtitle="">
                     <tab-content
                         title="Validar empleado activo"
                         :before-change="validateActiveEmployee"
@@ -15,11 +10,11 @@
                         <form
                             ref="formEmployee"
                             autocomplete="off"
+                            @on-validate="handleValidation"
                             :action="editMode ? '/correo/trabajadores/' : '/correo/trabajadores'"
-                            @submit.prevent="sendForm"
+                            @submit="sendForm"
                         >
                             <input v-if="editMode" type="hidden" name="_method" value="put">
-
                             <div class="modal-body">
                                 <div class="card-body">
                                     Número de control
@@ -68,7 +63,8 @@ export default {
     data() {
         return {
             form: null,
-            editMode: false
+            editMode: false,
+            plazas: []
         }
     },
 
@@ -88,25 +84,24 @@ export default {
 
         validateActiveEmployee() {
             alert('activo')
-            return false
+            let form = this.$refs.formEmployee
+            let dataJson = new FormData(form)
+
+            this.sendPostForm({ url: form.action, data: dataJson })
+            .then(() => {
+                if (this.response) {
+                    console.log(this.response)
+                    this.plazas = this.response.plazas
+                    return true
+                }
+                return false
+            })
         },
-        // sendForm(e) {
-        //     this.form = e.target;
-        //     this.data = new FormData(e.target)
 
-        //     axios.post(this.form.action, this.data)
-        //     .then(res => {
-        //         console.log(res)
-        //         this.setResponse(res)
-        //         this.$emit('sendedForm')
-        //     })
-        //     .catch(err => {
-        //         let errors = err.response.data.errors;
-        //         this.setErrors(errors)
-        //     })
+        handleValidation(isValid, tabIndex) {
+            console.log('Tab: ' + tabIndex + ' valid: ' + isValid)
+        },
 
-        //     e.preventDefault()
-        // }
         sendForm(e) {
             let dataJson = new FormData(e.target)
 
@@ -122,11 +117,11 @@ export default {
     },
 
     mounted() {
-        this.getEmployees();
+        this.getEmployees()
     }
 }
 </script>
 
 <style lang="scss">
-@import url('https://rawgit.com/lykmapipo/themify-icons/master/css/themify-icons.css');
+//@import url('https://rawgit.com/lykmapipo/themify-icons/master/css/themify-icons.css');
 </style>
