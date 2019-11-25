@@ -99,11 +99,12 @@ export default {
                 timer: 2000,
                 showConfirmButton: false
             })
+            this.getEmails()
         }
     },
 
     mounted() {
-        this.getEmails();
+        this.getEmails()
     }
 }
 </script>

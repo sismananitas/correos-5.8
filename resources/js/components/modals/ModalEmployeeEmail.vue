@@ -165,7 +165,8 @@ export default {
         },
 
         finishProcess() {
-            console.log(this.response);
+            $('#addEmpleado').modal('hide')
+            this.$emit('formSended')
         },
 
         async validateActiveEmployee() {
