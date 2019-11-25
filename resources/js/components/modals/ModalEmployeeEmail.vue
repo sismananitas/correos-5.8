@@ -34,7 +34,7 @@
                                         </option>
                                     </datalist>
 
-                                    <p v-if="errors.control_number">{{ errors.control_number[0] }}</p>
+                                    <p class="text-danger" v-if="errors.control_number">{{ errors.control_number[0] }}</p>
                                 </div>                      
                             </div>
                         </form>
@@ -71,28 +71,28 @@
                                 <label for="client_name">Solicitante del cambio</label>
                                 <input id="client_name" class="form-control" type="text" name="client_name" required>
 
-                                <p v-if="errors.client_name">{{ errors.client_name[0] }}</p>
+                                <p class="text-danger" v-if="errors.client_name">{{ errors.client_name[0] }}</p>
                             </div>
                 
                             <div class="form-group">
                                 <label for="delivered_to">Entregado a</label>
                                 <input class="form-control" type="text" name="delivered_to" required>
 
-                                <p v-if="errors.delivered_to">{{ errors.delivered_to[0] }}</p>
+                                <p class="text-danger" v-if="errors.delivered_to">{{ errors.delivered_to[0] }}</p>
                             </div>                 
                     
                             <div class="form-group">
                                 <label for="login">Login</label>
                                 <input id="login" class="form-control" type="email" name="login" required>
 
-                                <p v-if="errors.login">{{ errors.login[0] }}</p>
+                                <p class="text-danger" v-if="errors.login">{{ errors.login[0] }}</p>
                             </div>
                     
                             <div class="form-grou">
                                 <label for="password">Contraseña</label>
                                 <input id="password" class="form-control" type="text" name="password" required>
 
-                                <p v-if="errors.password">{{ errors.password[0] }}</p>
+                                <p class="text-danger" v-if="errors.password">{{ errors.password[0] }}</p>
                             </div>
                     
                             <div class="form-group">
@@ -103,7 +103,7 @@
                                     <option value="Oficio">Oficio</option>
                                 </select>
 
-                                <p v-if="errors.medium">{{ errors.medium[0] }}</p>
+                                <p class="text-danger" v-if="errors.medium">{{ errors.medium[0] }}</p>
                             </div>
                 
                             <div class="form-group">
@@ -115,7 +115,7 @@
                                     <option value="Eliminado">Eliminado</option>
                                 </select>
 
-                                <p v-if="errors.status">{{ errors.status[0] }}</p>
+                                <p class="text-danger" v-if="errors.status">{{ errors.status[0] }}</p>
                             </div>
                         </form>
                     </tab-content>
