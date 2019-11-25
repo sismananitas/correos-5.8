@@ -16,7 +16,6 @@
                             :action="base_url + '/correo/alumnos'"
                             autocomplete="off"
                         >
-                            <input v-if="editMode" type="hidden" name="_method" value="put">
                             <div class="modal-body">
                                 <div class="form-group">
                                     <label for="enrollment">Matrícula</label>
