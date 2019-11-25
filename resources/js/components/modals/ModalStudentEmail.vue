@@ -158,6 +158,7 @@ export default {
             await this.sendPostForm({ url: form.action, data: dataJson })
             .then(() => {
                 if (this.response) {
+                    swal.close()
                     console.log(this.response)
                     this.student = this.response.student
                     this.validate = true
