@@ -171,7 +171,6 @@ export default {
                 console.log(this.response)
                 this.validate = true
             } else {
-                this.student = null
                 this.validate = false
             }
             return this.validate
