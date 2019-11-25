@@ -9,11 +9,13 @@
 
                 <form-wizard title="Correo alumno" subtitle="">
                     <tab-content title="Validar empleado activo">
-                        <form ref="formEmployee"
-                        :action="postUrl"
-                        method="POST"
-                        v-on:submit="sendForm"
-                        autocomplete="off">
+                        <form
+                            ref="formEmployee"
+                            :action="postUrl"
+                            method="POST"
+                            v-on:submit="sendForm"
+                            autocomplete="off"
+                        >
                             <input id="editMode" type="hidden" name="_editMode" value="false">
 
                             <div class="modal-body">
@@ -49,7 +51,7 @@
 </template>
 
 <script>
-import { mapState, mapActions, mapMutations } from 'vuex';
+import { mapState, mapActions, mapMutations } from 'vuex'
 import { FormWizard, TabContent } from 'vue-form-wizard'
 
 export default {
@@ -75,23 +77,45 @@ export default {
 
     methods: {
         ...mapMutations(['setResponse', 'setErrors']),
-        ...mapActions(['getEmployees']),
+        ...mapActions(['getEmployees', 'sendPostForm']),
 
+        // sendForm(e) {
+        //     this.form = e.target;
+        //     this.data = new FormData(e.target)
+
+        //     axios.post(this.form.action, this.data)
+        //     .then(res => {
+        //         console.log(res)
+        //         this.setResponse(res)
+        //         this.$emit('sendedForm')
+        //     })
+        //     .catch(err => {
+        //         let errors = err.response.data.errors;
+        //         this.setErrors(errors)
+        //     })
+
+        //     e.preventDefault()
+        // }
         sendForm(e) {
-            this.form = e.target;
-            this.data = new FormData(e.target)
+            let dataJson = new FormData(e.target)
 
-            axios.post(this.form.action, this.data)
+            this.sendPostForm({ url: e.target.action, data: dataJson })
             .then(res => {
-                console.log(res)
-                this.setResponse(res)
-                this.$emit('sendedForm')
+                if (this.response) {
+                    console.log(this.response)
+                    Swal.fire({
+                        toast: true,
+                        type: 'success',
+                        position: 'top-right',
+                        title: this.response.success,
+                        timer: 200,
+                        showConfirmButton: false
+                    })
+                    .then(() => {
+                        this.$emit('sendedForm')
+                    })
+                }
             })
-            .catch(err => {
-                let errors = err.response.data.errors;
-                this.setErrors(errors)
-            })
-
             e.preventDefault()
         }
     },

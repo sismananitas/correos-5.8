@@ -6,10 +6,16 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
     state: {
+        spinner: `<div class="spinner-border text-primary" role="status">
+        <span class="sr-only">Loading...</span>
+        </div>`,
         response: null,
         errors: null,
         emails: [],
-        email: null,
+        email: {
+            login: null,
+            password: null
+        },
 
         employees: [],
         employee: null,
@@ -79,6 +85,26 @@ export default new Vuex.Store({
             .then(res => {
                 commit('setEmployees', res.data)
                 Swal.close()
+            })
+        },
+
+        sendPostForm({ commit }, { url, data }) {
+            Swal.fire({
+                toast: true,
+                title: 'Cargando...',
+                showConfirmButton: false
+            })
+
+            commit('setResponse', null)
+            commit('setErrors', [])
+
+            return axios.post(url, data)
+            .then(res => {
+                commit('setResponse', res.data)
+            })
+            .catch(failue => {
+                commit('setErrors', failue.response.data.errors)
+                Swal.fire({ type: 'error', title: 'Datos incorrectos' })                
             })
         }
     }
