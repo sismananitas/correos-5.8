@@ -1,6 +1,6 @@
 <template>
     <div>
-        <modal-edit-email></modal-edit-email>
+        <modal-edit-email v-on:formSended="showSuccessToast"></modal-edit-email>
         <modal-employee-email v-on:formSended="showSuccessToast"></modal-employee-email>
         <modal-student-email post-url="/correo/alumnos"></modal-student-email>
 
