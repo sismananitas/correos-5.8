@@ -35,15 +35,16 @@
 
                     <tab-content>
                         <form
+                            v-if="student"
                             ref="formRegisterStudent"
                             :action="base_url + '/correos'"
                         >
                             <input type="hidden" name="emailable_id" :value="student.matricula">
                             <input type="hidden" name="emailable_type" value="student">
 
-                            <!-- <p v-if="plazas.length">
-                                Nombre: {{ plazas[0].nombre }} {{ plazas[0].paterno }} {{ plazas[0].materno }}
-                            </p> -->
+                            <p>
+                                Nombre: {{ student.nombre }} {{ student.ap_paterno }} {{ student.ap_materno }}
+                            </p>
 
                             <!-- <div class="form-group" v-if="plazas.length">
                                 <select class="form-control" name="dependency">
@@ -135,7 +136,7 @@ export default {
     data() {
         return {
             validate: false,
-            student: {}
+            student: null
         }
     },
 
@@ -163,6 +164,7 @@ export default {
                     this.student = this.response.student
                     this.validate = true
                 } else {
+                    this.student = null
                     this.validate = false
                 }
             })
