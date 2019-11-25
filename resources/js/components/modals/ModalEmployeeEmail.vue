@@ -20,22 +20,20 @@
                         >
                             <input v-if="editMode" type="hidden" name="_method" value="put">
                             <div class="modal-body">
-                                <div class="card-body">
-                                    <label for="control_number">Número de control</label>
+                                <label for="control_number">Número de control</label>
 
-                                    <input list="empleados" class="form-control" type="text" name="control_number" required>
-                                    <datalist id="empleados">
-                                        <option
-                                            v-for="employee in employees"
-                                            :key="employee.id"
-                                            :value="employee.numconemp"
-                                        >
-                                            {{ employee.numconemp + ' - ' + employee.nombre }}
-                                        </option>
-                                    </datalist>
+                                <input list="empleados" class="form-control" type="text" name="control_number" required>
+                                <datalist id="empleados">
+                                    <option
+                                        v-for="employee in employees"
+                                        :key="employee.id"
+                                        :value="employee.numconemp"
+                                    >
+                                        {{ employee.numconemp + ' - ' + employee.nombre }}
+                                    </option>
+                                </datalist>
 
-                                    <p class="text-danger" v-if="errors.control_number">{{ errors.control_number[0] }}</p>
-                                </div>                      
+                                <p class="text-danger" v-if="errors.control_number">{{ errors.control_number[0] }}</p>                    
                             </div>
                         </form>
                     </tab-content>
