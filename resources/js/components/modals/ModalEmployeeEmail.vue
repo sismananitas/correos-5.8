@@ -45,14 +45,13 @@
                             ref="formRegisterEmployee"
                             :action="editMode ? base_url + '/correo/trabajadores/' : base_url + '/correo/trabajadores'"
                         >
+                            <input type="text" name="no_control" value="">
                             <div v-if="plazas.length">
                                 <p>
-                                    {{ plazas[0].nombre }} <br>
-                                    {{ plazas[0].paterno }} <br>
-                                    {{ plazas[0].materno }}
+                                    {{ plazas[0].nombre }} {{ plazas[0].paterno }} {{ plazas[0].materno }}
                                 </p>
 
-                                <select name="plaza">
+                                <select class="form-control" name="plaza">
                                     <option
                                         v-for="(plaza, index) in plazas"
                                         :key="index"
@@ -66,15 +65,6 @@
                             </div>
                         </form>
                     </tab-content>
-
-                    <!-- <tab-content
-                        title="Last step"
-                        :before-change=""
-                    >
-                        <form action="">
-
-                        </form>
-                    </tab-content> -->
                 </form-wizard>
             </div>
         </div>
@@ -148,5 +138,8 @@ export default {
 </script>
 
 <style lang="scss">
+.wizard-navigation {
+    padding: 5px;
+}
 //@import url('https://rawgit.com/lykmapipo/themify-icons/master/css/themify-icons.css');
 </style>
