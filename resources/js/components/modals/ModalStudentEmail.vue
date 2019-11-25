@@ -154,7 +154,6 @@ export default {
                     this.student = this.response.student
                     this.validate = true
                 } else {
-                    this.student = null
                     this.validate = false
                 }
             })
