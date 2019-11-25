@@ -14,7 +14,8 @@ export default new Vuex.Store({
         emails: [],
         email: {
             login: null,
-            password: null
+            password: null,
+            status: null
         },
 
         employees: [],
