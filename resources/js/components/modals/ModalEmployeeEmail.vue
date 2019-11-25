@@ -5,6 +5,7 @@
                 <form-wizard
                     title="Correos"
                     subtitle=""
+                    color="#0ba49f"
                     @on-validate="handleValidation"
                     @on-complete="finishProcess"
                 >
