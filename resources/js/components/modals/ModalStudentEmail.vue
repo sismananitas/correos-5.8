@@ -9,7 +9,7 @@
                     @on-complete="finishProcess"
                 >
                     <tab-content
-                        before-change="validateStudent"
+                        :before-change="validateStudent"
                     >
                         <form
                             ref="formAlumno"
