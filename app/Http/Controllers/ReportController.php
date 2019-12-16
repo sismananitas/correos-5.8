@@ -59,11 +59,12 @@ class ReportController extends Controller
     {
         $request->validate($this->rules);
 
-        $data  = $request->all();
-        $field = $data['field'];
-        $value = $data['search'];
+        $data    = $request->all();
+        $field   = $data['field'];
+        $value   = $data['search'];
+        $results = $data['results'];
 
-        $sql = "SELECT FIRST 50 alu.matricula, ap_paterno, ap_materno, alu.nombre,
+        $sql = "SELECT FIRST $results alu.matricula, ap_paterno, ap_materno, alu.nombre,
         situacion, status, gen.telefono, gen.email, gen.curp, car.nombre carrera,
         uni.nombre unidad, ram.descripcion grado
         FROM alumno alu, alumno_general gen, carrera car, unidad uni, rama ram

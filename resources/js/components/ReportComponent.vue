@@ -11,10 +11,6 @@
                 <input type="hidden" name="category" value="trabajadores">
                 <label class="sr-only" for="search">Search...</label>
                 <input class="form-control" :class="{ 'is-invalid' : errors.search ? true : false }" type="text" name="search" placeholder="Search...">
-                
-                <!-- <select name="category">
-                    <option value=""></option>
-                </select> -->
 
                 <label class="sr-only" for="field">Buscar por</label>
                 <select class="form-control mx-2" :class="{ 'is-invalid' : errors.field ? true : false }" name="field">
@@ -29,20 +25,24 @@
                 <button class="btn btn-primary">Buscar</button>
             </form>
 
-            <table class="table table-striped text-align-center mt-3">
+            <table class="table table-striped text-center mt-3">
                 <thead class="thead-dark">
                     <tr>
-                        <th>Id</th>
+                        <th>Curp</th>
                         <th>Nombre</th>
                         <th>Apellidos</th>
+                        <th>Dependencia</th>
+                        <th>Tipo Empleado</th>
                     </tr>
                 </thead>
 
                 <tbody>
                     <tr v-for="trabajador in trabajadores" :key="trabajador.id">
-                        <td>{{ trabajador.name }}</td>
-                        <td>{{ trabajador.name }}</td>
-                        <td>{{ trabajador.apepat }}</td>
+                        <td>{{ trabajador.curp }}</td>
+                        <td>{{ trabajador.nombre }}</td>
+                        <td>{{ trabajador.paterno }} {{ trabajador.materno }}</td>
+                        <td>{{ trabajador.nomdep }}</td>
+                        <td>{{ trabajador.tipemp }}</td>
                     </tr>
                 </tbody>
             </table>
@@ -54,10 +54,6 @@
                 <input type="hidden" name="category" value="alumnos">
                 <label class="sr-only" for="search">Search...</label>
                 <input class="form-control" :class="{ 'is-invalid' : errors.search ? true : false }" type="text" name="search" placeholder="Search...">
-                
-                <!-- <select name="category">
-                    <option value=""></option>
-                </select> -->
 
                 <label class="sr-only" for="field">Buscar por</label>
                 <select class="form-control mx-2" :class="{ 'is-invalid' : errors.field ? true : false }" name="field">
@@ -71,11 +67,13 @@
                 <button class="btn btn-primary">Buscar</button>
             </form>
 
-            <table class="table table-striped text-align-center mt-3">
+            <table class="table table-striped text-center mt-3">
                 <thead class="thead-dark">
                     <tr>
                         <th>Matricula</th>
                         <th>Nombre</th>
+                        <th>Apellidos</th>
+                        <th>Status</th>
                     </tr>
                 </thead>
 
@@ -83,6 +81,8 @@
                     <tr v-for="alumno in alumnos" :key="alumno.id">
                         <td>{{ alumno.matricula }}</td>
                         <td>{{ alumno.nombre }}</td>
+                        <td>{{ alumno.ap_paterno }} {{ alumno.ap_materno }}</td>
+                        <td>{{ alumno.status }}</td>
                     </tr>
                 </tbody>
             </table>
@@ -130,7 +130,7 @@ export default {
         sendForm(e) {
             let dataJson = new FormData(e.target)
             //axios = 'http://148.218.66.73/correos/public'
-            swal.fire({ toast: true, title: 'Cargando...' })
+            swal.fire({ toast: true, title: 'Cargando...', showConfirmButton: false })
             this.errors = {}
 
             axios.post(e.target.action, dataJson)
