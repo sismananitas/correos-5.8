@@ -40,7 +40,7 @@ if (token) {
     console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
 }
 
-window.axios.interceptors.reponse.use(function (response) {
+window.axios.interceptors.response.use(function (response) {
     return response
 }, function (error) {
     let status = error.reponse.status
