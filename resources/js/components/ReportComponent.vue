@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="toolbar button-group">
+        <div class="toolbar btn-group">
             <button class="btn btn-secondary" @click="chView('trabajadores')">Trabajadores</button>
             <button class="btn btn-secondary" @click="chView('alumnos')">Alumnos</button>
         </div>
