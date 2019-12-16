@@ -56,7 +56,6 @@ export default {
         getStudents(url) {
             return axios.get(url)
             .then(res => {
-                console.log(res.data)
                 this.students = res.data;
             })
         }

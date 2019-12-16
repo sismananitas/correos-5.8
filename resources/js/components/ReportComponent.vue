@@ -96,10 +96,11 @@ export default {
             let dataJson = new FormData(e.target)
             //axios = 'http://148.218.66.73/correos/public'
             swal.fire({ type: 'toast', title: 'Cargando...' })
+            this.errors = {}
+            
             axios.post(e.target.action, dataJson)
             .then(res => {
                 swal.close()
-                console.log(res)
             })
             .catch(error => {
                 swal.close()
