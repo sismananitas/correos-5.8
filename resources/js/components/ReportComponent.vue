@@ -1,13 +1,13 @@
 <template>
     <div>
-        <div class="toolbar btn-group">
+        <div class="toolbar btn-group mb-3">
             <button class="btn btn-secondary" :class="{ 'active' : isView('trabajadores') }" @click="changeView('trabajadores')">Trabajadores</button>
             <button class="btn btn-secondary" :class="{ 'active' : isView('alumnos') }" @click="changeView('alumnos')">Alumnos</button>
         </div>
 
         <div class="trabajadores" v-if="isView('trabajadores')">
             <h3>Trabajadores</h3>
-            <form class="form-inline my-2" action="api/reportes/trabajadores" @submit="sendForm">
+            <form class="form-inline" action="api/reportes/trabajadores" @submit="sendForm">
                 <input type="hidden" name="category" value="trabajadores">
                 <label class="sr-only" for="search">Search...</label>
                 <input class="form-control" type="text" name="search" placeholder="Search...">
@@ -15,9 +15,11 @@
                 <!-- <select name="category">
                     <option value=""></option>
                 </select> -->
+                <label class="sr-only" for="field">Buscar por</label>
+                <input class="form-control mx-2" type="text" name="field" placeholder="Campo">
 
                 <label class="sr-only" for="results">Resultados</label>
-                <input class="form-control" type="number" name="results" min="1" value="1">
+                <input class="form-control mr-2" type="number" name="results" min="1" value="1">
 
                 <button class="btn btn-primary">Buscar</button>
             </form>
@@ -33,20 +35,20 @@
 
         <div class="alumnos" v-if="isView('alumnos')">
             <h3>Alumnos</h3>
-            <form class="form-inline my-2" action="api/reportes/alumnos" @submit="sendForm">
+            <form class="form-inline" action="api/reportes/alumnos" @submit="sendForm">
                 <input type="hidden" name="category" value="alumnos">
                 <label class="sr-only" for="search">Search...</label>
                 <input class="form-control" type="text" name="search" placeholder="Search...">
 
                 <label class="sr-only" for="field">Buscar por</label>
-                <input class="form-control" type="text" name="field" placeholder="Campo">
+                <input class="form-control mx-2" type="text" name="field" placeholder="Campo">
                 
                 <!-- <select name="category">
                     <option value=""></option>
                 </select> -->
 
                 <label class="sr-only" for="results">Resultados</label>
-                <input class="form-control" type="number" name="results" min="1" value="1">
+                <input class="form-control mr-2" type="number" name="results" min="1" value="1">
                 <button class="btn btn-primary">Buscar</button>
             </form>
 
@@ -70,7 +72,8 @@ export default {
         return {
             view: 'trabajadores',
             trabajadores: [],
-            alumnos: []
+            alumnos: [],
+            errors: {}
         }
     },
 
@@ -89,11 +92,16 @@ export default {
         },
 
         sendForm(e) {
-            let dataJson = e.target
+            let dataJson = new FormData(e.target)
             //axios = 'http://148.218.66.73/correos/public'
             axios.post(e.target.action, dataJson)
             .then(res => {
                 console.log(res)
+            })
+            .catch(error => {
+                if (error.response.status === 422) {
+                    this.errors = error.response.data.errors
+                }
             })
             e.preventDefault()
         }
