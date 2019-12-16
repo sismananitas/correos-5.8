@@ -43,9 +43,9 @@ if (token) {
 window.axios.interceptors.response.use(function (response) {
     return response
 }, function (error) {
-    let status = error.reponse.status
+    let status = error.response.status
     if (status == 500)
-    alert('Error en el servidor')
+    swal.fire('Error', 'Ocurrión un problema en el servidor', 'danger')
     return Promise.reject(error)
 })
 
