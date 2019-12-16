@@ -45,6 +45,8 @@ Route::get('/empleados/todos', 'EmployeeController@getAllEmployes')->name('emplo
 Route::post('/correo/trabajadores', 'EmployeeController@storeEmail')->name('correo.employee.store');
 Route::resource('empleados', 'EmployeeController');
 
+Route::get('/reportes', 'ReportController@index')->name('reportes.index');
+
 // Departamentales
 Route::post('/correo/departamental', 'DepartamentController@storeEmail')->name('correo.departament.store');
 
