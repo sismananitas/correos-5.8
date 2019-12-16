@@ -97,13 +97,12 @@ export default {
             //axios = 'http://148.218.66.73/correos/public'
             swal.fire({ type: 'toast', title: 'Cargando...' })
             this.errors = {}
-            
+
             axios.post(e.target.action, dataJson)
             .then(res => {
                 swal.close()
             })
             .catch(error => {
-                swal.close()
                 if (error.response.status === 422) {
                     this.errors = error.response.data.errors
                 }
