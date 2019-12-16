@@ -57,26 +57,26 @@ export default new Vuex.Store({
 
     actions: {
         getEmails({ commit }) {
-            axios.get('/correos/public/api/emails')
+            axios.get('/api/emails')
             .then(res => {
                 commit('setEmails', res.data);
             })
         },
         showEmail({ commit }, id) {
-            axios.get('/correos/public/api/emails/' + id)
+            axios.get('/api/emails/' + id)
             .then(res => {
                 commit('setEmail', res.data)
             })
         },
 
         getStudents({ commit }) {
-            axios.get('/correos/public/api/students')
+            axios.get('/api/students')
             .then(res => {
                 commit('setStudents', res.data);
             })
         },
         showStudent({ commit }, id) {
-            axios.get('/correos/public/api/students/' + id)
+            axios.get('/api/students/' + id)
             .then(res => {
                 commit('setStudent', res.data)
             })
@@ -84,7 +84,7 @@ export default new Vuex.Store({
 
         getEmployees({ commit }) {
             swal.showLoading()
-            axios.get('/correos/public/api/employees')
+            axios.get('/api/employees')
             .then(res => {
                 commit('setEmployees', res.data)
                 swal.close()
