@@ -90,7 +90,7 @@ export default {
 
         sendForm(e) {
             let dataJson = e.target
-            axios = 'http://148.218.66.73/correos/public'
+            //axios = 'http://148.218.66.73/correos/public'
             axios.post(e.target.action, dataJson)
             .then(res => {
                 console.log(res)
