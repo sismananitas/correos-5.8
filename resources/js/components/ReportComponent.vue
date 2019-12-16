@@ -90,7 +90,7 @@ export default {
 
         sendForm(e) {
             let dataJson = e.target
-            axios.post(e.target.action, dataJson)
+            window.axios.post(e.target.action, dataJson)
             .then(res => {
                 console.log(res)
             })
