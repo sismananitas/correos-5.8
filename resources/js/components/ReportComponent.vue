@@ -20,6 +20,7 @@
                 <select class="form-control mx-2" :class="{ 'is-invalid' : errors.field ? true : false }" name="field">
                     <option value="">- Elegir -</option>
                     <option value="emplea.nombre">Nombre</option>
+                    <option value="emplea.apepat">Apellido paterno</option>
                 </select>
 
                 <label class="sr-only" for="results">Resultados</label>
@@ -28,12 +29,22 @@
                 <button class="btn btn-primary">Buscar</button>
             </form>
 
-            <table class="table table-striped mt-3">
-                <thead>
+            <table class="table table-striped text-align-center mt-3">
+                <thead class="thead-dark">
                     <tr>
                         <th>Id</th>
+                        <th>Nombre</th>
+                        <th>Apellidos</th>
                     </tr>
                 </thead>
+
+                <tbody>
+                    <tr v-for="trabajador in trabajadores" :key="trabajador.id">
+                        <td>{{ trabajador.name }}</td>
+                        <td>{{ trabajador.name }}</td>
+                        <td>{{ trabajador.apepat }}</td>
+                    </tr>
+                </tbody>
             </table>
         </div>
 
@@ -60,12 +71,20 @@
                 <button class="btn btn-primary">Buscar</button>
             </form>
 
-            <table class="table table-striped mt-3">
-                <thead>
+            <table class="table table-striped text-align-center mt-3">
+                <thead class="thead-dark">
                     <tr>
-                        <th>Id</th>
+                        <th>Matricula</th>
+                        <th>Nombre</th>
                     </tr>
                 </thead>
+
+                <tbody>
+                    <tr v-for="alumno in alumnos" :key="alumno.id">
+                        <td>{{ alumno.matricula }}</td>
+                        <td>{{ alumno.nombre }}</td>
+                    </tr>
+                </tbody>
             </table>
         </div>        
     </div>
@@ -111,12 +130,17 @@ export default {
         sendForm(e) {
             let dataJson = new FormData(e.target)
             //axios = 'http://148.218.66.73/correos/public'
-            swal.fire({ type: 'toast', title: 'Cargando...' })
+            swal.fire({ toast: true, title: 'Cargando...' })
             this.errors = {}
 
             axios.post(e.target.action, dataJson)
             .then(res => {
                 swal.close()
+                if (res.data.type === 'empleados') {
+                    this.trabajadores = res.data.data
+                } else {
+                    this.alumnos = res.data.data
+                }
             })
             .catch(error => {
                 if (error.response.status === 422) {
