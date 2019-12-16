@@ -8,7 +8,7 @@ window._ = require('lodash');
 
 try {
     window.Popper = require('popper.js').default;
-    window.$ = window.jQuery = require('jquery');
+    window.$      = window.jQuery = require('jquery');
     window.swal   = require('sweetalert2');
 
     require('bootstrap');
@@ -42,6 +42,7 @@ if (token) {
 
 window.axios.interceptors.response.use(function (response) {
     return response
+
 }, function (error) {
     let status = error.response.status
     if (status == 500)
