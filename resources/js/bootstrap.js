@@ -45,7 +45,7 @@ window.axios.interceptors.response.use(function (response) {
 }, function (error) {
     let status = error.response.status
     if (status == 500)
-    swal.fire('Error', 'Ocurrión un problema en el servidor', 'danger')
+    swal.fire('Error', 'Ocurrión un problema en el servidor', 'error')
     return Promise.reject(error)
 })
 
