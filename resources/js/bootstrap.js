@@ -24,8 +24,8 @@ try {
 
 window.axios = require('axios')
 
+window.axios.defaults.baseURL = 'http://148.218.66.73/correos/public'
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'
-window.axios.defaults.baseURL = '/correos/public/'
 
 /**
  * Next we will register the CSRF Token as a common header with Axios so that
