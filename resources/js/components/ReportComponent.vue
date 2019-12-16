@@ -1,22 +1,22 @@
 <template>
     <div>
         <div class="toolbar button-group">
-            <button @click="chView('trabajadores')">Trabajadores</button>
-            <button @click="chView('alumnos')">Alumnos</button>
+            <button class="btn btn-secondary" @click="chView('trabajadores')">Trabajadores</button>
+            <button class="btn btn-secondary" @click="chView('alumnos')">Alumnos</button>
         </div>
 
         <div class="trabajadores" v-if="view === 'trabajadores'">
             <h3>Trabajadores</h3>
             <form class="form-inline" action="#">
                 <label for="search">Search...</label>
-                <input type="text" name="search" placeholder="Search...">
+                <input class="form-control" type="text" name="search" placeholder="Search...">
                 
                 <select name="category">
                     <option value=""></option>
                 </select>
 
                 <label for="results">Resultados</label>
-                <input type="number" name="results" min="1" value="1">
+                <input class="form-control" type="number" name="results" min="1" value="1">
 
                 <button class="btn btn-primary">Buscar</button>
             </form>
@@ -34,14 +34,14 @@
             <h3>Alumnos</h3>
             <form class="form-inline" action="#">
                 <label for="search">Search...</label>
-                <input type="text" name="search" placeholder="Search...">
+                <input class="form-control" type="text" name="search" placeholder="Search...">
                 
                 <select name="category">
                     <option value=""></option>
                 </select>
 
                 <label for="results">Resultados</label>
-                <input type="number" name="results" min="1" value="1">
+                <input class="form-control" type="number" name="results" min="1" value="1">
 
                 <button class="btn btn-primary">Buscar</button>
             </form>
