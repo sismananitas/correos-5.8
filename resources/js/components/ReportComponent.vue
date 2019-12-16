@@ -1,11 +1,11 @@
 <template>
     <div>
         <div class="toolbar btn-group">
-            <button class="btn btn-secondary" @click="chView('trabajadores')">Trabajadores</button>
-            <button class="btn btn-secondary" @click="chView('alumnos')">Alumnos</button>
+            <button class="btn btn-secondary" :class="{ 'active' : isView('trabajadores') }" @click="changeView('trabajadores')">Trabajadores</button>
+            <button class="btn btn-secondary" :class="{ 'active' : isView('alumnos') }" @click="changeView('alumnos')">Alumnos</button>
         </div>
 
-        <div class="trabajadores" v-if="view === 'trabajadores'">
+        <div class="trabajadores" v-if="isView('trabajadores')">
             <h3>Trabajadores</h3>
             <form class="form-inline" action="#">
                 <label for="search">Search...</label>
@@ -30,7 +30,7 @@
             </table>
         </div>
 
-        <div class="alumnos" v-if="view === 'alumnos'">
+        <div class="alumnos" v-if="isView('alumnos')">
             <h3>Alumnos</h3>
             <form class="form-inline" action="#">
                 <label for="search">Search...</label>
@@ -66,8 +66,15 @@ export default {
     },
 
     methods: {
-        chView(view) {
+        changeView(view) {
             this.view = view
+        },
+
+        isView(view) {
+            if (this.view === view)
+            return true
+            else
+            return false
         }
     }
 }
