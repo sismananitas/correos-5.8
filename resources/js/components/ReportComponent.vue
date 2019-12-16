@@ -17,7 +17,10 @@
                 </select> -->
 
                 <label class="sr-only" for="field">Buscar por</label>
-                <input class="form-control mx-2" :class="{ 'is-invalid' : errors.field ? true : false }" type="text" name="field" placeholder="Campo">
+                <select class="form-control mx-2" :class="{ 'is-invalid' : errors.field ? true : false }" name="field">
+                    <option value="">- Elegir -</option>
+                    <option value="emplea.nombre">Nombre</option>
+                </select>
 
                 <label class="sr-only" for="results">Resultados</label>
                 <input class="form-control mr-2" :class="{ 'is-invalid' : errors.results ? true : false }" type="number" name="results" min="1" value="1">
@@ -46,7 +49,11 @@
                 </select> -->
 
                 <label class="sr-only" for="field">Buscar por</label>
-                <input class="form-control mx-2" :class="{ 'is-invalid' : errors.field ? true : false }" type="text" name="field" placeholder="Campo">
+                <select class="form-control mx-2" :class="{ 'is-invalid' : errors.field ? true : false }" name="field">
+                    <option value="">- Elegir -</option>
+                    <option value="alu.matricula">Matricula</option>
+                    <option value="alu.nombre">Nombre</option>
+                </select>
 
                 <label class="sr-only" for="results">Resultados</label>
                 <input class="form-control mr-2" :class="{ 'is-invalid' : errors.results ? true : false }" type="number" name="results" min="1" value="1">
@@ -74,7 +81,16 @@ export default {
             view: 'trabajadores',
             trabajadores: [],
             alumnos: [],
-            errors: {}
+            errors: {},
+            campos_trabajador: [
+                { slug: 'emplea.nombre', name: 'Nombre' },
+                { slug: 'emplea.apellidos', name: 'Apellido' }
+            ],
+            campos_alumno: [
+                { slug: 'alu.matricula', name : 'Matricula' },
+                { slug: 'alu.nombre', name: 'Nombre' },
+                { slug: 'alu.apellido', name: 'Apellido' }
+            ]
         }
     },
 

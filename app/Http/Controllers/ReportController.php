@@ -40,7 +40,7 @@ class ReportController extends Controller
         AND plazas.sitemp = 'VI'
         AND plazas.cvedep = depend.clave
         AND plazas.tipemp = tipper.clave
-        AND emplea." . $field . " = '" . $value . "';";
+        AND " . $field . " = '" . $value . "';";
 
         // $sql = "SELECT emplea.nombre, emplea.apepat as paterno, emplea.apemat as materno, depend.clave as cvedep,
         // depend.nombre as nomdep,emplea.curp, plazas.tipemp, TRIM(tipper.nombre) as tipo_puesto
@@ -70,7 +70,7 @@ class ReportController extends Controller
         WHERE alu.carrera_id = car.carrera_id
         AND alu.unidad_id    =  uni.unidad_id
         AND car.rama_id      = ram.rama_id
-        AND alu." . $field . " = '" . $value . "';";
+        AND " . $field . " = '" . $value . "';";
 
         $students = DB::connection('escolares')
         ->select($sql);
