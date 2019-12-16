@@ -7,7 +7,7 @@
 
         <div class="trabajadores" v-if="isView('trabajadores')">
             <h3>Trabajadores</h3>
-            <form class="form-inline my-2" action="/api/reportes/trabajadores" @submit="sendForm">
+            <form class="form-inline my-2" action="api/reportes/trabajadores" @submit="sendForm">
                 <input type="hidden" name="category" value="trabajadores">
                 <label class="sr-only" for="search">Search...</label>
                 <input class="form-control" type="text" name="search" placeholder="Search...">
@@ -33,7 +33,7 @@
 
         <div class="alumnos" v-if="isView('alumnos')">
             <h3>Alumnos</h3>
-            <form class="form-inline my-2" action="/api/reportes/alumnos" @submit="sendForm">
+            <form class="form-inline my-2" action="api/reportes/alumnos" @submit="sendForm">
                 <input type="hidden" name="category" value="alumnos">
                 <label class="sr-only" for="search">Search...</label>
                 <input class="form-control" type="text" name="search" placeholder="Search...">
@@ -91,7 +91,7 @@ export default {
         sendForm(e) {
             let dataJson = e.target
             //axios = 'http://148.218.66.73/correos/public'
-            axios.post('correos/public/' + e.target.action, dataJson)
+            axios.post(e.target.action, dataJson)
             .then(res => {
                 console.log(res)
             })
