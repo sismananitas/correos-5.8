@@ -239,8 +239,10 @@ export default {
         showAlumnosPdf() {
             var doc = new jsPDF();
             doc.text(20, 20, 'Hola mundo')
-            for (let alum in this.alumnos) {
-                doc.text(20, 20, alum.nombre)
+            for (let alum of this.alumnos) {
+                console.log(alum);
+                
+                //doc.text(20, 20, alum.nombre)
             }
             //doc.save('reporte.pdf')
             
