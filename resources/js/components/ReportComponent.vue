@@ -40,10 +40,10 @@
                     type="number" name="results"
                     min="1" value="5"
                 >
-                <button class="btn btn-primary" @click="showTrabajadoresPdf">Buscar</button>
+                <button class="btn btn-primary">Buscar</button>
             </form>
 
-            <button class="btn btn-success">Generar reporte</button>
+            <button class="btn btn-success" @click="showTrabajadoresPdf">Generar reporte</button>
             <table class="table table-striped text-center mt-3">
                 <thead class="thead-dark">
                     <tr>
@@ -228,6 +228,14 @@ export default {
             return false
         },
 
+        showTrabajadoresPdf() {
+            var doc = new jsPDF();
+            doc.text(20, 20, 'Hola mundo')
+            doc.save('reporte.pdf')
+            
+            window.open(doc.output('bloburl'), '_blank')
+        },
+
         showAlumnosPdf() {
             var doc = new jsPDF();
             doc.text(20, 20, 'Hola mundo')
@@ -235,14 +243,6 @@ export default {
                 doc.text(20, 20, alum.nombre)
             }
             //doc.save('reporte.pdf')
-            
-            window.open(doc.output('bloburl'), '_blank')
-        },
-
-        showTrabajadoresPdf() {
-            var doc = new jsPDF();
-            doc.text(20, 20, 'Hola mundo')
-            doc.save('reporte.pdf')
             
             window.open(doc.output('bloburl'), '_blank')
         },
