@@ -87,4 +87,13 @@ class ReportController extends Controller
         
         return response()->json(['type' => 'alumnos', 'data' => $students]);
     }
+
+    public function emails(Request $request)
+    {
+        $request->validate($this->rules);
+        $data = $request->all();
+
+        
+        return response()->json($data);
+    }
 }

@@ -38,11 +38,12 @@
                     class="form-control mr-2"
                     :class="{ 'is-invalid' : errors.results ? true : false }"
                     type="number" name="results"
-                    min="1" value="1"
+                    min="1" value="5"
                 >
                 <button class="btn btn-primary">Buscar</button>
             </form>
 
+            <button class="btn btn-success">Generar reporte</button>
             <table class="table table-striped text-center mt-3">
                 <thead class="thead-dark">
                     <tr>
@@ -97,11 +98,12 @@
                     class="form-control mr-2"
                     :class="{ 'is-invalid' : errors.results ? true : false }"
                     type="number" name="results"
-                    min="1" value="1"
+                    min="1" value="5"
                 >
                 <button class="btn btn-primary">Buscar</button>
             </form>
 
+            <button class="btn btn-success">Generar reporte</button>
             <table class="table table-striped text-center mt-3">
                 <thead class="thead-dark">
                     <tr>
@@ -149,7 +151,9 @@
                     name="field"
                 >
                     <option value="">- Elegir -</option>
-                    <option value="alu.matricula">Matricula</option>
+                    <option value="email">Login</option>
+                    <option value="alumno">Tipo alumno</option>
+                    <option value="trabajador">Tipo trabajador</option>
                     <option value="alu.nombre">Nombre</option>
                 </select>
 
@@ -158,11 +162,12 @@
                     class="form-control mr-2"
                     :class="{ 'is-invalid' : errors.results ? true : false }"
                     type="number" name="results"
-                    min="1" value="1"
+                    min="1" value="5"
                 >
                 <button class="btn btn-primary">Buscar</button>
             </form>
 
+            <button class="btn btn-success">Generar reporte</button>
             <table class="table table-striped text-center mt-3">
                 <thead class="thead-dark">
                     <tr>
@@ -221,6 +226,12 @@ export default {
             return true
             else
             return false
+        },
+
+        showEmailPdf() {
+            var doc = new jsPDF();
+            doc.text(20, 20, 'Hola mundo')
+            doc.save('reporte.pdf')
         },
 
         sendForm(e) {
