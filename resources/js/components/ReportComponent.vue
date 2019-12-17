@@ -109,6 +109,8 @@
                         <th>Nombre</th>
                         <th>Apellidos</th>
                         <th>Status</th>
+                        <th>Grado</th>
+                        <th>Unidad</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -117,6 +119,8 @@
                         <td>{{ alumno.nombre }}</td>
                         <td>{{ alumno.ap_paterno }} {{ alumno.ap_materno }}</td>
                         <td>{{ alumno.status }}</td>
+                        <td>{{ alumno.grado }}</td>
+                        <td>{{ alumno.unidad }}</td>
                     </tr>
                 </tbody>
             </table>
