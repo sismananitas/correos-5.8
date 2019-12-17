@@ -167,7 +167,7 @@
                 <button class="btn btn-primary">Buscar</button>
             </form>
 
-            <button class="btn btn-success">Generar reporte</button>
+            <button class="btn btn-success" @click="showEmailPdf">Generar reporte</button>
             <table class="table table-striped text-center mt-3">
                 <thead class="thead-dark">
                     <tr>
