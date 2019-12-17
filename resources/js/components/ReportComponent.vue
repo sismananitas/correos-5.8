@@ -186,7 +186,13 @@
                     </tr>
                 </tbody>
             </table>
-        </div>      
+        </div> 
+
+        <div id="hoja_pdf">
+            <h1>  
+                Esto es un DIV impreso en PDF
+            </h1>
+        </div>     
     </div>
 </template>
 
@@ -230,8 +236,14 @@ export default {
 
         showEmailPdf() {
             var doc = new jsPDF();
-            doc.text(20, 20, 'Hola mundo')
+            var source = document.getElementById('hoja_pdf')
             //doc.save('reporte.pdf')
+            doc.fromHTML(
+                source,
+                function (dispose) {
+                    doc.save('Prueba.pdf');
+                }
+            )
         },
 
         sendForm(e) {
