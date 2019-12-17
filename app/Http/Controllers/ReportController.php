@@ -31,7 +31,7 @@ class ReportController extends Controller
 
         $data  = $request->all();
         $field = $data['field'];
-        $value = $data['search'];
+        $value = strtoupper($data['search']);
         $results = $data['results'];
 
         $sql = "SELECT FIRST $results emplea.nombre, emplea.apepat as paterno, emplea.apemat as materno, depend.clave as cvedep,
@@ -62,7 +62,7 @@ class ReportController extends Controller
 
         $data    = $request->all();
         $field   = $data['field'];
-        $value   = $data['search'];
+        $value   = strtoupper($data['search']);
         $results = $data['results'];
 
         $sql = "SELECT FIRST $results alu.matricula, ap_paterno, ap_materno, alu.nombre,
