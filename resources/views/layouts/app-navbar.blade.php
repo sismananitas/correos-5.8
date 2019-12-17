@@ -21,12 +21,12 @@
                     <li class="nav-item">
                         <a class="nav-link @if(request()->is('grupos')) active @endif" href="{{ route('grupos.index') }}">Grupos</a>
                     </li>
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a class="nav-link @if(request()->is('empleados')) active @endif" href="{{ route('empleados.index') }}">Empleados</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link @if(request()->is('alumnos')) active @endif" href="{{ route('alumnos.index') }}">Alumnos</a>
-                    </li>
+                    </li> --}}
                 </ul>
             @endauth
 

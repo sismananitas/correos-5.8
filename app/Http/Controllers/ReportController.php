@@ -32,8 +32,9 @@ class ReportController extends Controller
         $data  = $request->all();
         $field = $data['field'];
         $value = $data['search'];
+        $results = $data['results'];
 
-        $sql = "SELECT emplea.nombre, emplea.apepat as paterno, emplea.apemat as materno, depend.clave as cvedep,
+        $sql = "SELECT FIRST $results emplea.nombre, emplea.apepat as paterno, emplea.apemat as materno, depend.clave as cvedep,
         depend.nombre as nomdep, emplea.curp, plazas.tipemp, TRIM(tipper.nombre) as tipo_puesto
         FROM emplea, depend, plazas, tipper
         WHERE emplea.numconemp = plazas.numconemp

@@ -3,25 +3,43 @@
         <div class="toolbar btn-group mb-3">
             <button class="btn btn-secondary" :class="{ 'active' : isView('trabajadores') }" @click="changeView('trabajadores')">Trabajadores</button>
             <button class="btn btn-secondary" :class="{ 'active' : isView('alumnos') }" @click="changeView('alumnos')">Alumnos</button>
+            <button class="btn btn-secondary" :class="{ 'active' : isView('correos') }" @click="changeView('correos')">Correos</button>
         </div>
 
         <div class="trabajadores" v-if="isView('trabajadores')">
             <h3>Trabajadores</h3>
-            <form class="form-inline" action="api/reportes/trabajadores" @submit="sendForm">
+            <form
+                class="form-inline"
+                action="api/reportes/trabajadores"
+                @submit="sendForm"
+            >
                 <input type="hidden" name="category" value="trabajadores">
                 <label class="sr-only" for="search">Search...</label>
-                <input class="form-control" :class="{ 'is-invalid' : errors.search ? true : false }" type="text" name="search" placeholder="Search...">
+                <input
+                    class="form-control"
+                    :class="{ 'is-invalid' : errors.search ? true : false }"
+                    type="text" name="search"
+                    placeholder="Search..."
+                >
 
                 <label class="sr-only" for="field">Buscar por</label>
-                <select class="form-control mx-2" :class="{ 'is-invalid' : errors.field ? true : false }" name="field">
+                <select
+                    class="form-control mx-2"
+                    :class="{ 'is-invalid' : errors.field ? true : false }"
+                    name="field"
+                >
                     <option value="">- Elegir -</option>
                     <option value="emplea.nombre">Nombre</option>
                     <option value="emplea.apepat">Apellido paterno</option>
                 </select>
 
                 <label class="sr-only" for="results">Resultados</label>
-                <input class="form-control mr-2" :class="{ 'is-invalid' : errors.results ? true : false }" type="number" name="results" min="1" value="1">
-
+                <input
+                    class="form-control mr-2"
+                    :class="{ 'is-invalid' : errors.results ? true : false }"
+                    type="number" name="results"
+                    min="1" value="1"
+                >
                 <button class="btn btn-primary">Buscar</button>
             </form>
 
@@ -35,7 +53,6 @@
                         <th>Tipo Empleado</th>
                     </tr>
                 </thead>
-
                 <tbody>
                     <tr v-for="trabajador in trabajadores" :key="trabajador.id">
                         <td>{{ trabajador.curp }}</td>
@@ -50,20 +67,38 @@
 
         <div class="alumnos" v-if="isView('alumnos')">
             <h3>Alumnos</h3>
-            <form class="form-inline" action="api/reportes/alumnos" @submit="sendForm">
+            <form
+                class="form-inline"
+                action="api/reportes/alumnos"
+                @submit="sendForm"
+            >
                 <input type="hidden" name="category" value="alumnos">
                 <label class="sr-only" for="search">Search...</label>
-                <input class="form-control" :class="{ 'is-invalid' : errors.search ? true : false }" type="text" name="search" placeholder="Search...">
+                <input
+                    class="form-control"
+                    :class="{ 'is-invalid' : errors.search ? true : false }"
+                    type="text" name="search"
+                    placeholder="Search..."
+                >
 
                 <label class="sr-only" for="field">Buscar por</label>
-                <select class="form-control mx-2" :class="{ 'is-invalid' : errors.field ? true : false }" name="field">
+                <select
+                    class="form-control mx-2"
+                    :class="{ 'is-invalid' : errors.field ? true : false }"
+                    name="field"
+                >
                     <option value="">- Elegir -</option>
                     <option value="alu.matricula">Matricula</option>
                     <option value="alu.nombre">Nombre</option>
                 </select>
 
                 <label class="sr-only" for="results">Resultados</label>
-                <input class="form-control mr-2" :class="{ 'is-invalid' : errors.results ? true : false }" type="number" name="results" min="1" value="1">
+                <input
+                    class="form-control mr-2"
+                    :class="{ 'is-invalid' : errors.results ? true : false }"
+                    type="number" name="results"
+                    min="1" value="1"
+                >
                 <button class="btn btn-primary">Buscar</button>
             </form>
 
@@ -76,7 +111,6 @@
                         <th>Status</th>
                     </tr>
                 </thead>
-
                 <tbody>
                     <tr v-for="alumno in alumnos" :key="alumno.id">
                         <td>{{ alumno.matricula }}</td>
@@ -86,7 +120,64 @@
                     </tr>
                 </tbody>
             </table>
-        </div>        
+        </div>
+
+        <div class="correos" v-if="isView('correos')">
+            <h3>Correos</h3>
+            <form
+                class="form-inline"
+                action="api/reportes/correos"
+                @submit="sendForm"
+            >
+                <input type="hidden" name="category" value="correos">
+                <label class="sr-only" for="search">Search...</label>
+                <input
+                    class="form-control"
+                    :class="{ 'is-invalid' : errors.search ? true : false }"
+                    type="text" name="search"
+                    placeholder="Search..."
+                >
+
+                <label class="sr-only" for="field">Buscar por</label>
+                <select
+                    class="form-control mx-2"
+                    :class="{ 'is-invalid' : errors.field ? true : false }"
+                    name="field"
+                >
+                    <option value="">- Elegir -</option>
+                    <option value="alu.matricula">Matricula</option>
+                    <option value="alu.nombre">Nombre</option>
+                </select>
+
+                <label class="sr-only" for="results">Resultados</label>
+                <input
+                    class="form-control mr-2"
+                    :class="{ 'is-invalid' : errors.results ? true : false }"
+                    type="number" name="results"
+                    min="1" value="1"
+                >
+                <button class="btn btn-primary">Buscar</button>
+            </form>
+
+            <table class="table table-striped text-center mt-3">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Matricula</th>
+                        <th>Nombre</th>
+                        <th>Apellidos</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="correo in correos" :key="correo.id">
+                        <td>{{ correo.matricula }}</td>
+                        <td>{{ correo.nombre }}</td>
+                        <td>{{ correo.ap_paterno }} {{ correo.ap_materno }}</td>
+                        <td>{{ correo.status }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>      
     </div>
 </template>
 
@@ -100,6 +191,7 @@ export default {
             view: 'trabajadores',
             trabajadores: [],
             alumnos: [],
+            correos: [],
             errors: {},
             campos_trabajador: [
                 { slug: 'emplea.nombre', name: 'Nombre' },
@@ -129,7 +221,6 @@ export default {
 
         sendForm(e) {
             let dataJson = new FormData(e.target)
-            //axios = 'http://148.218.66.73/correos/public'
             swal.fire({ toast: true, title: 'Cargando...', showConfirmButton: false })
             this.errors = {}
 
@@ -138,8 +229,10 @@ export default {
                 swal.close()
                 if (res.data.type === 'empleados') {
                     this.trabajadores = res.data.data
-                } else {
+                } else if (res.data.type === 'alumnos') {
                     this.alumnos = res.data.data
+                } else {
+                    this.correos = res.data.data
                 }
             })
             .catch(error => {
