@@ -232,7 +232,9 @@ export default {
 
         showTrabajadoresPdf() {
             var doc = new jsPDF();
-            doc.text(20, 20, 'Hola mundo')
+            for (let user in users) {
+                doc.text(20, 20, user.nombre)
+            }
             doc.save('reporte.pdf')
             
             window.open(doc.output('bloburl'), '_blank')

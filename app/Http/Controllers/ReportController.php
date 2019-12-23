@@ -107,7 +107,6 @@ class ReportController extends Controller
     {
         $request->validate($this->rules);
         $data = $request->all();
-
         
         return response()->json($data);
     }
