@@ -232,7 +232,7 @@ export default {
 
         showTrabajadoresPdf() {
             var doc = new jsPDF();
-            for (let user in users) {
+            for (let user in this.users) {
                 doc.text(20, 20, user.nombre)
             }
             doc.save('reporte.pdf')
@@ -277,7 +277,6 @@ export default {
                 }
             })
             .catch(error => {
-                console.log(error)
                 if (error.response.status === 422) {
                     swal.close()
                     this.errors = error.response.data.errors
