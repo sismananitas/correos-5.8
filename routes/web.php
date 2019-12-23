@@ -33,18 +33,9 @@ Route::resource('casos', 'TaskController');
 Route::resource('grupos', 'GroupController');
 
 // Correos
-Route::resource('correos', 'EmailController');
+Route::get('/correos', 'EmailController@page');
 
-// Estudiantes
-Route::get('/alumnos/todos', 'StudentController@getAllStudents');
-Route::post('/correo/alumnos', 'StudentController@storeEmail')->name('correo.student.store');
-Route::resource('alumnos', 'StudentController');
-
-// Empleados
-Route::get('/empleados/todos', 'EmployeeController@getAllEmployes')->name('employees.all');
-Route::post('/correo/trabajadores', 'EmployeeController@storeEmail')->name('correo.employee.store');
-Route::resource('empleados', 'EmployeeController');
-
+// Reportes
 Route::get('/reportes', 'ReportController@index')->name('reportes.index');
 
 // Departamentales
@@ -55,14 +46,14 @@ Route::post('/correo/otro', 'OtherController@storeEmail')->name('correo.other.st
 
 // API
 Route::prefix('api')->group(function () {
-    Route::get('/emails', 'ApiEmailController@index')->name('api.emails.index');
-    Route::get('/emails/{email}', 'ApiEmailController@show');
+    Route::get('/emails', 'EmailController@index')->name('api.emails.index');
+    Route::get('/emails/{email}', 'EmailController@show');
 
-    Route::get('/students', 'ApiStudentController@index');
-    Route::post('/students/emails', 'ApiStudentControlle@storeEmail')->name('app.students.emails.store');
+    Route::get('/students', 'StudentController@index');
+    Route::post('/students/emails', 'StudentControlle@storeEmail')->name('app.students.emails.store');
 
-    Route::get('/employees', 'ApiEmployeeController@index');
-    Route::post('/employees/emails', 'ApiEmployeeControlle@storeEmail')->name('app.employees.emails.store');
+    Route::get('/employees', 'EmployeeController@index');
+    Route::post('/employees/emails', 'EmployeeControlle@storeEmail')->name('app.employees.emails.store');
 
     Route::post('/reportes/trabajadores', 'ReportController@trabajadores');
     Route::post('/reportes/alumnos', 'ReportController@alumnos');

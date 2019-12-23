@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreStudentEmail;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class StudentController extends Controller
@@ -20,12 +19,6 @@ class StudentController extends Controller
      */
     public function index()
     {
-        //$students = Student::all();
-        return view('students.index');
-    }
-
-    public function getAllStudents()
-    {
         $sql = "SELECT FIRST 50
         alu.matricula, ap_paterno, ap_materno, alu.nombre, situacion, status, gen.telefono,
         gen.email, gen.curp, car.nombre carrera, uni.nombre unidad, ram.descripcion grado
@@ -37,74 +30,7 @@ class StudentController extends Controller
 
         $students = DB::connection('escolares')
         ->select($sql);
-
         return response()->json($students);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 
     /**
@@ -128,6 +54,6 @@ class StudentController extends Controller
         
         // Busca el estudiante en la DB
         $student = DB::connection('escolares')->select($sql)[0];
-        return response()->json(['success' => 'Validado correctamente.', 'student' => $student]);
+        return $student;
     }
 }

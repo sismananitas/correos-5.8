@@ -46,8 +46,9 @@ class ReportController extends Controller
         WHERE emplea.numconemp = plazas.numconemp
         AND plazas.sitemp = 'VI'
         AND plazas.cvedep = depend.clave
-        AND plazas.tipemp = tipper.clave
-        AND " . $field . " = '" . $value . "';";
+        AND plazas.tipemp = tipper.clave";
+        
+        $sql .= "AND " . $field . " = '" . $value . "';";
 
         $plazas = DB::connection('informix')->select($sql);
         return response()->json(['type' => 'empleados', 'data' => $plazas]);
@@ -69,14 +70,16 @@ class ReportController extends Controller
         $value   = strtoupper($data['search']);
         $results = $data['results'];
 
-        $sql = "SELECT FIRST $results alu.matricula, ap_paterno, ap_materno, alu.nombre,
-        situacion, status, gen.telefono, gen.email, gen.curp, car.nombre carrera,
+        $sql = "SELECT FIRST $results alu.matricula, ap_paterno,
+        ap_materno, alu.nombre, situacion, status, gen.telefono,
+        gen.email, gen.curp, car.nombre carrera,
         uni.nombre unidad, ram.descripcion grado
         FROM alumno alu, alumno_general gen, carrera car, unidad uni, rama ram
         WHERE alu.carrera_id = car.carrera_id
         AND alu.unidad_id    =  uni.unidad_id
-        AND car.rama_id      = ram.rama_id
-        AND " . $field . " = '" . $value . "';";
+        AND car.rama_id      = ram.rama_id";
+
+        $sql .= "AND " . $field . " = '" . $value . "';";
 
         $students = DB::connection('escolares')
         ->select($sql);

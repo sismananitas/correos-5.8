@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Employee;
 use App\Http\Requests\StoreEmployeeEmail;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class EmployeeController extends Controller
@@ -19,16 +17,7 @@ class EmployeeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($page = 1)
-    {
-        // $regPerPage = 15;
-        // $end = $regPerPage * $page;
-        // $start = $end - $regPerPage;
-
-        return view('employees.index');
-    }
-
-    public function getAllEmployes()
+    public function index()
     {
         $sql = "SELECT FIRST 50 hdisco.numconemp, emplea.nombre, emplea.apepat, emplea.apemat, depend.nombre dependencia, emplea.curp, emplea.email
         FROM hdisco, emplea, depend
@@ -41,73 +30,7 @@ class EmployeeController extends Controller
         $employees = DB::connection('informix')
         ->select($sql);
 
-        return response()->json($employees);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        return $employees;
     }
 
     /**
@@ -132,16 +55,9 @@ class EmployeeController extends Controller
 
         $plazas = DB::connection('informix')->select($sql);
 
-        if (!count($plazas)) {
-            return response()->json(['empleado' => 'Este empleado no tiene plazas activas'], 422);
-        }
+        if (!count($plazas))
+        return response()->json(['empleado' => 'Este empleado no tiene plazas activas'], 422);
 
-        return response()
-        ->json([
-            'success'     => 'El empleado se encuentra activo',
-            'num_control' => $num_control,
-            'plazas'      => $plazas,
-            'empleado'    => $plazas[0],
-        ]);
+        return response()->json([ 'num_control' => $num_control, 'plazas' => $plazas, 'empleado' => $plazas[0]]);
     }
 }

@@ -25,6 +25,12 @@ class EmailController extends Controller
     public function index()
     {
         $emails = Email::all();
+        return $emails;
+    }
+    
+    public function page()
+    {
+        $emails = Email::all();
         $students = Student::all();
         $employees = Employee::all();
 
@@ -33,16 +39,6 @@ class EmailController extends Controller
             'students'  => $students,
             'employees' => $employees,
         ]);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
     }
 
     /**
@@ -83,9 +79,9 @@ class EmailController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Email $email)
     {
-        //
+        return $email;
     }
 
     /**
@@ -141,7 +137,8 @@ class EmailController extends Controller
     {
         // TODO: Softdelete
         $correo->delete();
-        return response()->json(['success' => 'El correo ha sido eliminado correctamente']);
+        return response()
+        ->json(['success' => 'El correo ha sido eliminado correctamente']);
 
     }
 
