@@ -275,6 +275,7 @@ export default {
                 }
             })
             .catch(error => {
+                console.log(error)
                 if (error.response.status === 422) {
                     swal.close()
                     this.errors = error.response.data.errors
