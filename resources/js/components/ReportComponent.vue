@@ -6,8 +6,20 @@
             <button class="btn btn-secondary" :class="{ 'active' : isView('correos') }" @click="changeView('correos')">Correos</button>
         </div>
 
-        <label for="curp">Mostrar curp</label>
-        <input type="checkbox" v-model="showCurp">
+        <div>
+            <h4>Capmpos a mostrar</h4> <br>
+            <label for="curp">Curp / Matricula</label>
+            <input type="checkbox" v-model="showCurp">
+
+            <label for="depend">Dependencia / Unidad</label>
+            <input type="checkbox" v-model="showDepend">
+
+            <label for="grade">Grado</label>
+            <input type="checkbox" v-model="showGrade">
+
+            <label for="type-emplea">Tipo Empleado</label>
+            <input type="checkbox" v-model="showTypeEmplea">
+        </div>
 
         <div class="trabajadores" v-if="isView('trabajadores')">
             <h3>Trabajadores</h3>
@@ -53,8 +65,8 @@
                         <th v-if="showCurp">Curp</th>
                         <th>Nombre</th>
                         <th>Apellidos</th>
-                        <th>Dependencia</th>
-                        <th>T.E.</th>
+                        <th v-if="showDepend">Dependencia</th>
+                        <th v-if="showTypeEmplea">T. Empleado</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -62,8 +74,8 @@
                         <td v-if="showCurp">{{ trabajador.curp }}</td>
                         <td>{{ trabajador.nombre }}</td>
                         <td>{{ trabajador.paterno }} {{ trabajador.materno }}</td>
-                        <td>{{ trabajador.nomdep }}</td>
-                        <td>{{ trabajador.tipemp }}</td>
+                        <td v-if="showDepend">{{ trabajador.nomdep }}</td>
+                        <td v-if="showTypeEmplea">{{ trabajador.tipemp }}</td>
                     </tr>
                 </tbody>
             </table>
@@ -109,23 +121,23 @@
             <button class="btn btn-success mt-3" @click="showAlumnosPdf">Generar reporte</button>
             <table class="table table-striped text-center mt-3">
                 <thead class="thead-dark">
-                    <tr>
+                    <tr v-if="showCurp">
                         <th>Matricula</th>
                         <th>Nombre</th>
                         <th>Apellidos</th>
                         <th>Status</th>
-                        <th>Grado</th>
-                        <th>Unidad</th>
+                        <th v-if="showGrade">Grado</th>
+                        <th v-if="showDepend">Unidad</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr v-for="alumno in alumnos" :key="alumno.id">
-                        <td>{{ alumno.matricula }}</td>
+                        <td v-if="showCurp">{{ alumno.matricula }}</td>
                         <td>{{ alumno.nombre }}</td>
                         <td>{{ alumno.ap_paterno }} {{ alumno.ap_materno }}</td>
                         <td>{{ alumno.status }}</td>
-                        <td>{{ alumno.grado }}</td>
-                        <td>{{ alumno.unidad }}</td>
+                        <td v-if="showGrade">{{ alumno.grado }}</td>
+                        <td v-if="showDepend">{{ alumno.unidad }}</td>
                     </tr>
                 </tbody>
             </table>
@@ -215,7 +227,10 @@ export default {
                 { slug: 'alu_nombre', name: 'Nombre' },
                 { slug: 'alu_apellido', name: 'Apellido' }
             ],
-            showCurp: true
+            showCurp: true,
+            showDepend: true,
+            showGrade: true,
+            showTypeEmplea: true
         }
     },
 
