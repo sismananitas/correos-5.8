@@ -233,13 +233,14 @@ export default {
         showTrabajadoresPdf() {
             var doc = new jsPDF();
             let users = this.trabajadores
+            let cursor = 20
 
-            doc.setFontSize(40)
+            doc.setFontSize(12)
 
             for (let i in users) {
                 let name = users[i].nombre + ' ' + users[i].paterno + ' ' + users[i].materno
-                console.log(name)
-                doc.text(20, 20, name)
+                doc.text(20, cursor, name)
+                cursor += 20
             }
             doc.save('reporte.pdf')
             
