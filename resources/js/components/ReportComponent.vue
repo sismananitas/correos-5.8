@@ -235,12 +235,12 @@ export default {
             let users = this.trabajadores
             let cursor = 20
 
-            doc.setFontSize(12)
+            doc.setFontSize(10)
 
             for (let i in users) {
                 let name = users[i].nombre + ' ' + users[i].paterno + ' ' + users[i].materno
                 doc.text(20, cursor, name)
-                cursor += 10
+                cursor += 8
             }
             doc.save('reporte.pdf')
             
