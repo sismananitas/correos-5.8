@@ -241,9 +241,9 @@ export default {
                 console.log(name)
                 doc.text(20, 20, name)
             }
-            //doc.save('reporte.pdf')
+            doc.save('reporte.pdf')
             
-            //window.open(doc.output('bloburl'), '_blank')
+            window.open(doc.output('bloburl'), '_blank')
         },
 
         showAlumnosPdf() {
