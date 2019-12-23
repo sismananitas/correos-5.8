@@ -6,6 +6,9 @@
             <button class="btn btn-secondary" :class="{ 'active' : isView('correos') }" @click="changeView('correos')">Correos</button>
         </div>
 
+        <label for="curp">Mostrar curp</label>
+        <input type="checkbox" v-model="showCurp">
+
         <div class="trabajadores" v-if="isView('trabajadores')">
             <h3>Trabajadores</h3>
             <form
@@ -47,7 +50,7 @@
             <table id="table_trabajadores" class="table table-striped text-center mt-3">
                 <thead class="thead-dark">
                     <tr>
-                        <th>Curp</th>
+                        <th v-if="showCurp">Curp</th>
                         <th>Nombre</th>
                         <th>Apellidos</th>
                         <th>Dependencia</th>
@@ -56,7 +59,7 @@
                 </thead>
                 <tbody>
                     <tr v-for="trabajador in trabajadores" :key="trabajador.id">
-                        <td>{{ trabajador.curp }}</td>
+                        <td v-if="showCurp">{{ trabajador.curp }}</td>
                         <td>{{ trabajador.nombre }}</td>
                         <td>{{ trabajador.paterno }} {{ trabajador.materno }}</td>
                         <td>{{ trabajador.nomdep }}</td>
@@ -151,11 +154,9 @@
                     :class="{ 'is-invalid' : errors.field ? true : false }"
                     name="field"
                 >
-                    <option value="">- Elegir -</option>
                     <option value="email">Login</option>
                     <option value="alumno">Tipo alumno</option>
                     <option value="trabajador">Tipo trabajador</option>
-                    <option value="alu_nombre">Nombre</option>
                 </select>
 
                 <label class="sr-only" for="results">Resultados</label>
@@ -213,7 +214,8 @@ export default {
                 { slug: 'alu_matricula', name : 'Matricula' },
                 { slug: 'alu_nombre', name: 'Nombre' },
                 { slug: 'alu_apellido', name: 'Apellido' }
-            ]
+            ],
+            showCurp: true
         }
     },
 
