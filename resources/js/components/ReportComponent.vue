@@ -44,7 +44,7 @@
             </form>
 
             <button class="btn btn-success mt-3" @click="showTrabajadoresPdf">Generar reporte</button>
-            <table class="table table-striped text-center mt-3">
+            <table id="table_trabajadores" class="table table-striped text-center mt-3">
                 <thead class="thead-dark">
                     <tr>
                         <th>Curp</th>
@@ -195,6 +195,7 @@
 <script>
 import { mapActions } from 'vuex'
 import jsPDF from 'jspdf'
+import 'jspdf-autotable'
 
 export default {
     data() {
@@ -244,10 +245,14 @@ export default {
             doc.setFontSize(10)
 
             for (let i in users) {
-                let name = users[i].nombre + ' ' + users[i].paterno + ' ' + users[i].materno
+                let name = users[i].curp + ' ' + users[i].nombre
+                + ' ' + users[i].paterno + ' ' + users[i].materno
+
                 doc.text(cursorX, cursorY, name)
                 cursorY += lineStep
             }
+            doc.autoTable('#table_trabajadores')
+
             doc.save('reporte.pdf')
             
             window.open(doc.output('bloburl'), '_blank')
