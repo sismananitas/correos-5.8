@@ -51,7 +51,7 @@
                         <th>Nombre</th>
                         <th>Apellidos</th>
                         <th>Dependencia</th>
-                        <th>T. Empleado</th>
+                        <th>T.E.</th>
                     </tr>
                 </thead>
                 <tbody>
