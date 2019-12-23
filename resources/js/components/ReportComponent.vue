@@ -251,7 +251,7 @@ export default {
                 doc.text(cursorX, cursorY, name)
                 cursorY += lineStep
             }
-            doc.autoTable('#table_trabajadores')
+            doc.autoTable({ html: '#table_trabajadores' })
 
             doc.save('reporte.pdf')
             
