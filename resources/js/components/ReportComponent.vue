@@ -249,7 +249,7 @@ export default {
 
             doc.autoTable({
                 html: '#table_trabajadores',
-                margin: { top: 20 }
+                margin: { top: 32 }
             })
             cursorY += lineStep
 
