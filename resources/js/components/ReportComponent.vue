@@ -233,13 +233,16 @@ export default {
         showTrabajadoresPdf() {
             var doc = new jsPDF();
             let users = this.trabajadores
+
+            doc.setFontSize(40)
+
             for (let i in users) {
                 console.log(users[i])
-                doc.text(20, 20, users[i].nombre)
+                //doc.text(20, 20, users[i].nombre)
             }
-            doc.save('reporte.pdf')
+            //doc.save('reporte.pdf')
             
-            window.open(doc.output('bloburl'), '_blank')
+            //window.open(doc.output('bloburl'), '_blank')
         },
 
         showAlumnosPdf() {
