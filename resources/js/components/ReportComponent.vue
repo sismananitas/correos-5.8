@@ -8,22 +8,22 @@
 
         <h4>Campos a mostrar</h4>
         <div class="d-flex align-items-center">
-            <div class="form-group">
+            <div class="form-group mr-3">
                 <label for="curp">Curp / Matricula</label>
                 <input type="checkbox" v-model="showCurp">
             </div>
 
-            <div class="form-group">
+            <div class="form-group mr-3">
                 <label for="depend">Dependencia / Unidad</label>
                 <input type="checkbox" v-model="showDepend">
             </div>
 
-            <div class="form-group">
+            <div class="form-group mr-3">
                 <label for="grade">Grado</label>
                 <input type="checkbox" v-model="showGrade">
             </div>
 
-            <div class="form-group">
+            <div class="form-group mr-3">
                 <label for="type-emplea">Tipo Empleado</label>
                 <input type="checkbox" v-model="showTypeEmplea">
             </div>
