@@ -30,7 +30,7 @@ class ReportController extends Controller
         $request->validate($this->rules);
 
         $data  = $request->all();
-        $field = $data['field'];
+        $field = str_replace('_', '.', $data['field']);
         $value = strtoupper($data['search']);
         $results = $data['results'];
 
@@ -61,7 +61,7 @@ class ReportController extends Controller
         $request->validate($this->rules);
 
         $data    = $request->all();
-        $field   = $data['field'];
+        $field   = str_replace('_', '.', $data['field']);
         $value   = strtoupper($data['search']);
         $results = $data['results'];
 

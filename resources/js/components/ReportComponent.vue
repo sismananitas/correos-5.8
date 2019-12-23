@@ -28,9 +28,9 @@
                     :class="{ 'is-invalid' : errors.field ? true : false }"
                     name="field"
                 >
-                    <option value="emplea.numconemp"># control</option>
-                    <option value="emplea.nombre">Nombre</option>
-                    <option value="emplea.apepat">Apellido paterno</option>
+                    <option value="emplea_numconemp"># control</option>
+                    <option value="emplea_nombre">Nombre</option>
+                    <option value="emplea_apepat">Apellido paterno</option>
                 </select>
 
                 <label class="sr-only" for="results">Resultados</label>
@@ -90,8 +90,8 @@
                     :class="{ 'is-invalid' : errors.field ? true : false }"
                     name="field"
                 >
-                    <option value="alu.matricula">Matricula</option>
-                    <option value="alu.nombre">Nombre</option>
+                    <option value="alu_matricula">Matricula</option>
+                    <option value="alu_nombre">Nombre</option>
                 </select>
 
                 <label class="sr-only" for="results">Resultados</label>
@@ -155,7 +155,7 @@
                     <option value="email">Login</option>
                     <option value="alumno">Tipo alumno</option>
                     <option value="trabajador">Tipo trabajador</option>
-                    <option value="alu.nombre">Nombre</option>
+                    <option value="alu_nombre">Nombre</option>
                 </select>
 
                 <label class="sr-only" for="results">Resultados</label>
@@ -204,13 +204,13 @@ export default {
             correos: [],
             errors: {},
             campos_trabajador: [
-                { slug: 'emplea.nombre', name: 'Nombre' },
-                { slug: 'emplea.apellidos', name: 'Apellido' }
+                { slug: 'emplea_nombre', name: 'Nombre' },
+                { slug: 'emplea_apellidos', name: 'Apellido' }
             ],
             campos_alumno: [
-                { slug: 'alu.matricula', name : 'Matricula' },
-                { slug: 'alu.nombre', name: 'Nombre' },
-                { slug: 'alu.apellido', name: 'Apellido' }
+                { slug: 'alu_matricula', name : 'Matricula' },
+                { slug: 'alu_nombre', name: 'Nombre' },
+                { slug: 'alu_apellido', name: 'Apellido' }
             ]
         }
     },
