@@ -245,7 +245,7 @@ export default {
             doc.text(100, cursorY, 'Trabajadores', 'center')
             cursorY += lineStep
             cursorY += lineStep
-            doc.setFontSize(10)
+            doc.setFontSize(9)
 
             doc.autoTable({
                 html: '#table_trabajadores',
