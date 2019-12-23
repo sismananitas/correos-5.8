@@ -10,13 +10,13 @@
 
     <title>@yield('title', config('app.name', 'Laravel'))</title>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-    @stack('scripts')
-
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     @stack('styles')
+    
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
+    @stack('scripts')
 </head>
 <body>
     <div id="app">
