@@ -6,19 +6,27 @@
             <button class="btn btn-secondary" :class="{ 'active' : isView('correos') }" @click="changeView('correos')">Correos</button>
         </div>
 
-        <div>
-            <h4>Capmpos a mostrar</h4> <br>
-            <label for="curp">Curp / Matricula</label>
-            <input type="checkbox" v-model="showCurp">
+        <h4>Campos a mostrar</h4>
+        <div class="d-flex align-items-center">
+            <div class="form-group">
+                <label for="curp">Curp / Matricula</label>
+                <input type="checkbox" v-model="showCurp">
+            </div>
 
-            <label for="depend">Dependencia / Unidad</label>
-            <input type="checkbox" v-model="showDepend">
+            <div class="form-group">
+                <label for="depend">Dependencia / Unidad</label>
+                <input type="checkbox" v-model="showDepend">
+            </div>
 
-            <label for="grade">Grado</label>
-            <input type="checkbox" v-model="showGrade">
+            <div class="form-group">
+                <label for="grade">Grado</label>
+                <input type="checkbox" v-model="showGrade">
+            </div>
 
-            <label for="type-emplea">Tipo Empleado</label>
-            <input type="checkbox" v-model="showTypeEmplea">
+            <div class="form-group">
+                <label for="type-emplea">Tipo Empleado</label>
+                <input type="checkbox" v-model="showTypeEmplea">
+            </div>
         </div>
 
         <div class="trabajadores" v-if="isView('trabajadores')">
