@@ -29,10 +29,13 @@ class ReportController extends Controller
     {
         $request->validate($this->rules);
 
-        $data  = $request->all();
+        $data = $request->all();
 
         if ($data['field'] === 'emplea_numconemp' && !is_numeric($data['search'])) {
-            return response(['message' => 'Tipo de dato incorrecto.'], 422);
+            return response([
+                'message' => 'Error',
+                'errors' => ['search' => ['Tipo de dato incorrecto']]
+            ], 422);
         }
         $field = str_replace('_', '.', $data['field']);
         $value = strtoupper($data['search']);
@@ -64,10 +67,13 @@ class ReportController extends Controller
     {
         $request->validate($this->rules);
 
-        $data    = $request->all();
+        $data = $request->all();
 
         if ($data['field'] === 'alu_matricula' && !is_numeric($data['search'])) {
-            return response(['message' => 'Tipo de dato incorrecto.'], 422);
+            return response([
+                'message' => 'Error',
+                'errors' => ['search' => ['Tipo de dato incorrecto']]
+            ], 422);
         }
 
         $field   = str_replace('_', '.', $data['field']);
