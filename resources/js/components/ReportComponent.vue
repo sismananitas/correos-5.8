@@ -237,8 +237,9 @@ export default {
             doc.setFontSize(40)
 
             for (let i in users) {
-                console.log(users[i].nombre + ' ' + users[i].paterno)
-                //doc.text(20, 20, users[i].nombre)
+                let name = users[i].nombre + ' ' + users[i].paterno + ' ' + users[i].materno
+                console.log(name)
+                doc.text(20, 20, name)
             }
             //doc.save('reporte.pdf')
             
