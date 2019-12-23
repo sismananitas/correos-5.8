@@ -31,7 +31,7 @@ class ReportController extends Controller
 
         $data  = $request->all();
 
-        if ($data['field'] === 'numconemp' && !is_numeric($data['search'])) {
+        if ($data['field'] === 'emplea_numconemp' && !is_numeric($data['search'])) {
             return response(['message' => 'Tipo de dato incorrecto.'], 422);
         }
         $field = str_replace('_', '.', $data['field']);
