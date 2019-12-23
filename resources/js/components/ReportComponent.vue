@@ -240,7 +240,7 @@ export default {
             for (let i in users) {
                 let name = users[i].nombre + ' ' + users[i].paterno + ' ' + users[i].materno
                 doc.text(20, cursor, name)
-                cursor += 5
+                cursor += 6
             }
             doc.save('reporte.pdf')
             
