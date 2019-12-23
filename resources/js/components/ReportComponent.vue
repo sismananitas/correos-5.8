@@ -237,9 +237,10 @@ export default {
             let cursorY  = 20
             let lineStep = 6
 
-            doc.setFontSize(10)
-            doc.text(cursorX, cursorY, 'Trabajadores', 'center')
+            doc.setFontSize(40)
+            doc.text(140, cursorY, 'Trabajadores', 'center')
             cursorY += lineStep
+            doc.setFontSize(10)
 
             for (let i in users) {
                 let name = users[i].nombre + ' ' + users[i].paterno + ' ' + users[i].materno
