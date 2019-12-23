@@ -251,15 +251,6 @@ export default {
                 html: '#table_trabajadores',
                 margin: { top: 32 }
             })
-            cursorY += lineStep
-
-            for (let i in users) {
-                let name = users[i].curp + ' ' + users[i].nombre
-                + ' ' + users[i].paterno + ' ' + users[i].materno
-
-                doc.text(cursorX, cursorY, name)
-                cursorY += lineStep
-            }
 
             doc.save('reporte.pdf')
             
