@@ -64,6 +64,8 @@
                     </tr>
                 </tbody>
             </table>
+
+            <div v-if="!trabajadores.length" class="alert">No hay resultados.</div>
         </div>
 
         <div class="alumnos" v-if="isView('alumnos')">
