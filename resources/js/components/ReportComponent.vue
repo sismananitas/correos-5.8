@@ -64,7 +64,6 @@
                     </tr>
                 </tbody>
             </table>
-
             <div v-if="!trabajadores.length" class="alert alert-secondary">No hay resultados.</div>
         </div>
 
@@ -127,6 +126,7 @@
                     </tr>
                 </tbody>
             </table>
+            <div v-if="!alumnos.length" class="alert alert-secondary">No hay resultados.</div>
         </div>
 
         <div class="correos" v-if="isView('correos')">
@@ -187,7 +187,8 @@
                     </tr>
                 </tbody>
             </table>
-        </div>      
+            <div v-if="!correos.length" class="alert alert-secondary">No hay resultados.</div>
+        </div>
     </div>
 </template>
 
