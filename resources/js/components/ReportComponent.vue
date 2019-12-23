@@ -193,9 +193,9 @@
             <table class="table table-striped text-center mt-3">
                 <thead class="thead-dark">
                     <tr>
-                        <th>Matricula</th>
-                        <th>Nombre</th>
-                        <th>Apellidos</th>
+                        <th>Id</th>
+                        <th>Login</th>
+                        <th>Tipo</th>
                         <th>Status</th>
                     </tr>
                 </thead>

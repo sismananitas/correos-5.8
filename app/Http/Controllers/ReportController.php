@@ -89,6 +89,7 @@ class ReportController extends Controller
         $request->validate($this->rules);
         $data = $request->all();
         
-        return response()->json($data);
+        $emails = DB::table('emails')->all();
+        return response()->json(['type' => 'emails', 'data' => $emails]);
     }
 }
