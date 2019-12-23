@@ -28,7 +28,7 @@
                     :class="{ 'is-invalid' : errors.field ? true : false }"
                     name="field"
                 >
-                    <option value="">- Elegir -</option>
+                    <option value="emplea.numconemp"># control</option>
                     <option value="emplea.nombre">Nombre</option>
                     <option value="emplea.apepat">Apellido paterno</option>
                 </select>
@@ -88,7 +88,6 @@
                     :class="{ 'is-invalid' : errors.field ? true : false }"
                     name="field"
                 >
-                    <option value="">- Elegir -</option>
                     <option value="alu.matricula">Matricula</option>
                     <option value="alu.nombre">Nombre</option>
                 </select>
@@ -240,8 +239,7 @@ export default {
             var doc = new jsPDF();
             doc.text(20, 20, 'Hola mundo')
             for (let alum of this.alumnos) {
-                console.log(alum);
-                
+                console.log(alum)
                 //doc.text(20, 20, alum.nombre)
             }
             //doc.save('reporte.pdf')
