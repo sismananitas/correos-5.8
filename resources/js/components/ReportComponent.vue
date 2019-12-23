@@ -43,7 +43,7 @@
                 <button class="btn btn-primary">Buscar</button>
             </form>
 
-            <button class="btn btn-success" @click="showTrabajadoresPdf">Generar reporte</button>
+            <button class="btn btn-success mt-3" @click="showTrabajadoresPdf">Generar reporte</button>
             <table class="table table-striped text-center mt-3">
                 <thead class="thead-dark">
                     <tr>
@@ -104,7 +104,7 @@
                 <button class="btn btn-primary">Buscar</button>
             </form>
 
-            <button class="btn btn-success" @click="showAlumnosPdf">Generar reporte</button>
+            <button class="btn btn-success mt-3" @click="showAlumnosPdf">Generar reporte</button>
             <table class="table table-striped text-center mt-3">
                 <thead class="thead-dark">
                     <tr>
@@ -168,7 +168,7 @@
                 <button class="btn btn-primary">Buscar</button>
             </form>
 
-            <button class="btn btn-success" @click="showEmailPdf">Generar reporte</button>
+            <button class="btn btn-success mt-3" @click="showEmailPdf">Generar reporte</button>
             <table class="table table-striped text-center mt-3">
                 <thead class="thead-dark">
                     <tr>
