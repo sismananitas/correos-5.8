@@ -30,6 +30,10 @@ class ReportController extends Controller
         $request->validate($this->rules);
 
         $data  = $request->all();
+
+        if ($data['field'] === 'numconemp' && !is_numeric($data['search'])) {
+            return response(['message' => 'Tipo de dato incorrecto.'], 422);
+        }
         $field = str_replace('_', '.', $data['field']);
         $value = strtoupper($data['search']);
         $results = $data['results'];
