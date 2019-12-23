@@ -232,9 +232,10 @@ export default {
 
         showTrabajadoresPdf() {
             var doc = new jsPDF();
-            for (let i in this.trabajadores) {
-                console.log(this.trabajadores[i])
-                doc.text(20, 20, this.trabajadores[i].nombre)
+            let users = this.trabajadores
+            for (let i in users) {
+                console.log(users[i])
+                doc.text(20, 20, users[i].nombre)
             }
             doc.save('reporte.pdf')
             
