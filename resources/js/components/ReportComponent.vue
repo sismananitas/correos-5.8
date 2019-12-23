@@ -231,6 +231,9 @@ export default {
             return false
         },
 
+        /**
+         * Crea el reporte y lo emprime en otra pestaña
+         */
         showTrabajadoresPdf() {
             var doc = new jsPDF();
             let users    = this.trabajadores
@@ -244,6 +247,12 @@ export default {
             cursorY += lineStep
             doc.setFontSize(10)
 
+            doc.autoTable({
+                html: '#table_trabajadores',
+                margin: { top: 20 }
+            })
+            cursorY += lineStep
+
             for (let i in users) {
                 let name = users[i].curp + ' ' + users[i].nombre
                 + ' ' + users[i].paterno + ' ' + users[i].materno
@@ -251,13 +260,15 @@ export default {
                 doc.text(cursorX, cursorY, name)
                 cursorY += lineStep
             }
-            doc.autoTable({ html: '#table_trabajadores' })
 
             doc.save('reporte.pdf')
             
             window.open(doc.output('bloburl'), '_blank')
         },
 
+        /**
+         * Crea el reporte de los alumnos y los imprime en otra pestaña.
+         */
         showAlumnosPdf() {
             var doc = new jsPDF();
             doc.text(20, 20, 'Hola mundo')
