@@ -195,15 +195,17 @@
                     <tr>
                         <th>Id</th>
                         <th>Login</th>
+                        <th>Password</th>
                         <th>Tipo</th>
                         <th>Status</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr v-for="correo in correos" :key="correo.id">
-                        <td>{{ correo.matricula }}</td>
-                        <td>{{ correo.nombre }}</td>
-                        <td>{{ correo.ap_paterno }} {{ correo.ap_materno }}</td>
+                        <td>{{ correo.id }}</td>
+                        <td>{{ correo.login }}</td>
+                        <td>{{ correo.password }}</td>
+                        <td>{{ correo.tipo }}</td>
                         <td>{{ correo.status }}</td>
                     </tr>
                 </tbody>
