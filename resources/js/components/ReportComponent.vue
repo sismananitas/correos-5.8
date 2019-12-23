@@ -237,8 +237,9 @@ export default {
             let cursorY  = 20
             let lineStep = 6
 
-            doc.setFontSize(40)
+            doc.setFontSize(30)
             doc.text(100, cursorY, 'Trabajadores', 'center')
+            cursorY += lineStep
             cursorY += lineStep
             doc.setFontSize(10)
 
