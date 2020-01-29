@@ -10,7 +10,7 @@
 
     <title>@yield('title', config('app.name', 'Laravel'))</title>
 
-    <link rel="stylesheet" href="{{ asset('fonts/webfa-regular-400.ttf') }}">
+    <link rel="stylesheet" href="{{ asset('fonts/vendor/@fortawesome/fontawesome-free/webfa-regular-400.ttf') }}">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
