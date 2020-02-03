@@ -12,6 +12,6 @@ w.showLoading = () => {
     })
 }
 
-w.closeLoading = () => {
-    Swal.close()
-}
+w.closeLoading = () => Swal.close()
+
+w.preventDefault = (e) => e.preventDefault()

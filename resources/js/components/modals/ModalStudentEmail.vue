@@ -17,6 +17,7 @@
                             ref="formAlumno"
                             action="#"
                             autocomplete="off"
+                            @submit="preventDefault"
                         >
                             <div class="modal-body">
                                 <div class="form-group">
