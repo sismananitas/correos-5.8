@@ -69,7 +69,7 @@ import { mapState, mapActions } from 'vuex';
 export default {
     data() {
         return {
-            student: ''
+            student: {}
         }
     },
     computed: {
@@ -80,7 +80,7 @@ export default {
         ...mapActions(['getEmails', 'showStudent', 'showEmail']),
 
         editEmail(email) {
-            axios.get('/api/students/' + email.id)
+            axios.get('api/students/' + email.id)
             .then(res => {
                 this.student = res.data
             })
