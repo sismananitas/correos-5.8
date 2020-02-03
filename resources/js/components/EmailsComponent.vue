@@ -67,28 +67,20 @@
 import { mapState, mapActions } from 'vuex';
 
 export default {
-    data() {
-        return {
-            student: {}
-        }
-    },
     computed: {
-        ...mapState(['emails', 'response'])
+        ...mapState(['emails', 'student', 'response'])
     },
 
     methods: {
         ...mapActions(['getEmails', 'showStudent', 'showEmail']),
 
         editEmail(email) {
-            this.showStudent(email.id)
-            axios.get('api/students/' + email.id)
-            .then(res => {
-                this.student = res.data
-            })
+            this.showEmail(email.id)
             .then(() => {
                 $('#editEmail').modal('show')
             })
         },
+
         showSuccessToast() {
             swal.fire({
                 toast: true,
@@ -101,6 +93,7 @@ export default {
             this.getEmails()
         }
     },
+
     mounted() {
         this.getEmails()
     }

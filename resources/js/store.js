@@ -61,13 +61,13 @@ export default new Vuex.Store({
             })
         },
         showEmail({ commit }, id) {
-            axios.get('/api/emails/' + id)
+            return axios.get('/api/emails/' + id)
             .then(res => {
                 commit('setEmail', res.data)
             })
         },
         getStudents({ commit }) {
-            axios.get('/api/students')
+            return axios.get('/api/students')
             .then(res => {
                 commit('setStudents', res.data);
             })
