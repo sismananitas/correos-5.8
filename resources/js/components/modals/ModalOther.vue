@@ -5,8 +5,7 @@
             action="#"
             @submit.prevent=""
         >
-            <input type="hidden" name="emailable_type" value="other">endencia: {{ student.unidad }}
-            </p>
+            <input type="hidden" name="emailable_type" value="other">
             <div class="form-row">
                 <div class="form-group col">
                     <label for="client_name">Solicitante del cambio</label>
