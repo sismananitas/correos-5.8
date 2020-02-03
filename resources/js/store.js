@@ -4,11 +4,7 @@ import Vuex from 'vuex';
 Vue.use(Vuex)
 
 export default new Vuex.Store({
-    state: {
-        spinner: `<div class="spinner-border text-primary" role="status">
-        <span class="sr-only">Loading...</span>
-        </div>`,
-        
+    state: {        
         response: null,
         errors: [],
         emails: {},
@@ -89,11 +85,7 @@ export default new Vuex.Store({
         },
 
         sendPostForm({ commit }, { url, data }) {
-            swal.fire({
-                toast: true,
-                title: 'Cargando...',
-                showConfirmButton: false
-            })
+            showLoading()
 
             commit('setResponse', null)
             commit('setErrors', [])
