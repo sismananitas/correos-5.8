@@ -44,7 +44,8 @@ class StudentController extends Controller
         $data = $request->validated();
         $enrollment = $data['enrollment'];
 
-        $sql = "SELECT alu.matricula, ap_paterno, ap_materno, alu.nombre, situacion, status, gen.telefono, gen.email, gen.curp, car.nombre carrera, uni.nombre unidad, ram.descripcion grado
+        $sql = "SELECT alu.matricula, ap_paterno, ap_materno, alu.nombre, situacion, status,
+        gen.telefono, gen.email, gen.curp, car.nombre carrera, uni.nombre unidad, ram.descripcion grado
         FROM alumno alu, alumno_general gen, carrera car, unidad uni, rama ram
         WHERE alu.matricula = '$enrollment'
         AND alu.matricula = gen.matricula

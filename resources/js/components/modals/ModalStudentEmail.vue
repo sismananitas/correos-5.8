@@ -152,7 +152,7 @@ export default {
             let form = this.$refs.formAlumno
             let dataJson = new FormData(form)
 
-            await this.sendPostForm({ url: '/students/emails', data: dataJson })
+            await this.sendPostForm({ url: '/api/students/emails', data: dataJson })
             .then(() => {
                 if (this.response) {
                     swal.close()
