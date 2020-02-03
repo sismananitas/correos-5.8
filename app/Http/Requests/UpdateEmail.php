@@ -24,7 +24,7 @@ class UpdateEmail extends FormRequest
     public function rules()
     {
         return [
-            'login'       => 'required|email|unique:emails,login,' . $this->route('correo')->id,
+            'login'       => 'required|email|unique:emails,login,' . $this->route('email')->id,
             'password'    => 'required',
             'solicitante' => 'required',
             'medium'      => 'required',
