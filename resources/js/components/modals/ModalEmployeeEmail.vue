@@ -23,7 +23,6 @@
                             <input v-if="editMode" type="hidden" name="_method" value="put">
                             <div class="modal-body">
                                 <label for="control_number">Número de control</label>
-
                                 <input list="empleados" class="form-control" type="text" name="control_number" required>
                                 <datalist id="empleados">
                                     <option
@@ -34,13 +33,11 @@
                                         {{ employee.numconemp + ' - ' + employee.nombre }}
                                     </option>
                                 </datalist>
-
                                 <p class="text-danger" v-if="errors.control_number">{{ errors.control_number[0] }}</p>                    
                                 <p class="text-danger" v-if="errors.correo">{{ errors.correo[0] }}</p>                    
                             </div>
                         </form>
                     </tab-content>
-
                     <tab-content
                         title="Elegir Plaza"
                         :before-change="registerEmployee"
@@ -48,14 +45,13 @@
                         <form
                             ref="formRegisterEmployee"
                             :action="base_url + '/correos'"
+                            @submit.prevent=""
                         >
                             <input type="hidden" name="emailable_id" :value="num_control">
                             <input type="hidden" name="emailable_type" value="employee">
-
                             <p v-if="plazas.length">
                                 Nombre: {{ plazas[0].nombre }} {{ plazas[0].paterno }} {{ plazas[0].materno }}
                             </p>
-
                             <div class="form-group" v-if="plazas.length">
                                 <select class="form-control" name="dependency">
                                     <option
@@ -67,37 +63,28 @@
                                     </option>
                                 </select>
                             </div>
-
                             <div class="form-row">
                                 <div class="form-group col">
                                     <label for="client_name">Solicitante del cambio</label>
                                     <input id="client_name" class="form-control" type="text" name="client_name" required>
-
                                     <p class="text-danger" v-if="errors.client_name">{{ errors.client_name[0] }}</p>
                                 </div>
-                    
                                 <div class="form-group col">
                                     <label for="delivered_to">Entregado a</label>
                                     <input class="form-control" type="text" name="delivered_to" required>
-
                                     <p class="text-danger" v-if="errors.delivered_to">{{ errors.delivered_to[0] }}</p>
                                 </div>                 
                             </div>
-                    
                             <div class="form-group">
                                 <label for="login">Login</label>
                                 <input id="login" class="form-control" type="email" name="login" required>
-
                                 <p class="text-danger" v-if="errors.login">{{ errors.login[0] }}</p>
                             </div>
-                    
                             <div class="form-grou">
                                 <label for="password">Contraseña</label>
                                 <input id="password" class="form-control" type="text" name="password" required>
-
                                 <p class="text-danger" v-if="errors.password">{{ errors.password[0] }}</p>
                             </div>
-                    
                             <div class="form-row">
                                 <div class="col form-group">
                                     <label for="medium">Medio de solicitud</label>
@@ -106,10 +93,8 @@
                                         <option value="Ticket">Ticket</option>
                                         <option value="Oficio">Oficio</option>
                                     </select>
-
                                     <p class="text-danger" v-if="errors.medium">{{ errors.medium[0] }}</p>
                                 </div>
-                    
                                 <div class="col form-group">
                                     <label for="status">Estatus</label>
                                     <select class="form-control" name="status" id="status" required>
@@ -118,7 +103,6 @@
                                         <option value="Suspendido">Suspendido</option>
                                         <option value="Eliminado">Eliminado</option>
                                     </select>
-
                                     <p class="text-danger" v-if="errors.status">{{ errors.status[0] }}</p>
                                 </div>
                             </div>
@@ -133,7 +117,7 @@
 <script>
 import { mapState, mapActions, mapMutations } from 'vuex'
 import { FormWizard, TabContent } from 'vue-form-wizard'
-
+import 'vue-form-wizard/dist/vue-form-wizard.min.css'
 export default {
     props: {
         postUrl: String

@@ -42,6 +42,7 @@
                             v-if="student"
                             ref="formRegisterStudent"
                             action="#"
+                            @submit.prevent=""
                         >
                             <input type="hidden" name="emailable_id" :value="student.matricula">
                             <input type="hidden" name="emailable_type" value="student">
@@ -104,6 +105,7 @@
 <script>
 import { mapState, mapActions } from 'vuex';
 import { FormWizard, TabContent } from 'vue-form-wizard'
+import 'vue-form-wizard/dist/vue-form-wizard.min.css'
 export default {
     props: {
         PostUrl: String

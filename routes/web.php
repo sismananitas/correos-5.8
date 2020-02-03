@@ -45,6 +45,8 @@ Route::prefix('api')->group(function () {
     Route::get('/emails', 'EmailController@index')->name('api.emails.index');
     Route::post('/emails', 'EmailController@store');
     Route::get('/emails/{email}', 'EmailController@show');
+    Route::put('/emails/{email}', 'EmailController@update');
+    Route::delete('/emails/{email}', 'EmailController@destroy');
 
     Route::get('/students', 'StudentController@index');
     Route::post('/students/emails', 'StudentController@storeEmail')->name('app.students.emails.store');

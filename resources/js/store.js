@@ -51,7 +51,7 @@ export default new Vuex.Store({
 
     actions: {
         getEmails({ commit }) {
-            axios.get('/api/emails')
+            return axios.get('/api/emails')
             .then(res => {
                 commit('setEmails', res.data);
             })
@@ -69,18 +69,16 @@ export default new Vuex.Store({
             })
         },
         showStudent({ commit }, id) {
-            axios.get('/api/students/' + id)
+            return axios.get('/api/students/' + id)
             .then(res => {
                 commit('setStudent', res.data)
             })
         },
 
         getEmployees({ commit }) {
-            swal.showLoading()
-            axios.get('/api/employees')
+            return axios.get('/api/employees')
             .then(res => {
                 commit('setEmployees', res.data)
-                swal.close()
             })
         },
 

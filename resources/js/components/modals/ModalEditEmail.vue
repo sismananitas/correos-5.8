@@ -9,7 +9,7 @@
                 </div>
 
                 <form
-                    :action="base_url + '/correos/' + email.id"
+                    action="#"
                     method="POST"
                     autocomplete="off"
                     @submit="sendForm"
@@ -20,21 +20,18 @@
                         <div class="form-group">
                             <label for="login">Login</label>
                             <input id="login" class="form-control" type="email" name="login" required v-model="email.login">
-
                             <p class="text-danger" v-if="errors.login">{{ errors.login[0] }}</p>
                         </div>
 
                         <div class="form-group">
                             <label for="password">Contraseña</label>
                             <input id="password" class="form-control" type="text" name="password" required v-model="email.password">
-
                             <p class="text-danger" v-if="errors.password">{{ errors.password[0] }}</p>
                         </div>
 
                         <div class="form-group">
                             <label for="solicitante">Solicitante del cambio</label>
                             <input id="solicitante" class="form-control" type="text" name="solicitante" required>
-
                             <p class="text-danger" v-if="errors.solicitante">{{ errors.solicitante[0] }}</p>
                         </div>
 
@@ -75,7 +72,7 @@
 import { mapState, mapActions, mapMutations } from 'vuex';
 export default {
     computed: {
-        ...mapState(['email', 'response', 'errors', 'base_url'])
+        ...mapState(['email', 'response', 'errors'])
     },
 
     methods: {
@@ -83,9 +80,9 @@ export default {
         ...mapActions(['sendPostForm']),
 
         sendForm(e) {
-            let dataJson = new FormData(e.target)
+            let data = new FormData(e.target)
 
-            this.sendPostForm({ url: e.target.action, data: dataJson })
+            this.sendPostForm({ url: '/api/emails/' + this.email.id, data: data })
             .then(() => {
                 if (this.response) {
                     $('#editEmail').modal('hide')
