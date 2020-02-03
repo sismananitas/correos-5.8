@@ -85,8 +85,6 @@ export default new Vuex.Store({
         },
 
         sendPostForm({ commit }, { url, data }) {
-            showLoading()
-
             commit('setResponse', null)
             commit('setErrors', [])
 

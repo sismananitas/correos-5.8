@@ -11,3 +11,7 @@ w.showLoading = () => {
         showConfirmButton: false
     })
 }
+
+w.closeLoading = () => {
+    Swal.close()
+}

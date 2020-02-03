@@ -132,10 +132,11 @@ export default {
             let form = this.$refs.formAlumno
             let dataJson = new FormData(form)
 
+            showLoading()
             await this.sendPostForm({ url: '/api/students/emails', data: dataJson })
             .then(() => {
+                closeLoading()
                 if (this.response) {
-                    swal.close()
                     console.log(this.response)
                     this.student = this.response.student
                     this.validate = true
@@ -149,14 +150,19 @@ export default {
         async registerStudent() {
             let form = this.$refs.formRegisterStudent
             let dataJson = new FormData(form)
+
+            showLoading()
+
             await this.sendPostForm({ url: '/api/emails', data: dataJson })
-            if (this.response) {
-                swal.close()
-                console.log(this.response)
-                this.validate = true
-            } else {
-                this.validate = false
-            }
+            .then(() => {
+                closeLoading()
+                if (this.response) {
+                    console.log(this.response)
+                    this.validate = true
+                } else {
+                    this.validate = false
+                }
+            })
             return this.validate
         }
     },
