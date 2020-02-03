@@ -39,3 +39,19 @@ Route::post('/correo/departamental', 'DepartamentController@storeEmail')->name('
 
 // Otros
 Route::post('/correo/otro', 'OtherController@storeEmail')->name('correo.other.store');
+
+// API
+Route::prefix('api')->group(function () {
+    Route::get('/emails', 'EmailController@index')->name('api.emails.index');
+    Route::get('/emails/{email}', 'EmailController@show');
+
+    Route::get('/students', 'StudentController@index');
+    Route::post('/students/emails', 'StudentController@storeEmail')->name('app.students.emails.store');
+
+    Route::get('/employees', 'EmployeeController@index');
+    Route::post('/employees/emails', 'EmployeeController@storeEmail')->name('app.employees.emails.store');
+
+    Route::post('/reportes/trabajadores', 'ReportController@trabajadores');
+    Route::post('/reportes/alumnos', 'ReportController@alumnos');
+    Route::post('/reportes/correos', 'ReportController@emails');
+});

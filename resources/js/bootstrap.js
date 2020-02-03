@@ -12,7 +12,7 @@ try {
     window.swal   = require('sweetalert2')
     
     require('bootstrap')
-    require('@fortawesome/fontawesome-free/js/regular')
+    require('@fortawesome/fontawesome-free/js/fontawesome')
     //require('datatables.net-bs4');
 } catch (e) {}
 
