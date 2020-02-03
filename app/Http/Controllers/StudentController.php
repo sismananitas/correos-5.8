@@ -55,7 +55,6 @@ class StudentController extends Controller
         
         // Busca el estudiante en la DB
         $student = DB::connection('escolares')->select($sql)[0];
-        var_dump($student); die;
         return response($student);
     }
 }
