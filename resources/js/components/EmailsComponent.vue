@@ -20,7 +20,6 @@
                             type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Agregar
                             </button>
-                            
                             <div class="dropdown-menu shadow correo-actions" aria-labelledby="menuRow">
                                 <a class="dropdown-item btn-primary" type="button" data-toggle="modal" data-target="#addEmpleado">Trabajador</a>
                                 <a class="dropdown-item btn-primary" type="button" data-toggle="modal" data-target="#addAlumno">Alumno</a>
@@ -31,18 +30,14 @@
                     </th>
                 </tr>
             </thead>
-
             <tbody id="tbody_correos">
                 <tr v-for="email in emails" :key="email.id">
                     <td>{{ email.id }}</td>
                     <td>{{ email.login }}</td>
                     <td>{{ email.password }}</td>
-
                     <td>{{ email.emailable_type }}</td>
-
                     <td>{{ email.status }}</td>
                     <td>{{ email.delivered_to }}</td>
-
                     <td
                         title=""
                         data-toggle="tooltip"
@@ -50,14 +45,12 @@
                     >
                         {{ email.created_at }}
                     </td>
-
                     <td class="pt-1 pb-1">
                         <div class="dropdown">
                             <button id="menuRow" class="btn btn-secondary dropdown-toggle w-100"
                             type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-cog"></i> Sett
                             </button>
-                            
                             <div class="dropdown-menu" aria-labelledby="menuRow">
                                 <a class="dropdown-item btn-secondary" href="#">Agregar grupo</a>
                                 <a class="dropdown-item btn-warning" href="#" @click="editEmail(email)">Editar </a>
@@ -74,18 +67,27 @@
 import { mapState, mapActions } from 'vuex';
 
 export default {
+    data() {
+        return {
+            student: ''
+        }
+    },
     computed: {
-        ...mapState(['emails', 'student', 'response'])
+        ...mapState(['emails', 'response'])
     },
 
     methods: {
         ...mapActions(['getEmails', 'showStudent', 'showEmail']),
 
         editEmail(email) {
-            this.showEmail(email.id);
-            $('#editEmail').modal('show')
+            axios.get('/api/students/' + email.id)
+            .then(res => {
+                this.student = res.data
+            })
+            .then(() => {
+                $('#editEmail').modal('show')
+            })
         },
-
         showSuccessToast() {
             swal.fire({
                 toast: true,
@@ -98,7 +100,6 @@ export default {
             this.getEmails()
         }
     },
-
     mounted() {
         this.getEmails()
     }
