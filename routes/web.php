@@ -43,6 +43,7 @@ Route::post('/correo/otro', 'OtherController@storeEmail')->name('correo.other.st
 // API
 Route::prefix('api')->group(function () {
     Route::get('/emails', 'EmailController@index')->name('api.emails.index');
+    Route::post('/emails', 'EmailController@store');
     Route::get('/emails/{email}', 'EmailController@show');
 
     Route::get('/students', 'StudentController@index');
