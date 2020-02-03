@@ -127,7 +127,7 @@
             </form>
 
             <button class="btn btn-success mt-3" @click="showAlumnosPdf">Generar reporte</button>
-            <table class="table table-striped text-center mt-3">
+            <table id="table_alumnos" class="table table-striped text-center mt-3">
                 <thead class="thead-dark">
                     <tr v-if="showCurp">
                         <th>Matricula</th>
@@ -287,12 +287,23 @@ export default {
          */
         showAlumnosPdf() {
             var doc = new jsPDF();
-            doc.text(20, 20, 'Hola mundo')
-            for (let alum of this.alumnos) {
-                console.log(alum)
-                //doc.text(20, 20, alum.nombre)
-            }
-            //doc.save('reporte.pdf')
+            let users    = this.alumnos
+            let cursorX  = 20
+            let cursorY  = 20
+            let lineStep = 6
+
+            doc.setFontSize(30)
+            doc.text(100, cursorY, 'Alumnos', 'center')
+            cursorY += lineStep
+            cursorY += lineStep
+            doc.setFontSize(9)
+
+            doc.autoTable({
+                html: '#table_alumnos',
+                margin: { top: 32 }
+            })
+
+            doc.save('reporte.pdf')
             
             window.open(doc.output('bloburl'), '_blank')
         },
