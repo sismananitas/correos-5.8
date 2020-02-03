@@ -86,13 +86,16 @@ export default {
 
             axios.post('/api/emails/' + this.email.id, data)
             .then(response => {
-                $('#editEmail').modal('hide')
-                showCompleted(response.data.success)
+                showToast(response.data.success)
                 this.$emit('formSended')
             })
+            .then(() => {
+                $('#editEmail').modal('hide')
+            })
             .catch(err => {
+                showToast(err.response.data.message, 'error')
                 if (err.status == 422)
-                this.errors = err.response.data.errors
+                    this.errors = err.response.data.errors
             })
             e.preventDefault()
         },
@@ -106,19 +109,16 @@ export default {
             .then(confirm => {
                 if (confirm.value) {
                     axios.delete('/api/emails/' + this.email.id)
-                    .then(res => {
-                        this.setResponse(res.data)
+                    .then(response => {
+                        showToast(response.data.success)
                         this.$emit('formSended')
                     })
                     .then(() => {
                         $('#editEmail').modal('hide')
                     })
                     .catch(error => {
+                        showToast('No se pudo eliminar', 'error')
                         console.log(error)
-                        swal.fire({
-                            type: 'error',
-                            title: 'No se pudo eliminar'
-                        })
                     })
                 }
             })

@@ -14,7 +14,7 @@ w.showLoading = () => {
 
 w.closeLoading = () => Swal.close()
 
-w.showCompleted = (message, status = 'success') => {
+w.showToast = (message, status = 'success') => {
     return Swal.fire({
         toast: true,
         type: status,
