@@ -80,6 +80,7 @@ export default {
         ...mapActions(['getEmails', 'showStudent', 'showEmail']),
 
         editEmail(email) {
+            this.showStudent(email.id)
             axios.get('api/students/' + email.id)
             .then(res => {
                 this.student = res.data
