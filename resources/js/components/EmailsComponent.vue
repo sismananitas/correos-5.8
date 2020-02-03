@@ -23,10 +23,10 @@
                                 Agregar
                             </button>
                             <div class="dropdown-menu shadow correo-actions" aria-labelledby="menuRow">
-                                <a class="dropdown-item btn-primary" type="button" @click="openModal('#addEmpleado')">Trabajador</a>
-                                <a class="dropdown-item btn-primary" type="button" data-toggle="modal" data-target="#addAlumno">Alumno</a>
-                                <a class="dropdown-item btn-primary" type="button" data-toggle="modal" data-target="#addDepartamental">Departamental</a>
-                                <a class="dropdown-item btn-primary" type="button" data-toggle="modal" data-target="#addOtro">Otro</a>
+                                <a class="dropdown-item btn-primary" href="#" type="button" @click.prevent="openModal('#addEmpleado')">Trabajador</a>
+                                <a class="dropdown-item btn-primary" href="#" type="button" @click.prevent="openModal('#addAlumno')">Alumno</a>
+                                <a class="dropdown-item btn-primary" href="#" type="button" @click.prevent="openModal('#modalDepartament')">Departamental</a>
+                                <a class="dropdown-item btn-primary" href="#" type="button" @click.prevent="openModal('#modalOther')">Otro</a>
                             </div>
                         </div>
                     </th>
