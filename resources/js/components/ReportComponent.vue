@@ -245,8 +245,6 @@ export default {
     },
 
     methods: {
-        ...mapActions(['sendPostForm']),
-
         changeView(view) {
             this.view = view
         },
@@ -308,13 +306,13 @@ export default {
         },
 
         sendForm(e) {
-            let dataJson = new FormData(e.target)
-            swal.fire({ toast: true, title: 'Cargando...', showConfirmButton: false })
+            let data = new FormData(e.target)
+            showLoading()
             this.errors = {}
 
-            axios.post(e.target.action, dataJson)
+            axios.post(e.target.action, data)
             .then(res => {
-                swal.close()
+                closeLoading()
                 if (res.data.type === 'empleados') {
                     this.trabajadores = res.data.data
                 } else if (res.data.type === 'alumnos') {
@@ -325,7 +323,7 @@ export default {
             })
             .catch(error => {
                 if (error.response.status === 422) {
-                    swal.close()
+                    closeLoading()
                     this.errors = error.response.data.errors
                 }
             })

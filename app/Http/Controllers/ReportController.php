@@ -40,8 +40,11 @@ class ReportController extends Controller
         $value = strtoupper($data['search']);
         $results = $data['results'];
 
-        $sql = "SELECT FIRST $results emplea.nombre, emplea.apepat as paterno, emplea.apemat as materno, depend.clave as cvedep,
-        depend.nombre as nomdep, emplea.curp, plazas.tipemp, TRIM(tipper.nombre) as tipo_puesto
+        $sql = "SELECT FIRST $results emplea.nombre,
+        emplea.apepat as paterno, emplea.apemat as materno,
+        depend.clave as cvedep, depend.nombre as nomdep,
+        emplea.curp, plazas.tipemp,
+        TRIM(tipper.nombre) as tipo_puesto
         FROM emplea, depend, plazas, tipper
         WHERE emplea.numconemp = plazas.numconemp
         AND plazas.sitemp = 'VI'
@@ -76,8 +79,8 @@ class ReportController extends Controller
         uni.nombre unidad, ram.descripcion grado
         FROM alumno alu, alumno_general gen, carrera car, unidad uni, rama ram
         WHERE alu.carrera_id = car.carrera_id
-        AND alu.unidad_id    =  uni.unidad_id
-        AND car.rama_id      = ram.rama_id";
+        AND alu.unidad_id    = uni.unidad_id
+        AND car.rama_id      = ram.rama_id ";
 
         $sql .= "AND " . $field . " = '" . $value . "';";
 
