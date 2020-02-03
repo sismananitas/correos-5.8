@@ -62,9 +62,11 @@
                 </tr>
             </tbody>
         </table>
-        <modal-edit-email v-on:formSended="getEmails"></modal-edit-email>
-        <modal-employee-email v-on:formSended="getEmails"></modal-employee-email>
-        <modal-student-email v-on:formSended="getEmails"></modal-student-email>
+        <modal-employee-email @formSended="getEmails"></modal-employee-email>
+        <modal-departament @formSended="getEmails"></modal-departament>
+        <modal-other @formSended="getEmails"></modal-other>
+        <modal-student-email @formSended="getEmails"></modal-student-email>
+        <modal-edit-email @formSended="getEmails"></modal-edit-email>
     </div>
 </template>
 
