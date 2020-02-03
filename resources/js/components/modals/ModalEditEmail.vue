@@ -71,40 +71,55 @@
 <script>
 import { mapState, mapActions, mapMutations } from 'vuex';
 export default {
+    data() {
+        return {
+            errors: {}
+        }
+    },
     computed: {
-        ...mapState(['email', 'response', 'errors'])
+        ...mapState(['email'])
     },
 
     methods: {
-        ...mapMutations(['setErrors', 'setResponse']),
-        ...mapActions(['sendPostForm']),
-
         sendForm(e) {
             let data = new FormData(e.target)
 
-            this.sendPostForm({ url: '/api/emails/' + this.email.id, data: data })
-            .then(() => {
-                if (this.response) {
-                    $('#editEmail').modal('hide')
-                    this.$emit('formSended')
-                }
+            axios.post('/api/emails/' + this.email.id, data)
+            .then(response => {
+                $('#editEmail').modal('hide')
+                this.$emit('formSended')
+            })
+            .catch(err => {
+                if (err.status == 422)
+                this.errors = err.response.data.errors
             })
             e.preventDefault()
         },
 
         sendDeleteEmail() {
-            axios.delete('/api/emails/' + this.email.id)
-            .then(res => {
-                this.setResponse(res.data)
-                $('#editEmail').modal('hide')
-                this.$emit('formSended')
+            swal.fire({
+                icon: 'error',
+                title: '¿Está seguro/a?',
+                showCancelButton: true
             })
-            .catch(error => {
-                console.log(error.response.errors);
-                swal({
-                    type: 'error',
-                    title: 'No se pudo eliminar'
-                })
+            .then(confirm => {
+                if (confirm.value) {
+                    axios.delete('/api/emails/' + this.email.id)
+                    .then(res => {
+                        this.setResponse(res.data)
+                        this.$emit('formSended')
+                    })
+                    .then(() => {
+                        $('#editEmail').modal('hide')
+                    })
+                    .catch(error => {
+                        console.log(error)
+                        swal.fire({
+                            type: 'error',
+                            title: 'No se pudo eliminar'
+                        })
+                    })
+                }
             })
         }
     }
