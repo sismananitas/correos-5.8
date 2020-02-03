@@ -10,22 +10,22 @@
         <div class="d-flex align-items-center">
             <div class="form-group mr-3">
                 <label for="curp">Curp / Matricula</label>
-                <input type="checkbox" v-model="showCurp">
+                <input id="curp" type="checkbox" v-model="showCurp">
             </div>
 
             <div class="form-group mr-3">
                 <label for="depend">Dependencia / Unidad</label>
-                <input type="checkbox" v-model="showDepend">
+                <input id="depend" type="checkbox" v-model="showDepend">
             </div>
 
             <div class="form-group mr-3">
                 <label for="grade">Grado</label>
-                <input type="checkbox" v-model="showGrade">
+                <input id="grade" type="checkbox" v-model="showGrade">
             </div>
 
             <div class="form-group mr-3">
                 <label for="type-emplea">Tipo Empleado</label>
-                <input type="checkbox" v-model="showTypeEmplea">
+                <input id="type-emplea" type="checkbox" v-model="showTypeEmplea">
             </div>
         </div>
 
