@@ -49,7 +49,7 @@ class ReportController extends Controller
         WHERE emplea.numconemp = plazas.numconemp
         AND plazas.sitemp = 'VI'
         AND plazas.cvedep = depend.clave
-        AND plazas.tipemp = tipper.clave";
+        AND plazas.tipemp = tipper.clave ";
         
         $sql .= "AND " . $field . " = '" . $value . "';";
 

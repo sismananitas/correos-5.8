@@ -205,7 +205,7 @@
                         <td>{{ correo.id }}</td>
                         <td>{{ correo.login }}</td>
                         <td>{{ correo.password }}</td>
-                        <td>{{ correo.tipo }}</td>
+                        <td>{{ correo.type }}</td>
                         <td>{{ correo.status }}</td>
                     </tr>
                 </tbody>
