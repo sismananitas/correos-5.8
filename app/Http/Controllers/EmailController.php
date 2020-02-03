@@ -90,11 +90,11 @@ class EmailController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Email $correo, $emailable = '')
+    public function edit(Email $email, $emailable = '')
     {
-        switch ($correo->type) {
+        switch ($email->type) {
             case 'employee':
-                $emailable = $this->getEmployee($correo->emailable_id);
+                $emailable = $this->getEmployee($email->emailable_id);
             break;
         }
         return view('emails.edit', compact('correo', 'emailable'));
@@ -107,22 +107,22 @@ class EmailController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateEmail $request, Email $correo)
+    public function update(UpdateEmail $request, Email $email)
     {
         $data = $request->validated();
 
         $task = new Task();
         $task->client_name = $data['solicitante'];
-        $task->email_id    = $correo->id;
+        $task->email_id    = $email->id;
         $task->user_id     = auth()->user()->id;
-        $task->name        = 'Actualización del correo ' . $correo->login;
+        $task->name        = 'Actualización del correo ' . $email->login;
         $task->medium      = $data['medium'];
         $task->save();
 
-        $correo->login    = $data['login'];
-        $correo->password = $data['password'];
-        $correo->status   = $data['status'];
-        $correo->save();
+        $email->login    = $data['login'];
+        $email->password = $data['password'];
+        $email->status   = $data['status'];
+        $email->save();
 
         return response()->json(['success' => 'Correo actualizado correctamente']);
     }
@@ -133,10 +133,10 @@ class EmailController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Email $correo)
+    public function destroy(Email $email)
     {
         // TODO: Softdelete
-        $correo->delete();
+        $email->delete();
         return response()
         ->json(['success' => 'El correo ha sido eliminado correctamente']);
 
