@@ -13,3 +13,14 @@ w.showLoading = () => {
 }
 
 w.closeLoading = () => Swal.close()
+
+w.showCompleted = (message, status = 'success') => {
+    return Swal.fire({
+        toast: true,
+        type: status,
+        position: 'top-right',
+        title: message,
+        timer: 2000,
+        showConfirmButton: false
+    })
+}

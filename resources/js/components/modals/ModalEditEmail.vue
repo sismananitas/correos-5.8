@@ -87,6 +87,7 @@ export default {
             axios.post('/api/emails/' + this.email.id, data)
             .then(response => {
                 $('#editEmail').modal('hide')
+                showCompleted(response.data.success)
                 this.$emit('formSended')
             })
             .catch(err => {

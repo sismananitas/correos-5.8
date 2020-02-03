@@ -1,9 +1,5 @@
 <template>
     <div>
-        <modal-edit-email v-on:formSended="showSuccessToast"></modal-edit-email>
-        <modal-employee-email v-on:formSended="showSuccessToast"></modal-employee-email>
-        <modal-student-email v-on:formSended="showSuccessToast"></modal-student-email>
-
         <table class="table table-striped text-center border-bottom shadow">
             <thead>
                 <tr class="thead-dark">
@@ -60,6 +56,9 @@
                 </tr>
             </tbody>
         </table>
+        <modal-edit-email v-on:formSended="getEmails"></modal-edit-email>
+        <modal-employee-email v-on:formSended="getEmails"></modal-employee-email>
+        <modal-student-email v-on:formSended="getEmails"></modal-student-email>
     </div>
 </template>
 
@@ -90,7 +89,6 @@ export default {
                 timer: 2000,
                 showConfirmButton: false
             })
-            this.getEmails()
         }
     },
 
