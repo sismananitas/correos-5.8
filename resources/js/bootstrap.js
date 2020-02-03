@@ -10,8 +10,9 @@ try {
     window.Popper = require('popper.js').default
     window.$      = window.jQuery = require('jquery')
     window.swal   = require('sweetalert2')
-
+    
     require('bootstrap')
+    require('@fortawesome/fontawesome-free/js/all')
     //require('datatables.net-bs4');
 } catch (e) {}
 
