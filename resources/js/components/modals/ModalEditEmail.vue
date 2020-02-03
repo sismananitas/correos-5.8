@@ -60,7 +60,7 @@
                     <!-- Modal footer -->
                     <div class="modal-footer">
                         <button class="btn btn-warning" type="submit">Actualizar</button>
-                        <button class="btn btn-danger" type="button" @click="sendDeleteEmail(base_url + '/correos/' + email.id)">Eliminar</button>
+                        <button class="btn btn-danger" type="button" @click="sendDeleteEmail">Eliminar</button>
                     </div>
                 </form>
             </div>
@@ -92,8 +92,8 @@ export default {
             e.preventDefault()
         },
 
-        sendDeleteEmail(url) {
-            axios.delete(url)
+        sendDeleteEmail() {
+            axios.delete('/api/emails/' + this.email.id)
             .then(res => {
                 this.setResponse(res.data)
                 $('#editEmail').modal('hide')
