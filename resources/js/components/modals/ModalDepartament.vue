@@ -6,7 +6,7 @@
                     <form
                         ref="formRegisterDepartament"
                         action="#"
-                        @submit.prevent=""
+                        @submit="sendForm"
                     >
                         <input type="hidden" name="emailable_type" value="departament">
                         <!-- <input type="hidden" name="dependency" :value="student.unidad"> -->
@@ -53,6 +53,7 @@
                                 <p class="text-danger" v-if="errors.status">{{ errors.status[0] }}</p>
                             </div>
                         </div>
+                        <button class="btn btn-primary" type="submit">Registrar</button>
                     </form>
                 </div>
             </div>
@@ -64,6 +65,11 @@ export default {
     data() {
         return {
             errors: {}
+        }
+    },
+    methods: {
+        sendForm(e) {
+            e.preventDefault()
         }
     }
 }
