@@ -129,8 +129,8 @@
             <button class="btn btn-success mt-3" @click="showAlumnosPdf">Generar reporte</button>
             <table id="table_alumnos" class="table table-striped text-center mt-3">
                 <thead class="thead-dark">
-                    <tr v-if="showCurp">
-                        <th>Matricula</th>
+                    <tr>
+                        <th v-if="showCurp">Matricula</th>
                         <th>Nombre</th>
                         <th>Apellidos</th>
                         <th>Status</th>
