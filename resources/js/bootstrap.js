@@ -48,6 +48,8 @@ window.axios.interceptors.response.use(function (response) {
     let status = error.response.status
     if (status == 500)
     swal.fire('Error', 'Ocurrión un problema en el servidor', 'error')
+    if (status == 419)
+    swal.fire('Error', 'El token ha caducado, favor de recargar la página', 'error')
     return Promise.reject(error)
 })
 

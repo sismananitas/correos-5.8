@@ -136,6 +136,7 @@ export default {
             .then(() => {
                 if (this.response) {
                     swal.close()
+                    console.log(this.response)
                     this.student = this.response.student
                     this.validate = true
                 } else {
