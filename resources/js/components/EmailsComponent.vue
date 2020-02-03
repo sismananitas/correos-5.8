@@ -12,12 +12,18 @@
                     <th>CREACIÓN</th>
                     <th class="pt-1 pb-1">
                         <div class="dropdown" data-item="">
-                            <button id="menuRow" class="btn btn-primary dropdown-toggle w-100"
-                            type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <button
+                                id="menuRow"
+                                class="btn btn-primary dropdown-toggle w-100"
+                                type="button"
+                                data-toggle="dropdown"
+                                aria-haspopup="true"
+                                aria-expanded="false"
+                            >
                                 Agregar
                             </button>
                             <div class="dropdown-menu shadow correo-actions" aria-labelledby="menuRow">
-                                <a class="dropdown-item btn-primary" type="button" data-toggle="modal" data-target="#addEmpleado">Trabajador</a>
+                                <a class="dropdown-item btn-primary" type="button" @click="showModal('#addEmpleado')">Trabajador</a>
                                 <a class="dropdown-item btn-primary" type="button" data-toggle="modal" data-target="#addAlumno">Alumno</a>
                                 <a class="dropdown-item btn-primary" type="button" data-toggle="modal" data-target="#addDepartamental">Departamental</a>
                                 <a class="dropdown-item btn-primary" type="button" data-toggle="modal" data-target="#addOtro">Otro</a>
@@ -72,6 +78,10 @@ export default {
 
     methods: {
         ...mapActions(['getEmails', 'showStudent', 'showEmail']),
+
+        openModal(modalId) {
+            $(modalId).modal('show')
+        },
 
         editEmail(email) {
             this.showEmail(email.id)

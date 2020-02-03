@@ -12,17 +12,14 @@
                 <label for="curp">Curp / Matricula</label>
                 <input id="curp" type="checkbox" v-model="showCurp">
             </div>
-
             <div class="form-group mr-3">
                 <label for="depend">Dependencia / Unidad</label>
                 <input id="depend" type="checkbox" v-model="showDepend">
             </div>
-
             <div class="form-group mr-3">
                 <label for="grade">Grado</label>
                 <input id="grade" type="checkbox" v-model="showGrade">
             </div>
-
             <div class="form-group mr-3">
                 <label for="type-emplea">Tipo Empleado</label>
                 <input id="type-emplea" type="checkbox" v-model="showTypeEmplea">
@@ -44,7 +41,6 @@
                     type="text" name="search"
                     placeholder="Search..."
                 >
-
                 <label class="sr-only" for="field">Buscar por</label>
                 <select
                     class="form-control mx-2"
@@ -55,7 +51,6 @@
                     <option value="emplea_nombre">Nombre</option>
                     <option value="emplea_apepat">Apellido paterno</option>
                 </select>
-
                 <label class="sr-only" for="results">Resultados</label>
                 <input
                     class="form-control mr-2"
@@ -105,7 +100,6 @@
                     type="text" name="search"
                     placeholder="Search..."
                 >
-
                 <label class="sr-only" for="field">Buscar por</label>
                 <select
                     class="form-control mx-2"
@@ -115,7 +109,6 @@
                     <option value="alu_matricula">Matricula</option>
                     <option value="alu_nombre">Nombre</option>
                 </select>
-
                 <label class="sr-only" for="results">Resultados</label>
                 <input
                     class="form-control mr-2"
@@ -167,7 +160,6 @@
                     type="text" name="search"
                     placeholder="Search..."
                 >
-
                 <label class="sr-only" for="field">Buscar por</label>
                 <select
                     class="form-control mx-2"
@@ -178,7 +170,6 @@
                     <option value="alumno">Tipo alumno</option>
                     <option value="trabajador">Tipo trabajador</option>
                 </select>
-
                 <label class="sr-only" for="results">Resultados</label>
                 <input
                     class="form-control mr-2"
@@ -188,7 +179,6 @@
                 >
                 <button class="btn btn-primary">Buscar</button>
             </form>
-
             <button class="btn btn-success mt-3" @click="showEmailPdf">Generar reporte</button>
             <table id="table_correos" class="table table-striped text-center mt-3">
                 <thead class="thead-dark">
@@ -278,7 +268,6 @@ export default {
             })
 
             doc.save('reporte.pdf')
-            
             window.open(doc.output('bloburl'), '_blank')
         },
 
@@ -304,7 +293,6 @@ export default {
             })
 
             doc.save('reporte.pdf')
-            
             window.open(doc.output('bloburl'), '_blank')
         },
 
@@ -327,7 +315,6 @@ export default {
             })
 
             doc.save('reporte.pdf')
-            
             window.open(doc.output('bloburl'), '_blank')
         },
 
@@ -348,8 +335,8 @@ export default {
                 }
             })
             .catch(error => {
+                closeLoading()
                 if (error.response.status === 422) {
-                    closeLoading()
                     this.errors = error.response.data.errors
                 }
             })
