@@ -46,10 +46,10 @@ Route::prefix('api')->group(function () {
     Route::get('/emails/{email}', 'EmailController@show');
 
     Route::get('/students', 'StudentController@index');
-    Route::post('/students/emails', 'StudentControlle@storeEmail')->name('app.students.emails.store');
+    Route::post('/students/emails', 'StudentControlles@storeEmail')->name('app.students.emails.store');
 
     Route::get('/employees', 'EmployeeController@index');
-    Route::post('/employees/emails', 'EmployeeControlle@storeEmail')->name('app.employees.emails.store');
+    Route::post('/employees/emails', 'EmployeeControlles@storeEmail')->name('app.employees.emails.store');
 
     Route::post('/reportes/trabajadores', 'ReportController@trabajadores');
     Route::post('/reportes/alumnos', 'ReportController@alumnos');
