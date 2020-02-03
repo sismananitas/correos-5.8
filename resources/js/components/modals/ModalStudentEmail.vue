@@ -40,7 +40,7 @@
                         <form
                             v-if="student"
                             ref="formRegisterStudent"
-                            :action="base_url + '/correos'"
+                            action="#"
                         >
                             <input type="hidden" name="emailable_id" :value="student.matricula">
                             <input type="hidden" name="emailable_type" value="student">
@@ -149,7 +149,7 @@ export default {
         async registerStudent() {
             let form = this.$refs.formRegisterStudent
             let dataJson = new FormData(form)
-            await this.sendPostForm({ url: form.action, data: dataJson })
+            await this.sendPostForm({ url: '/api/emails', data: dataJson })
             if (this.response) {
                 swal.close()
                 console.log(this.response)
