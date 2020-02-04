@@ -139,7 +139,6 @@ class EmailController extends Controller
         $email->delete();
         return response()
         ->json(['success' => 'El correo ha sido eliminado correctamente']);
-
     }
 
     private function getEmployee($control_number)

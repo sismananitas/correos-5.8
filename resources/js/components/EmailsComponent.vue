@@ -49,8 +49,14 @@
                     </td>
                     <td class="pt-1 pb-1">
                         <div class="dropdown">
-                            <button id="menuRow" class="btn btn-secondary dropdown-toggle w-100"
-                            type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <button
+                                id="menuRow"
+                                class="btn btn-secondary dropdown-toggle w-100"
+                                type="button"
+                                data-toggle="dropdown"
+                                aria-haspopup="true"
+                                aria-expanded="false"
+                            >
                                 <i class="fas fa-cog"></i> Sett
                             </button>
                             <div class="dropdown-menu" aria-labelledby="menuRow">
@@ -69,17 +75,15 @@
         <modal-edit-email @formSended="getEmails"></modal-edit-email>
     </div>
 </template>
-
 <script>
 import { mapState, mapActions } from 'vuex';
 
 export default {
     computed: {
-        ...mapState(['emails', 'student', 'response'])
+        ...mapState(['emails', 'student'])
     },
-
     methods: {
-        ...mapActions(['getEmails', 'showStudent', 'showEmail']),
+        ...mapActions(['getEmails', 'showEmail']),
 
         openModal(modalId) {
             $(modalId).modal('show')
@@ -89,17 +93,6 @@ export default {
             this.showEmail(email.id)
             .then(() => {
                 $('#editEmail').modal('show')
-            })
-        },
-
-        showSuccessToast() {
-            swal.fire({
-                toast: true,
-                type: 'success',
-                position: 'top-right',
-                title: this.response.success,
-                timer: 2000,
-                showConfirmButton: false
             })
         }
     },

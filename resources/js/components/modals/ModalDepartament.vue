@@ -9,7 +9,18 @@
                         @submit="sendForm"
                     >
                         <input type="hidden" name="emailable_type" value="departament">
-                        <!-- <input type="hidden" name="dependency" :value="student.unidad"> -->
+                        <div class="form-row">
+                            <div class="col">
+                                <label for="name">Nombre</label>
+                                <input id="name" class="form-control" type="text" name="name" required>
+                            </div>
+                            <div class="col">
+                                <label for="lastname">Apellidos</label>
+                                <input id="lastname" class="form-control" type="text" name="lastname" required>
+                            </div>
+                        </div>
+                        <label for="dependency">Dependencia</label>
+                        <input id="dependency" class="form-control" type="text" name="dependency" required>
                         <div class="form-row">
                             <div class="form-group col">
                                 <label for="client_name">Solicitante del cambio</label>
@@ -69,6 +80,17 @@ export default {
     },
     methods: {
         sendForm(e) {
+            let data = new FormData(e.target)
+            axios.post('/api/emails', data)
+            .then(res => {
+                showToast(res.data.success)
+                //
+            })
+            .catch(err => {
+                showToast(err.response.data.message, 'error')
+                if (err.status == 422)
+                    this.errors = err.response.data.errors
+            })
             e.preventDefault()
         }
     }

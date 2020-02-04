@@ -9,6 +9,10 @@
                         @submit="sendForm"
                     >
                         <input type="hidden" name="emailable_type" value="other">
+                        <label for="name">Nombre</label>
+                        <input id="name" class="form-control" type="text" name="name" required>
+                        <label for="lastname">Apellidos</label>
+                        <input id="lastname" class="form-control" type="text" name="lastname" required>
                         <div class="form-row">
                             <div class="form-group col">
                                 <label for="client_name">Solicitante del cambio</label>
@@ -68,6 +72,17 @@ export default {
     },
     methods: {
         sendForm(e) {
+            let data = new FormData(e.target)
+            axios.post('/api/emails', data)
+            .then(res => {
+                showToast(res.data.success)
+                //
+            })
+            .catch(err => {
+                showToast(err.response.data.message, 'error')
+                if (err.status == 422)
+                    this.errors = err.response.data.errors
+            })
             e.preventDefault()
         }
     }
