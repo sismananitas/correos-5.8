@@ -28,7 +28,7 @@ class StoreEmail extends FormRequest
             'password'       => 'required',
             'dependency'     => 'required',
             'status'         => 'required',
-            'emailable_id'   => 'required',
+            'emailable_id'   => 'nullable',
             'emailable_type' => 'required',
             'client_name'    => 'required|min:4',
             'delivered_to'   => 'required|min:4',

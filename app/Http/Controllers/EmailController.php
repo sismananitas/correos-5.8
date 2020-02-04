@@ -51,6 +51,18 @@ class EmailController extends Controller
     {
         $data = $request->validated();
 
+        if ($data['emailable_type'] == 'departament') {
+            DB::table('departament')->insert([
+                null, $data['name'], $data['lasname'], $data['dependency']
+            ]);
+        }
+
+        if ($data['emailable_type'] == 'other') {
+            DB::table('others')->insert([
+                null, $data['name'], $data['lastname']
+            ]);
+        }
+
         $email = new Email();
         $email->login          = $data['login'];
         $email->password       = $data['password'];
