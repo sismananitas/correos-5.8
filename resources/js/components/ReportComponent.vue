@@ -15,26 +15,26 @@
 
             <div class="form-group" v-if="type_user == 'trabajador'">
                 <label for="type_worker">Tipo de trabajador</label>
-                <select name="type_worker" id="type_worker">
+                <select class="form-control" name="type_worker" id="type_worker">
                     <option value="">- Elegir -</option>
                     <option value="planta">Planta</option>
                     <option value="eventual">Eventual</option>
                 </select>
             </div>
 
-            <div class="form-row">
+            <div class="form-group form-row">
                 <div class="col">
                     <label for="start">Inicio</label>
-                    <input id="start" class="form-control" type="text" name="start">
+                    <input id="start" class="form-control" type="date" name="start">
                 </div>
 
                 <div class="col">
                     <label for="end">End</label>
-                    <input id="end" class="form-control" type="text" name="end">
+                    <input id="end" class="form-control" type="date" name="end">
                 </div>
             </div>
 
-            <div class="form-row">
+            <div class="form-group form-row">
                 <button class="btn btn-success" type="submit">Enviar</button>
             </div>
         </form>
