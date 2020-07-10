@@ -3,20 +3,24 @@
         <h4>Reportes</h4>
 
         <form class="col-md-6" action="" method="post" @submit="sendForm">
-            <div class="form-row">
+            <div class="form-group">
                 <label for="type_user">Tipo de Usuario</label>
                 <input id="type_user" class="form-control" type="text" name="type_user">
             </div>
 
-            <div class="form-row">
-                <label for="start">Inicio</label>
-                <input class="col form-control" type="text" name="start">
+            <div class="form-group">
+                <div class="col">
+                    <label for="start">Inicio</label>
+                    <input id="start" class="form-control" type="text" name="start">
+                </div>
 
-                <label for="end">End</label>
-                <input class="col form-control" type="text" name="end">
+                <div class="col">
+                    <label for="end">End</label>
+                    <input id="end" class="form-control" type="text" name="end">
+                </div>
             </div>
 
-            <div class="form-row">
+            <div class="form-group">
                 <button class="btn btn-success" type="submit">Enviar</button>
             </div>
         </form>
@@ -42,7 +46,7 @@ export default {
         sendForm(e) {
             let data = new FormData(e.target)
 
-            axios.post('/api/reportes/make-report', data)
+            axios.post('api/reportes/make-report', data)
             .then(res => {
                 console.log(res)
             })
