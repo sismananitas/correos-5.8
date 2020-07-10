@@ -34,7 +34,7 @@ export default {
          * Crea el reporte y lo emprime en otra pestaña
          */
         sendForm(e) {
-            let data = new FormData(e)
+            let data = new FormData(e.target)
 
             axios.post('api/reportes/make-report', data)
             .then(res => {
