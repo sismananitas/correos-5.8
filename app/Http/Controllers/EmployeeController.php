@@ -48,16 +48,16 @@ class EmployeeController extends Controller
         depend.nombre as nomdep,emplea.curp, plazas.tipemp, TRIM(tipper.nombre) as tipo_puesto
         from emplea, depend, plazas, tipper
         where emplea.numconemp = ". $data['control_number'] . "
-        and emplea.numconemp = plazas.numconemp
-        and plazas.sitemp = 'VI'
-        and plazas.cvedep = depend.clave
-        and plazas.tipemp = tipper.clave;";
+        AND emplea.numconemp = plazas.numconemp
+        AND plazas.sitemp = 'VI'
+        AND plazas.cvedep = depend.clave
+        AND plazas.tipemp = tipper.clave;";
 
         $plazas = DB::connection('informix')->select($sql);
 
         if (!count($plazas))
         return response()->json(['empleado' => 'Este empleado no tiene plazas activas'], 422);
 
-        return response()->json([ 'num_control' => $num_control, 'plazas' => $plazas, 'empleado' => $plazas[0]]);
+        return response()->json(['num_control' => $num_control, 'plazas' => $plazas, 'empleado' => $plazas[0]]);
     }
 }
