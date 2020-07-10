@@ -46,8 +46,8 @@ class EmployeeController extends Controller
 
         $sql = "SELECT emplea.nombre, emplea.apepat as paterno, emplea.apemat as materno, depend.clave as cvedep,
         depend.nombre as nomdep,emplea.curp, plazas.tipemp, TRIM(tipper.nombre) as tipo_puesto
-        from emplea, depend, plazas, tipper
-        where emplea.numconemp = ". $data['control_number'] . "
+        FROM emplea, depend, plazas, tipper
+        WHERE emplea.numconemp = ". $data['control_number'] . "
         AND emplea.numconemp = plazas.numconemp
         AND plazas.sitemp = 'VI'
         AND plazas.cvedep = depend.clave

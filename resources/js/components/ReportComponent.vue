@@ -1,6 +1,19 @@
 <template>
     <div>
-        <h4>Campos a mostrar</h4>
+        <h4>Reportes</h4>
+
+        <form class="" action="" method="post" @submit="sendForm">
+            Tipo de Usuario
+            <input class="form-control" type="text" name="type_user">
+
+            Inicio
+            <input class="form-control" type="text" name="start">
+
+            End
+            <input class="form-control" type="text" name="end">
+
+            <button class="btn btn-success" type="submit">Enviar</button>
+        </form>
     </div>
 </template>
 
@@ -20,8 +33,9 @@ export default {
         /**
          * Crea el reporte y lo emprime en otra pestaña
          */
-        showTrabajadoresPdf() {
-            //
+        sendForm(e) {
+            console.log(e)
+            e.preventDefault()
         }
     }
 }
