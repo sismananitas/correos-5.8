@@ -42,6 +42,30 @@
                 <button class="btn btn-success" type="submit">Enviar</button>
             </div>
         </form>
+
+        <hr>
+
+        <button v-if="correos.length > 0" class="btn btn-warning" @click="imprimir">Imprimir</button>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Login</th>
+                    <th>Passoword</th>
+                    <th>Created</th>
+                    <th>Updated</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="correo in correos" :key="correo.id">
+                    <td>{{ correo.id }}</td>
+                    <td>{{ correo.login }}</td>
+                    <td>{{ correo.password }}</td>
+                    <td>{{ correo.created_at }}</td>
+                    <td>{{ correo.updated_at }}</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </template>
 
@@ -54,7 +78,8 @@ export default {
     data() {
         return {
             type_user: '',
-            errors: ''
+            errors: '',
+            correos: []
         }
     },
 
@@ -71,6 +96,7 @@ export default {
             })
             .catch(thrown => {
                 if (thrown.response.status == 422) {
+                    this.errors = thrown.response.data.errors
                     swal.fire({
                         type: 'error',
                         title: thrown.response.data.message
@@ -79,6 +105,10 @@ export default {
                 console.log(thrown.response.data.errors)
             })
             e.preventDefault()
+        },
+
+        imprimir() {
+            swal.fire('Impreso')
         }
     }
 }
