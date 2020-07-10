@@ -8,7 +8,7 @@
                 <input id="type_user" class="form-control" type="text" name="type_user">
             </div>
 
-            <div class="form-group">
+            <div class="form-row">
                 <div class="col">
                     <label for="start">Inicio</label>
                     <input id="start" class="form-control" type="text" name="start">
