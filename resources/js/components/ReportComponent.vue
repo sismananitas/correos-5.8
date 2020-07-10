@@ -73,10 +73,10 @@ export default {
                 if (thrown.response.status == 422) {
                     swal.fire({
                         type: 'error',
-                        title: thrown.response.message
+                        title: thrown.response.data.message
                     })
                 }
-                console.log(thrown.response.errors)
+                console.log(thrown.response.data.errors)
             })
             e.preventDefault()
         }
