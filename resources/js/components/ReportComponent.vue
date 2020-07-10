@@ -11,6 +11,7 @@
                     <option value="alumno">Alumno</option>
                     <option value="trabajador">Trabajador</option>
                 </select>
+                <p v-if="errors.type_user" class="text-red">{{ errors.type_user[0] }}</p>
             </div>
 
             <div class="form-group" v-if="type_user == 'trabajador'">
@@ -20,17 +21,20 @@
                     <option value="planta">Planta</option>
                     <option value="eventual">Eventual</option>
                 </select>
+                <p v-if="errors.type_worker" class="text-red">{{ errors.type_worker[0] }}</p>
             </div>
 
             <div class="form-group form-row">
                 <div class="col">
                     <label for="start">Inicio</label>
                     <input id="start" class="form-control" type="date" name="start">
+                    <p v-if="errors.start" class="text-red">{{ errors.start[0] }}</p>
                 </div>
 
                 <div class="col">
                     <label for="end">End</label>
                     <input id="end" class="form-control" type="date" name="end">
+                    <p v-if="errors.end" class="text-red">{{ errors.end[0] }}</p>
                 </div>
             </div>
 
@@ -49,7 +53,8 @@ import 'jspdf-autotable'
 export default {
     data() {
         return {
-            type_user: ''
+            type_user: '',
+            errors: ''
         }
     },
 
@@ -64,8 +69,14 @@ export default {
             .then(res => {
                 console.log(res)
             })
-            .catch(trown => {
-                console.log(trown)
+            .catch(thrown => {
+                if (thrown.response.status == 422) {
+                    swal.fire({
+                        type: 'error',
+                        title: thrown.response.message
+                    })
+                }
+                console.log(thrown.response.errors)
             })
             e.preventDefault()
         }
