@@ -13,7 +13,7 @@
                 </select>
             </div>
 
-            <div class="form-group" v-if="type_user == 'Trabajador'">
+            <div class="form-group" v-if="type_user == 'trabajador'">
                 <label for="type_worker">Tipo de trabajador</label>
                 <select name="type_worker" id="type_worker">
                     <option value="">- Elegir -</option>
