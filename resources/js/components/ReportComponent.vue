@@ -5,7 +5,21 @@
         <form class="col-md-6" action="" method="post" @submit="sendForm">
             <div class="form-group">
                 <label for="type_user">Tipo de Usuario</label>
-                <input id="type_user" class="form-control" type="text" name="type_user">
+                <select class="form-control" name="type_user" id="type_user" v-model="type_user">
+                    <option value="">- Eligir -</option>
+                    <option value="all">Todos</option>
+                    <option value="alumno">Alumno</option>
+                    <option value="trabajador">Trabajador</option>
+                </select>
+            </div>
+
+            <div class="form-group" v-if="type_user == 'Trabajador'">
+                <label for="type_worker">Tipo de trabajador</label>
+                <select name="type_worker" id="type_worker">
+                    <option value="">- Elegir -</option>
+                    <option value="planta">Planta</option>
+                    <option value="eventual">Eventual</option>
+                </select>
             </div>
 
             <div class="form-row">
@@ -35,7 +49,7 @@ import 'jspdf-autotable'
 export default {
     data() {
         return {
-            //
+            type_user: ''
         }
     },
 
