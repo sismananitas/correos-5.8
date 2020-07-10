@@ -57,4 +57,6 @@ Route::prefix('api')->group(function () {
     Route::post('/reportes/trabajadores', 'ReportController@trabajadores');
     Route::post('/reportes/alumnos', 'ReportController@alumnos');
     Route::post('/reportes/correos', 'ReportController@emails');
+
+    Route::post('/reportes/make-report', 'ReportController@makeReport');
 });

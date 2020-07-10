@@ -25,6 +25,16 @@ class ReportController extends Controller
         return view('reportes.index');
     }
 
+    public function makeReport(Request $request)
+    {
+        $request->validate([
+            'type_user' => 'require|min:4',
+            'start'     => 'require|min:4',
+            'end'       => 'require|min:4',
+        ]);
+        return $request->all();
+    }
+
     public function trabajadores(Request $request)
     {
         $request->validate($this->rules);
