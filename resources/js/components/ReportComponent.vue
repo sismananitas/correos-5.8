@@ -11,7 +11,7 @@
                     <option value="alumno">Alumno</option>
                     <option value="trabajador">Trabajador</option>
                 </select>
-                <p v-if="errors.type_user" class="text-red">{{ errors.type_user[0] }}</p>
+                <div v-if="errors.type_user" class="invalid-feedback">{{ errors.type_user[0] }}</div>
             </div>
 
             <div class="form-group" v-if="type_user == 'trabajador'">
@@ -21,20 +21,20 @@
                     <option value="planta">Planta</option>
                     <option value="eventual">Eventual</option>
                 </select>
-                <p v-if="errors.type_worker" class="text-red">{{ errors.type_worker[0] }}</p>
+                <div v-if="errors.type_worker" class="text-red">{{ errors.type_worker[0] }}</div>
             </div>
 
             <div class="form-group form-row">
                 <div class="col">
                     <label for="start">Inicio</label>
                     <input id="start" class="form-control" type="date" name="start">
-                    <p v-if="errors.start" class="text-red">{{ errors.start[0] }}</p>
+                    <div v-if="errors.start" class="text-red">{{ errors.start[0] }}</div>
                 </div>
 
                 <div class="col">
                     <label for="end">End</label>
                     <input id="end" class="form-control" type="date" name="end">
-                    <p v-if="errors.end" class="text-red">{{ errors.end[0] }}</p>
+                    <div v-if="errors.end" class="text-red">{{ errors.end[0] }}</div>
                 </div>
             </div>
 
