@@ -28,7 +28,7 @@ class ReportController extends Controller
     public function makeReport(Request $request)
     {
         $request->validate([
-            'type_user' => 'required|min:4',
+            'type_user' => 'required|min:3',
             'start'     => 'required|min:4',
             'end'       => 'required|min:4',
         ]);
